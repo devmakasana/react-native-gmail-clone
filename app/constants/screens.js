@@ -1,4 +1,3 @@
 export default {
-  Splash: 'Splash',
-  mailList: 'MailList',
+  EmailLilst: 'EmailLilst',
 };

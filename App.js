@@ -7,8 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {View, StatusBar, Platform, Text} from 'react-native';
-import {colors} from './app/styles';
+import {View, Platform, Text} from 'react-native';
 import styles from './app/styles/AppStyles';
 
 export default class App extends Component {
@@ -22,7 +21,7 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.rootStyle}>
-        <Text>Welcome in Gamil Clone</Text>
+        <Text>welcome in Gmail Clone App</Text>
       </View>
     );
   }
