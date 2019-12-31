@@ -8,6 +8,9 @@ import AppAvtar from '../components/AppAvtar';
 import {scale, scaleVertical} from '../utils/scale';
 import colors from '../styles/colors';
 import {indent, lessIndent, halfindent} from '../styles/dimensions';
+import Typography from '../styles/Typography';
+import fontWeights from '../styles/fontWeights';
+import fontSizes from '../styles/fontSizes';
 
 class emailList extends Component {
   constructor(props) {
@@ -31,32 +34,32 @@ class emailList extends Component {
         </View>
         {/* Email-Listing */}
         <View style={s.mailListing}>
-          <View style={styles.container}>
-            <Text style={styles.primaryText}>PRIMARY</Text>
-            <View style={styles.Box}>
-              <View style={styles.leftWrap}>
+          <View style={s.container}>
+            <Text style={s.primaryText}>PRIMARY</Text>
+            <View style={s.Box}>
+              <View style={s.leftWrap}>
                 <SvgIcon
-                  style={styles.exportImgWrapper}
+                  style={s.exportImgWrapper}
                   svgs={svgs}
                   name={'author-icon'}
                   fill={'none'}
                   width={42}
                   height={42}
                 />
-                <View style={styles.caption}>
-                  <Text style={styles.BookText}>BookMyShow</Text>
-                  <Text style={styles.Book}>
+                <View style={s.caption}>
+                  <Text style={s.BookText}>BookMyShow</Text>
+                  <Text style={s.Book}>
                     Prepare for the food binge of your lif...
                   </Text>
-                  <Text style={styles.Bill}>
+                  <Text style={s.Bill}>
                     Book for the Ahmedabad Food Fest...
                   </Text>
                 </View>
               </View>
-              <View style={styles.rightWrap}>
-                <Text style={styles.day}>26 Dec</Text>
+              <View style={s.rightWrap}>
+                <Text style={s.day}>26 Dec</Text>
                 <SvgIcon
-                  style={styles.exportImgWrapper}
+                  style={s.exportImgWrapper}
                   svgs={svgs}
                   name={'vector-icon'}
                   fill={'none'}
@@ -67,31 +70,31 @@ class emailList extends Component {
             </View>
 
             {/* tow */}
-            <View style={styles.Tow}>
-              <View style={styles.Box}>
-                <View style={styles.leftWrap}>
+            <View style={s.Tow}>
+              <View style={s.Box}>
+                <View style={s.leftWrap}>
                   <SvgIcon
-                    style={styles.exportImgWrapper}
+                    style={s.exportImgWrapper}
                     svgs={svgs}
                     name={'author-icon'}
                     fill={'none'}
                     width={42}
                     height={42}
                   />
-                  <View style={styles.caption}>
-                    <Text style={styles.BookText}>BookMyShow</Text>
-                    <Text style={styles.Book}>
+                  <View style={s.caption}>
+                    <Text style={s.BookText}>BookMyShow</Text>
+                    <Text style={s.Book}>
                       Prepare for the food binge of your lif...
                     </Text>
-                    <Text style={styles.Bill}>
+                    <Text style={s.Bill}>
                       Book for the Ahmedabad Food Fest...
                     </Text>
                   </View>
                 </View>
-                <View style={styles.rightWrap}>
-                  <Text style={styles.day}>26 Dec</Text>
+                <View style={s.rightWrap}>
+                  <Text style={s.day}>26 Dec</Text>
                   <SvgIcon
-                    style={styles.exportImgWrapper}
+                    style={s.exportImgWrapper}
                     svgs={svgs}
                     name={'vector-icon'}
                     fill={'none'}
@@ -102,30 +105,30 @@ class emailList extends Component {
               </View>
             </View>
             {/* threee */}
-            <View style={styles.Box}>
-              <View style={styles.leftWrap}>
+            <View style={s.Box}>
+              <View style={s.leftWrap}>
                 <SvgIcon
-                  style={styles.exportImgWrapper}
+                  style={s.exportImgWrapper}
                   svgs={svgs}
                   name={'author-icon'}
                   fill={'none'}
                   width={42}
                   height={42}
                 />
-                <View style={styles.caption}>
-                  <Text style={styles.BookText}>BookMyShow</Text>
-                  <Text style={styles.Book}>
+                <View style={s.caption}>
+                  <Text style={s.BookText}>BookMyShow</Text>
+                  <Text style={s.Book}>
                     Prepare for the food binge of your lif...
                   </Text>
-                  <Text style={styles.Bill}>
+                  <Text style={s.Bill}>
                     Book for the Ahmedabad Food Fest...
                   </Text>
                 </View>
               </View>
-              <View style={styles.rightWrap}>
-                <Text style={styles.day}>26 Dec</Text>
+              <View style={s.rightWrap}>
+                <Text style={s.day}>26 Dec</Text>
                 <SvgIcon
-                  style={styles.exportImgWrapper}
+                  style={s.exportImgWrapper}
                   svgs={svgs}
                   name={'vector-icon'}
                   fill={'none'}
