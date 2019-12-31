@@ -22,4 +22,6 @@ export default {
 
   overlayColor: 'rgba(32, 33, 36, 0.7)',
   transparent: 'rgba(0, 0, 0, 0)',
+
+  boxShadowColor: 'rgba(0, 0, 0, 0.25)',
 };

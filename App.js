@@ -8,9 +8,22 @@
 
 import React, {Component} from 'react';
 import {View, Platform, Text} from 'react-native';
-import styles from './app/styles/AppStyles';
+import AppStyles from './app/styles/AppStyles';
+import {AppNavigator} from './app/navigation';
+import {Provider} from 'react-redux';
+import store from './app/store/store';
 
 export default class App extends Component {
+  static navigationOptions = ({navigation}) => {
+    return NavigationOptions({
+      title: 'Personal details',
+      navigation: navigation,
+      headerStyle: AppStyles.headerStyle,
+      headerTitleStyle: AppStyles.headerTitleStyle,
+      headerTintColor: colors.black,
+    });
+  };
+
   constructor(props) {
     super(props);
   }
@@ -20,8 +33,10 @@ export default class App extends Component {
 
   render() {
     return (
-      <View style={styles.rootStyle}>
-        <Text>welcome in Gmail Clone App</Text>
+      <View style={AppStyles.rootStyle}>
+        <Provider store={store}>
+          <AppNavigator />
+        </Provider>
       </View>
     );
   }
