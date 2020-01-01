@@ -49,7 +49,12 @@ export default {
   'select-author': {
     svg: (
       <G width="19" height="14" fill="none">
-        <Path d="M1 7.5L6 12.5L17.5 1" stroke="#ffffff" stroke-width="2" />
+        <Path
+          d="M1 7.5L6 12.5L17.5 1"
+          stroke="#ffffff"
+          stroke-width="2"
+          fill="rgba(0,0,0,0)"
+        />
       </G>
     ),
     viewBox: '0 0 20 19',
