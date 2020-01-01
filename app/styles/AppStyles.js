@@ -20,9 +20,6 @@ const AppStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
   },
-  rootHorizontalPad: {
-    paddingHorizontal: scale(indent),
-  },
   rootWithoutPadding: {
     paddingVertical: 0,
     paddingHorizontal: 0,
