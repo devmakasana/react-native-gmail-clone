@@ -1,18 +1,25 @@
 import React, {Component} from 'react';
-import {View, Text, SafeAreaView, StyleSheet} from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  StyleSheet,
+  FlatList,
+  TouchableHighlight,
+  Text,
+} from 'react-native';
 import AppStyles from '../styles/AppStyles';
 import svgs from '../assets/svg';
 import SvgIcon from 'react-native-svg-icon/lib/components/SvgIcon';
 import Input from '../components/Input';
-import AppAvtar from '../components/AppAvtar';
+import AppAvtar from '../components/Avtar/AppAvtar';
 import {scale, scaleVertical} from '../utils/scale';
 import colors from '../styles/colors';
 import {indent, lessIndent, halfindent} from '../styles/dimensions';
 import Typography from '../styles/Typography';
 import fontWeights from '../styles/fontWeights';
-import fontSizes from '../styles/fontSizes';
-import MailList from '../components/MailList';
-import {ScrollView} from 'react-native-gesture-handler';
+import {emailData} from '../assets/data/emails';
+import TextView from '../components/TextView/TextView';
+import MailItem from '../components/MailItem';
 
 class emailList extends Component {
   constructor(props) {
@@ -20,30 +27,44 @@ class emailList extends Component {
     this.state = {};
   }
 
+  _keyExtractor = item => item.id;
+  _renderItem = ({item, index}) => {
+    return (
+      <MailItem
+        onPress={() => {
+          this.onPressItem(item);
+        }}
+        item={item}
+      />
+    );
+  };
+
   render() {
+    const list = emailData;
     return (
       <SafeAreaView style={[AppStyles.root]}>
         {/* Searchbar */}
-        <ScrollView>
-          <View style={s.shadowBox}>
-            <View style={s.headerSearch}>
-              <SvgIcon svgs={svgs} name={'short-menu'} width={30} height={20} />
-              <Input
-                value={'dddd'}
-                placeholder={'Search mail'}
-                containerStyle={s.inputWrap}></Input>
-              <AppAvtar></AppAvtar>
-            </View>
+        <View style={s.shadowBox}>
+          <View style={s.headerSearch}>
+            <SvgIcon svgs={svgs} name={'short-menu'} width={30} height={20} />
+            <Input
+              value={'dddd'}
+              placeholder={'Search mail'}
+              containerStyle={s.inputWrap}></Input>
+            <AppAvtar />
           </View>
-          {/* Email-Listing */}
-          <View style={s.mlContainer}>
-            <Text style={s.tabTitle}>Primary</Text>
-            <MailList></MailList>
-            <MailList></MailList>
-            <MailList></MailList>
-            <MailList></MailList>
-          </View>
-        </ScrollView>
+        </View>
+        {/* Email-Listing */}
+        <View style={s.mlContainer}>
+          <TextView style={s.tabTitle} text={'Primary'} />
+          <FlatList
+            keyExtractor={this._keyExtractor}
+            renderItem={this._renderItem}
+            data={list}
+            scrollEnabled={!this.state.isSwiping}
+            ListFooterComponent={<View style={[{marginBottom: indent * 2}]} />}
+          />
+        </View>
       </SafeAreaView>
     );
   }
@@ -77,8 +98,8 @@ const s = StyleSheet.create({
   },
   // MailListing...
   tabTitle: {
-    paddingTop: scale(indent + 2),
-    paddingBottom: scale(indent + 3),
+    marginTop: scale(indent + 2),
+    marginBottom: scale(halfindent),
     paddingHorizontal: scale(indent),
     ...Typography.subTitle,
     color: colors.secondary,

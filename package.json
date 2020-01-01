@@ -16,6 +16,7 @@
     "react-native-indicators": "^0.17.0",
     "react-native-svg": "^9.13.6",
     "react-native-svg-icon": "^0.8.1",
+    "react-native-swipeable": "^0.6.0",
     "react-navigation": "^4.0.10",
     "react-navigation-stack": "^1.10.3",
     "react-redux": "^7.1.3",
