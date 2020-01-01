@@ -24,4 +24,6 @@ export default {
   transparent: 'rgba(0, 0, 0, 0)',
 
   boxShadowColor: 'rgba(0, 0, 0, 0.25)',
+  lightBlue: '#E8F0FE',
+  darkBlue: '#1A73E8',
 };

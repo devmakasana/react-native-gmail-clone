@@ -1,17 +1,16 @@
 import {urlPrefix} from '../constants/constant';
 import {createSwitchNavigator} from 'react-navigation';
 import screens from '../constants/screens';
-// import emailList from '../screens/EmailList';
-import AccountModal from '../screens/AccountModal';
+import EmailLilst from '../screens/EmailList';
 
 const routes = {
-  [screens.AccountModal]: {
-    screen: AccountModal,
+  [screens.EmailLilst]: {
+    screen: EmailLilst,
   },
 };
 
 const config = {
-  initialRouteParams: 'AccountModal',
+  initialRouteParams: 'EmailLilst',
   headerMode: 'none',
 };
 
