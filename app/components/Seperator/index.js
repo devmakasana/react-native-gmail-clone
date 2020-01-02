@@ -17,9 +17,8 @@ class Seperator extends Component {
 
 const s = StyleSheet.create({
   seperator: {
-    borderBottomColor: colors.borderColor,
+    borderBottomColor: colors.zirconGray,
     borderBottomWidth: borderWidth,
-    opacity: 0.5,
   },
 });
 

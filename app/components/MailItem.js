@@ -6,79 +6,154 @@ import {indent, lessIndent, halfindent} from '../styles/dimensions';
 import Typography from '../styles/Typography';
 import fontWeights from '../styles/fontWeights';
 import SvgIcon from 'react-native-svg-icon/lib/components/SvgIcon';
-import svg from '../assets/svg';
+import svgs from '../assets/svg';
 import AppAvtar from './Avtar/AppAvtar';
 import TextView from './TextView/TextView';
 import Touchable from './Button/Touchable';
+import Swipeable from 'react-native-swipeable';
 
 class MailItem extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {leftActionActivated: false};
   }
 
+  handleScroll = () => {
+    const {currentlyOpenSwipeable} = this.state;
+
+    if (currentlyOpenSwipeable) {
+      currentlyOpenSwipeable.recenter();
+    }
+  };
+
   render() {
-    const {style, onPress} = this.props;
+    const {style, onPress, leftActionActivated} = this.props;
     const {item} = this.props;
+
     return (
-      <Touchable
-        onPress={this._onPressButton}
-        onLongPress={this._onLongPressButton}>
-        <View style={[s.mailItem, item.unread && s.unreadItem]}>
-          <View style={s.mailItemWrap}>
-            {/* Icon */}
-            <View style={[s.profileIcon, s.selectPrfIcon]}>
-              <AppAvtar style={s.senderIcon} />
-              <View
-                style={[s.selectUserWrap, item.unread && s.activeSelectUser]}>
-                <SvgIcon
-                  svgs={svg}
-                  name={'select-author'}
-                  width={22}
-                  height={22}
-                  style={s.selectProfile}
-                />
-              </View>
-            </View>
-            {/* Text */}
-            <View style={s.mailText}>
-              <View style={s.mailInfoBold}>
-                <TextView
-                  style={[s.mailSender, item.unread && s.unreadText]}
-                  text={item.sender.name}
-                />
-                <TextView
-                  style={[s.mailDate, item.unread && s.unreadText]}
-                  text={item.date}
-                />
-              </View>
-              <View style={s.mailInfo}>
-                {/* Mail Info */}
-                <View style={s.mailInfoWrap}>
-                  <TextView
-                    style={[s.mailSub, item.unread && s.unreadText]}
-                    text={item.subject}
-                  />
-                  <TextView style={s.mailDesc} text={item.description} />
+      <Swipeable
+        leftActionActivationDistance={100}
+        rightActionActivationDistance={100}
+        leftContent={
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'flex-end',
+              justifyContent: 'center',
+              backgroundColor: colors.green,
+              marginTop: scaleVertical(4),
+              paddingRight: indent + lessIndent,
+            }}>
+            <SvgIcon
+              svgs={svgs}
+              name={'archive-icon'}
+              width={scale(19)}
+              height={scale(19)}
+            />
+          </View>
+        }
+        rightContent={
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'flex-start',
+              justifyContent: 'center',
+              backgroundColor: colors.green,
+              marginTop: scaleVertical(4),
+              paddingLeft: indent + lessIndent,
+            }}>
+            <SvgIcon
+              svgs={svgs}
+              name={'archive-icon'}
+              width={scale(19)}
+              height={scale(19)}
+            />
+          </View>
+        }
+        onLeftActionActivate={() => this.setState({leftActionActivated: true})}
+        onRightActionActivate={() =>
+          this.setState({rightActionActivated: true})
+        }
+        onLeftActionDeactivate={() =>
+          this.setState({leftActionActivated: false})
+        }
+        onRightActionDeactivate={() =>
+          this.setState({rightActionActivated: false})
+        }
+        onLeftActionComplete={() => this.setState()}
+        onRightActionComplete={() => this.setState()}>
+        <Touchable
+          onPress={this._onPressButton}
+          onLongPress={this._onLongPressButton}>
+          <View
+            style={[
+              s.mailItemCover,
+              leftActionActivated && s.activeArchiveStripe,
+            ]}>
+            <View style={[s.mailItem, item.unread && s.unreadItem]}>
+              <View style={s.mailItemWrap}>
+                {/* Icon */}
+                <View style={[s.profileIcon, s.selectPrfIcon]}>
+                  <AppAvtar style={s.senderIcon} />
+                  <View
+                    style={[
+                      s.selectUserWrap,
+                      item.unread && s.activeSelectUser,
+                    ]}>
+                    <SvgIcon
+                      svgs={svgs}
+                      name={'select-author'}
+                      width={22}
+                      height={22}
+                      style={s.selectProfile}
+                    />
+                  </View>
                 </View>
-                {/* Mail Star */}
-                <SvgIcon
-                  svgs={svg}
-                  name={'star-icon-active'}
-                  width={24}
-                  height={24}
-                  style={s.starIcon}
-                />
+                {/* Text */}
+                <View style={s.mailText}>
+                  <View style={s.mailInfoBold}>
+                    <TextView
+                      style={[s.mailSender, item.unread && s.unreadText]}
+                      text={item.sender.name}
+                    />
+                    <TextView
+                      style={[s.mailDate, item.unread && s.unreadText]}
+                      text={item.date}
+                    />
+                  </View>
+                  <View style={s.mailInfo}>
+                    {/* Mail Info */}
+                    <View style={s.mailInfoWrap}>
+                      <TextView
+                        style={[s.mailSub, item.unread && s.unreadText]}
+                        text={item.subject}
+                      />
+                      <TextView style={s.mailDesc} text={item.description} />
+                    </View>
+                    {/* Mail Star */}
+                    <SvgIcon
+                      svgs={svgs}
+                      name={'star-icon-active'}
+                      width={24}
+                      height={24}
+                      style={s.starIcon}
+                    />
+                  </View>
+                </View>
               </View>
             </View>
           </View>
-        </View>
-      </Touchable>
+        </Touchable>
+      </Swipeable>
     );
   }
 }
 
 const s = StyleSheet.create({
+  mailItemCover: {
+    marginTop: scaleVertical(4),
+    backgroundColor: colors.white,
+  },
   mailItem: {
     paddingTop: scaleVertical(indent - 3),
     paddingBottom: scaleVertical(indent + 1),
@@ -86,7 +161,6 @@ const s = StyleSheet.create({
     paddingRight: scaleVertical(indent),
     marginLeft: scaleVertical(5),
     borderRadius: 12,
-    marginTop: scaleVertical(4),
   },
   mailItemWrap: {
     flexDirection: 'row',
@@ -174,6 +248,9 @@ const s = StyleSheet.create({
   },
   selectPrfIcon: {
     backgroundColor: colors.darkBlue,
+  },
+  activeArchiveStripe: {
+    backgroundColor: colors.green,
   },
 });
 

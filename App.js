@@ -14,16 +14,6 @@ import {Provider} from 'react-redux';
 import store from './app/store/store';
 
 export default class App extends Component {
-  static navigationOptions = ({navigation}) => {
-    return NavigationOptions({
-      title: 'Personal details',
-      navigation: navigation,
-      headerStyle: AppStyles.headerStyle,
-      headerTitleStyle: AppStyles.headerTitleStyle,
-      headerTintColor: colors.black,
-    });
-  };
-
   constructor(props) {
     super(props);
   }
