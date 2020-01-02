@@ -1,6 +1,11 @@
 import fontSizes from './fontSizes';
 
 export default {
+  small: {
+    fontFamily: 'Roboto',
+    fontSize: fontSizes.small,
+    lineHeight: 12,
+  },
   span: {
     fontFamily: 'Roboto',
     fontSize: fontSizes.span,

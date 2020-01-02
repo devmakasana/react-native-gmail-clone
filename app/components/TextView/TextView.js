@@ -16,7 +16,9 @@ const TextView = ({
 }) => {
   let textStyle = [style];
   let textValue = text;
-  if (type === 'span') {
+  if (type === 'small') {
+    textStyle.push(s.small);
+  } else if (type === 'span') {
     textStyle.push(s.span);
   } else if (type === 'subTitle') {
     textStyle.push(s.subTitle);
@@ -69,6 +71,9 @@ const TextView = ({
   );
 };
 const s = StyleSheet.create({
+  small: {
+    ...Typography.small,
+  },
   span: {
     ...Typography.span,
   },

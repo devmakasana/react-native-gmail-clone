@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, ViewPropTypes, StyleSheet} from 'react-native';
 import T from 'prop-types';
-import Button from '../Button';
 import {colors} from '../../../styles';
 import Icon from '../../Icon';
 import Touchable from '../Touchable';
@@ -35,7 +34,6 @@ const IconButton = ({
                 name={icon}
                 size={iconSize}
                 color={iconColor}
-                type={iconType}
               />
             </View>
           </Touchable>
