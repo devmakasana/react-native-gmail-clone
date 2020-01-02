@@ -1,4 +1,5 @@
 const fontSizes = {
+  small: 10,
   span: 12,
   subTitle: 13,
   caption: 14,

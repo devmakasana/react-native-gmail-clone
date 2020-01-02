@@ -30,7 +30,6 @@ const RoundIcon = ({
               name={icon}
               size={iconSize}
               color={iconColor}
-              type={type}
             />
           </View>
         </View>

@@ -4,8 +4,7 @@ import {
   SafeAreaView,
   StyleSheet,
   FlatList,
-  TouchableHighlight,
-  Text,
+  TouchableOpacity,
 } from 'react-native';
 import AppStyles from '../styles/AppStyles';
 import svgs from '../assets/svg';
@@ -17,16 +16,21 @@ import colors from '../styles/colors';
 import {indent, lessIndent, halfindent} from '../styles/dimensions';
 import Typography from '../styles/Typography';
 import fontWeights from '../styles/fontWeights';
-import {emailData} from '../assets/data/emails';
+import emailData from '../assets/data/emails';
 import TextView from '../components/TextView/TextView';
 import MailItem from '../components/MailItem';
+import AccountModal from './AccountModal';
 
 class emailList extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isModalVisible: false,
+    };
   }
-
+  setAccountModal = visible => {
+    this.setState({isModalVisible: visible});
+  };
   _keyExtractor = item => item.id;
   _renderItem = ({item, index}) => {
     return (
@@ -51,7 +55,19 @@ class emailList extends Component {
               value={'dddd'}
               placeholder={'Search mail'}
               containerStyle={s.inputWrap}></Input>
-            <AppAvtar />
+            <TouchableOpacity
+              style={{backgroundColor: 'transparent'}}
+              onPress={() => {
+                this.setAccountModal(true);
+              }}>
+              <AppAvtar Imgsrc={''} Size={31} />
+            </TouchableOpacity>
+            <AccountModal
+              isModalVisible={this.state.isModalVisible}
+              onRequestClose={() => {
+                this.setAccountModal(false);
+              }}
+            />
           </View>
         </View>
         {/* Email-Listing */}

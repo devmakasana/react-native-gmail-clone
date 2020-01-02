@@ -5,7 +5,7 @@ export const {width, height} = Dimensions.get('window');
 export const indent = 16;
 export const halfindent = indent / 2;
 export const lessIndent = indent - 3;
-export const dobleIndent = indent * 2;
+export const doubleIndent = indent * 2;
 
 export const borderRadius = 12;
 export const ModalBGborderRadius = 8;
