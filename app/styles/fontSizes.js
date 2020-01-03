@@ -4,7 +4,7 @@ const fontSizes = {
   subTitle: 13,
   caption: 14,
   title: 15,
-  lable: 16,
+  label: 16,
   heading: 17,
 };
 

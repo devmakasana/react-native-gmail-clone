@@ -1,17 +1,17 @@
 import {urlPrefix} from '../constants/constant';
 import {createSwitchNavigator} from 'react-navigation';
 import screens from '../constants/screens';
-import EmailLilst from '../screens/EmailList';
+import {EmailNavigator} from './navigators';
 
 const routes = {
   [screens.EmailLilst]: {
-    screen: EmailLilst,
+    screen: EmailNavigator,
   },
 };
 
 const config = {
   initialRouteParams: 'EmailLilst',
-  headerMode: 'none',
+  // headerMode: 'none',
 };
 
 const Navigator = createSwitchNavigator(routes, config);
