@@ -17,12 +17,12 @@ export default {
     lineHeight: 15,
   },
   caption: {
-    fontFamily: 'Google Sans',
+    fontFamily: 'ProductSans-Regular',
     fontSize: fontSizes.caption,
     lineHeight: 18,
   },
   title: {
-    fontFamily: 'Google Sans',
+    fontFamily: 'ProductSans-Regular',
     fontSize: fontSizes.title,
     lineHeight: 19,
   },
@@ -32,7 +32,7 @@ export default {
     lineHeight: 19,
   },
   heading: {
-    fontFamily: 'Google Sans',
+    fontFamily: 'ProductSans-Regular',
     fontSize: fontSizes.heading,
     lineHeight: 22,
   },

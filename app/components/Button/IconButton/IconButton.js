@@ -34,6 +34,7 @@ const IconButton = ({
                 name={icon}
                 size={iconSize}
                 color={iconColor}
+                type={iconType}
               />
             </View>
           </Touchable>

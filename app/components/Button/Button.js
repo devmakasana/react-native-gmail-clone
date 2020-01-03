@@ -20,6 +20,7 @@ const Button = ({
   textStyle,
   isIcon = false,
   iconName = 'arrow-right',
+  iconType,
   ...props
 }) => {
   return (
@@ -47,6 +48,7 @@ const Button = ({
             name={iconName}
             size={24}
             color={colors.white}
+            type={iconType}
           />
         )}
       </SpinnerButton>

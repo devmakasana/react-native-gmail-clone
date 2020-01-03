@@ -11,6 +11,7 @@ import AppAvtar from './Avtar/AppAvtar';
 import TextView from './TextView/TextView';
 import Touchable from './Button/Touchable';
 import Swipeable from 'react-native-swipeable';
+import Icon from './Icon';
 
 class MailItem extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class MailItem extends Component {
   };
 
   render() {
-    const {style, onPress, leftActionActivated} = this.props;
+    const {style, onPressItem, leftActionActivated} = this.props;
     const {item} = this.props;
 
     return (
@@ -47,6 +48,7 @@ class MailItem extends Component {
             <SvgIcon
               svgs={svgs}
               name={'archive-icon'}
+              fill={colors.white}
               width={scale(19)}
               height={scale(19)}
             />
@@ -65,6 +67,7 @@ class MailItem extends Component {
             <SvgIcon
               svgs={svgs}
               name={'archive-icon'}
+              fill={colors.white}
               width={scale(19)}
               height={scale(19)}
             />
@@ -83,62 +86,61 @@ class MailItem extends Component {
         onLeftActionComplete={() => this.setState()}
         onRightActionComplete={() => this.setState()}>
         <Touchable
-          onPress={this._onPressButton}
+          style={[
+            s.mailItemCover,
+            leftActionActivated && s.activeArchiveStripe,
+          ]}
+          onPress={onPressItem}
           onLongPress={this._onLongPressButton}>
-          <View
-            style={[
-              s.mailItemCover,
-              leftActionActivated && s.activeArchiveStripe,
-            ]}>
-            <View style={[s.mailItem, item.unread && s.unreadItem]}>
-              <View style={s.mailItemWrap}>
-                {/* Icon */}
-                <View style={[s.profileIcon, s.selectPrfIcon]}>
-                  <AppAvtar style={s.senderIcon} />
-                  <View
-                    style={[
-                      s.selectUserWrap,
-                      item.unread && s.activeSelectUser,
-                    ]}>
-                    <SvgIcon
-                      svgs={svgs}
-                      name={'select-author'}
-                      width={22}
-                      height={22}
-                      style={s.selectProfile}
-                    />
-                  </View>
+          <View style={[s.mailItem, item.unread && s.unreadItem]}>
+            <View style={s.mailItemWrap}>
+              {/* Icon */}
+              <View style={[s.profileIcon, s.selectPrfIcon]}>
+                <AppAvtar Size={40} style={s.senderIcon} />
+                <View
+                  style={[s.selectUserWrap, item.unread && s.activeSelectUser]}>
+                  {/* <SvgIcon
+                    svgs={svgs}
+                    name={'select-author'}
+                    width={22}
+                    height={22}
+                    style={s.selectProfile}
+                  /> */}
                 </View>
-                {/* Text */}
-                <View style={s.mailText}>
-                  <View style={s.mailInfoBold}>
+              </View>
+              {/* Text */}
+              <View style={s.mailText}>
+                <View style={s.mailInfoBold}>
+                  <TextView
+                    style={[s.mailSender, item.unread && s.unreadText]}
+                    text={item.sender.name}
+                  />
+                  <TextView
+                    style={[s.mailDate, item.unread && s.unreadTimeText]}
+                    text={item.date}
+                  />
+                </View>
+                <View style={s.mailInfo}>
+                  {/* Mail Info */}
+                  <View style={s.mailInfoWrap}>
                     <TextView
-                      style={[s.mailSender, item.unread && s.unreadText]}
-                      text={item.sender.name}
+                      style={[s.mailSub, item.unread && s.unreadText]}
+                      numberOfLines={1}
+                      text={item.subject}
                     />
                     <TextView
-                      style={[s.mailDate, item.unread && s.unreadText]}
-                      text={item.date}
+                      style={s.mailDesc}
+                      numberOfLines={1}
+                      text={item.description}
                     />
                   </View>
-                  <View style={s.mailInfo}>
-                    {/* Mail Info */}
-                    <View style={s.mailInfoWrap}>
-                      <TextView
-                        style={[s.mailSub, item.unread && s.unreadText]}
-                        text={item.subject}
-                      />
-                      <TextView style={s.mailDesc} text={item.description} />
-                    </View>
-                    {/* Mail Star */}
-                    <SvgIcon
-                      svgs={svgs}
-                      name={'star-icon-active'}
-                      width={24}
-                      height={24}
-                      style={s.starIcon}
-                    />
-                  </View>
+                  {/* Mail Star */}
+                  <Icon
+                    name={'star-outline'}
+                    color={colors.darkGray}
+                    type={'materialcommunityicons'}
+                    size={scale(20)}
+                  />
                 </View>
               </View>
             </View>
@@ -151,14 +153,13 @@ class MailItem extends Component {
 
 const s = StyleSheet.create({
   mailItemCover: {
-    marginTop: scaleVertical(4),
     backgroundColor: colors.white,
   },
   mailItem: {
-    paddingTop: scaleVertical(indent - 3),
-    paddingBottom: scaleVertical(indent + 1),
-    paddingLeft: scaleVertical(indent - 5),
-    paddingRight: scaleVertical(indent),
+    paddingTop: scaleVertical(indent - 1),
+    paddingBottom: scaleVertical(indent),
+    paddingLeft: scaleVertical(lessIndent - 1),
+    paddingRight: scaleVertical(lessIndent - 1),
     marginLeft: scaleVertical(5),
     borderRadius: 12,
   },
@@ -168,10 +169,10 @@ const s = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   unreadItem: {
-    backgroundColor: colors.lightBlue,
+    // backgroundColor: colors.lightBlue,
   },
   profileIcon: {
-    marginRight: scale(indent + 2),
+    marginRight: scale(11),
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
@@ -188,14 +189,14 @@ const s = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   mailSender: {
-    ...Typography.lable,
+    ...Typography.label,
     color: colors.secondary,
     flex: 1,
   },
   mailDate: {
     ...Typography.span,
-    fontWeight: fontWeights.normal,
-    color: colors.black,
+    fontWeight: fontWeights.medium,
+    color: colors.secondary,
     marginRight: 'auto',
   },
   mailInfo: {
@@ -207,14 +208,15 @@ const s = StyleSheet.create({
     flex: 1,
   },
   mailSub: {
-    marginVertical: scaleVertical(4),
+    marginVertical: scaleVertical(2),
     ...Typography.caption,
     color: colors.secondary,
+    fontFamily: 'Roboto',
   },
   mailDesc: {
     ...Typography.caption,
     color: colors.secondary,
-    fontWeight: fontWeights.normal,
+    fontFamily: 'Roboto',
   },
   starIcon: {
     marginLeft: scaleVertical(4),
@@ -227,18 +229,22 @@ const s = StyleSheet.create({
     color: colors.primary,
     fontWeight: fontWeights.extraBold,
   },
+  unreadTimeText: {
+    color: colors.black,
+    fontWeight: fontWeights.extraBold,
+  },
   selectUserWrap: {
-    position: 'absolute',
-    top: 0,
-    flex: 1,
-    zIndex: 10,
-    backgroundColor: colors.darkBlue,
-    borderRadius: 50,
-    width: scale(42),
-    height: scale(42),
-    alignItems: 'center',
-    justifyContent: 'center',
-    opacity: 0,
+    // position: 'absolute',
+    // top: 0,
+    // flex: 1,
+    // zIndex: 10,
+    // backgroundColor: colors.darkBlue,
+    // borderRadius: 50,
+    // width: scale(40),
+    // height: scale(40),
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    // opacity: 0,
   },
   activeSelectUser: {
     opacity: 1,
