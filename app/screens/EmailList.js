@@ -13,13 +13,14 @@ import Input from '../components/Input';
 import AppAvtar from '../components/Avtar/AppAvtar';
 import {scale, scaleVertical} from '../utils/scale';
 import colors from '../styles/colors';
-import {indent, lessIndent, halfindent} from '../styles/dimensions';
+import {indent, halfindent, lessIndent} from '../styles/dimensions';
 import Typography from '../styles/Typography';
 import fontWeights from '../styles/fontWeights';
 import {emailData} from '../assets/data/emails';
 import TextView from '../components/TextView/TextView';
 import MailItem from '../components/MailItem';
 import AccountModal from './AccountModal';
+import screens from '../constants/screens';
 
 class emailList extends Component {
   constructor(props) {
@@ -31,15 +32,21 @@ class emailList extends Component {
   setAccountModal = visible => {
     this.setState({isModalVisible: visible});
   };
+  onPressItem = () => {
+    this.props.navigation.navigate(screens.EmailDetails);
+  };
+
   _keyExtractor = item => item.id;
   _renderItem = ({item, index}) => {
     return (
-      <MailItem
-        onPress={() => {
-          this.onPressItem(item);
-        }}
-        item={item}
-      />
+      <View style={{marginBottom: scaleVertical(4)}}>
+        <MailItem
+          onPressItem={() => {
+            this.onPressItem();
+          }}
+          item={item}
+        />
+      </View>
     );
   };
 
@@ -68,11 +75,11 @@ class emailList extends Component {
                     placeholder={'Search mail'}
                     containerStyle={s.inputWrap}></Input>
                   <TouchableOpacity
-                    style={{backgroundColor: 'transparent'}}
+                    activeOpacity={0.8}
                     onPress={() => {
                       this.setAccountModal(true);
                     }}>
-                    <AppAvtar Imgsrc={''} Size={31} />
+                    <AppAvtar Imgsrc={''} Size={28} />
                   </TouchableOpacity>
                   <AccountModal
                     isModalVisible={this.state.isModalVisible}
@@ -84,7 +91,7 @@ class emailList extends Component {
                 <TextView style={s.tabTitle} text={'Primary'} />
               </View>
             }
-            ListFooterComponent={<View style={[{marginBottom: indent * 2}]} />}
+            ListFooterComponent={<View style={[{marginBottom: indent}]} />}
           />
           <View style={s.composeIconBox}>
             <SvgIcon
@@ -92,7 +99,6 @@ class emailList extends Component {
               name={'compose-icon'}
               width={scale(24)}
               height={24}
-              style={{}}
             />
           </View>
         </View>
@@ -107,37 +113,37 @@ const s = StyleSheet.create({
   },
   headerSearch: {
     borderRadius: 7,
-    marginTop: lessIndent,
-    shadowColor: colors.boxShadowColor,
-    shadowOffset: {width: 0, height: 4},
+    marginTop: scaleVertical(halfindent),
+    shadowColor: colors.secondaryBoxShadow,
+    shadowOffset: {width: 0, height: 2},
     shadowRadius: 7,
     shadowOpacity: 1,
-    elevation: 12,
+    elevation: 4,
     backgroundColor: colors.white,
-    marginHorizontal: scale(indent),
+    marginHorizontal: scale(lessIndent - 1),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    paddingVertical: scaleVertical(6),
-    paddingRight: scale(14),
-    paddingLeft: scale(14),
+    paddingVertical: scaleVertical(2),
+    paddingRight: scale(lessIndent - 1),
+    paddingLeft: scale(indent),
   },
   inputWrap: {
     flex: 1,
-    marginLeft: scale(halfindent),
-    marginRight: scale(lessIndent),
-    height: scale(38),
+    marginLeft: scale(indent),
+    marginRight: scale(halfindent),
+    height: scale(40),
     paddingHorizontal: scaleVertical(0),
   },
   // MailListing...
   tabTitle: {
     marginTop: scale(indent + 2),
-    marginBottom: scale(halfindent),
+    marginBottom: scale(5),
     paddingHorizontal: scale(indent),
-    ...Typography.subTitle,
+    ...Typography.span,
     color: colors.secondary,
     textTransform: 'uppercase',
-    fontWeight: fontWeights.normal,
+    fontWeight: fontWeights.medium,
   },
   composeIconBox: {
     width: scale(58),
