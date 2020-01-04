@@ -35,6 +35,9 @@ class emailList extends Component {
   onPressItem = () => {
     this.props.navigation.navigate(screens.EmailDetails);
   };
+  ComposeEmail = () => {
+    this.props.navigation.navigate('ComposeEmail');
+  };
 
   _keyExtractor = item => item.id;
   _renderItem = ({item, index}) => {
@@ -93,14 +96,17 @@ class emailList extends Component {
             }
             ListFooterComponent={<View style={[{marginBottom: indent}]} />}
           />
-          <View style={s.composeIconBox}>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            style={s.composeIconBox}
+            onPress={this.ComposeEmail}>
             <SvgIcon
               svgs={svgs}
               name={'compose-icon'}
               width={scale(24)}
               height={24}
             />
-          </View>
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
     );
