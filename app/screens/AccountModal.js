@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Modal, StyleSheet, ScrollView} from 'react-native';
+import {View, Modal, StyleSheet, ScrollView, Alert} from 'react-native';
 import TextView from '../components/TextView/TextView';
 import {colors, fontWeights} from '../styles';
 import SvgIcon from 'react-native-svg-icon/lib/components/SvgIcon';

@@ -22,10 +22,11 @@ const Input = ({
   <View style={[containerStyle]}>
     <TextInput
       underlineColorAndroid="transparent"
-      style={s.formControlInput}
+      style={[s.formControlInput, style]}
       onChangeText={onChangeText}
       placeholder={placeholder}
-      placeholderTextColor={colors.gray}></TextInput>
+      placeholderTextColor={colors.gray}
+      {...props}></TextInput>
   </View>
 );
 
