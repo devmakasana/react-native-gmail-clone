@@ -21,6 +21,7 @@ import TextView from '../components/TextView/TextView';
 import MailItem from '../components/MailItem';
 import AccountModal from './AccountModal';
 import screens from '../constants/screens';
+import {DrawerActions} from 'react-navigation-drawer';
 
 class emailList extends Component {
   constructor(props) {
@@ -37,6 +38,9 @@ class emailList extends Component {
   };
   ComposeEmail = () => {
     this.props.navigation.navigate('ComposeEmail');
+  };
+  MenuList = () => {
+    this.props.navigation.dispatch(DrawerActions.openDrawer());
   };
 
   _keyExtractor = item => item.id;
@@ -67,12 +71,14 @@ class emailList extends Component {
             ListHeaderComponent={
               <View>
                 <View style={s.headerSearch}>
-                  <SvgIcon
-                    svgs={svgs}
-                    name={'short-menu'}
-                    width={20}
-                    height={13}
-                  />
+                  <TouchableOpacity activeOpacity={0.7} onPress={this.MenuList}>
+                    <SvgIcon
+                      svgs={svgs}
+                      name={'short-menu'}
+                      width={20}
+                      height={13}
+                    />
+                  </TouchableOpacity>
                   <Input
                     value={'input'}
                     placeholder={'Search mail'}
