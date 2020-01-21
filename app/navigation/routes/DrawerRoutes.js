@@ -35,7 +35,7 @@ const Routes = {
     }),
   },
   [screens.PrimaryRoot]: {
-    screen: Primary,
+    screen: emailList,
     navigationOptions: () => ({
       title: 'Primary',
       drawerIcon: ({tintColor}) => (
@@ -44,7 +44,7 @@ const Routes = {
     }),
   },
   [screens.SocialRoot]: {
-    screen: Social,
+    screen: emailList,
     navigationOptions: () => ({
       title: 'Social',
       drawerIcon: ({tintColor}) => (
@@ -53,7 +53,7 @@ const Routes = {
     }),
   },
   [screens.PromotionsRoot]: {
-    screen: Promotions,
+    screen: emailList,
     navigationOptions: () => ({
       title: 'Promotions',
       drawerIcon: ({tintColor}) => (
@@ -62,7 +62,7 @@ const Routes = {
     }),
   },
   [screens.StarredRoot]: {
-    screen: Starred,
+    screen: emailList,
     navigationOptions: () => ({
       title: 'Starred',
       drawerIcon: ({tintColor}) => (
@@ -71,7 +71,7 @@ const Routes = {
     }),
   },
   [screens.SnoozedRoot]: {
-    screen: Snoozed,
+    screen: emailList,
     navigationOptions: () => ({
       title: 'Snoozed',
       drawerIcon: ({tintColor}) => (
@@ -80,7 +80,7 @@ const Routes = {
     }),
   },
   [screens.ImportantRoot]: {
-    screen: Important,
+    screen: emailList,
     navigationOptions: () => ({
       title: 'Important',
       drawerIcon: ({tintColor}) => (
@@ -89,7 +89,7 @@ const Routes = {
     }),
   },
   [screens.SentRoot]: {
-    screen: Sent,
+    screen: emailList,
     navigationOptions: () => ({
       title: 'Sent',
       drawerIcon: ({tintColor}) => (
@@ -98,7 +98,7 @@ const Routes = {
     }),
   },
   [screens.ScheduledRoot]: {
-    screen: Scheduled,
+    screen: emailList,
     navigationOptions: () => ({
       title: 'Scheduled',
       drawerIcon: ({tintColor}) => (
@@ -107,7 +107,7 @@ const Routes = {
     }),
   },
   [screens.OutboxRoot]: {
-    screen: Outbox,
+    screen: emailList,
     navigationOptions: () => ({
       title: 'Outbox',
       drawerIcon: ({tintColor}) => (
@@ -116,7 +116,7 @@ const Routes = {
     }),
   },
   [screens.DraftsRoot]: {
-    screen: Drafts,
+    screen: emailList,
     navigationOptions: () => ({
       title: 'Drafts',
       drawerIcon: ({tintColor}) => (
@@ -125,7 +125,7 @@ const Routes = {
     }),
   },
   [screens.AllMailRoot]: {
-    screen: AllMail,
+    screen: emailList,
     navigationOptions: () => ({
       title: 'All mail',
       drawerIcon: ({tintColor}) => (
@@ -134,7 +134,7 @@ const Routes = {
     }),
   },
   [screens.SpamRoot]: {
-    screen: Spam,
+    screen: emailList,
     navigationOptions: () => ({
       title: 'Spam',
       drawerIcon: ({tintColor}) => (
@@ -143,7 +143,7 @@ const Routes = {
     }),
   },
   [screens.BinRoot]: {
-    screen: Bin,
+    screen: emailList,
     navigationOptions: () => ({
       title: 'Bin',
       drawerIcon: ({tintColor}) => (
