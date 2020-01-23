@@ -24,6 +24,17 @@ const AppStyles = StyleSheet.create({
     paddingVertical: 0,
     paddingHorizontal: 0,
   },
+  headerStyle: {
+    backgroundColor: colors.backgroundColor,
+    elevation: 0,
+    shadowOpacity: 0,
+    borderBottomWidth: 0,
+  },
+  headerTitleStyle: {
+    ...Typography.header,
+    color: colors.secondary,
+    marginHorizontal: 0,
+  },
 });
 
 export default AppStyles;

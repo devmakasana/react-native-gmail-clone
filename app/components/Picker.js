@@ -62,13 +62,13 @@ class Picker extends Component {
         <View style={[s.wrapper, this.props.containerStyle]}>
           <RPicker
             selectedValue={this.props.selectedValue}
-            style={s.androidPicker}
+            style={[s.androidPicker, this.props.style]}
             onValueChange={this.props.onValueChange}
             {...this.props}>
             <RPicker.Item
               label={this.props.label}
               value=""
-              color={colors.gray}
+              color={colors.darkGray}
             />
             {this.props.data.map(item => {
               return (
@@ -199,18 +199,20 @@ Picker.propTypes = {
 
 const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, {})(Picker);
+export default connect(
+  mapStateToProps,
+  {},
+)(Picker);
 
 const s = StyleSheet.create({
   androidPicker: {
-    height: scale(55),
+    height: scale(45),
     width: '100%',
   },
   wrapper: {
     flex: 1,
     // borderTopWidth: 1,
     // borderTopColor: colors.borderColor,
-
     backgroundColor: colors.white,
     paddingLeft: scale(halfindent),
   },
