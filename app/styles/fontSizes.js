@@ -8,9 +8,6 @@ const fontSizes = {
   heading: 17,
   header: 21,
   headerOne: 22,
-  headingTwo: 17,
-  captionOne: 14,
-  footerButton: 14,
 };
 
 export default fontSizes;

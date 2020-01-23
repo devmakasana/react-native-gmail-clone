@@ -15,6 +15,7 @@ export default {
   redOpacity: '#FCE8E6',
 
   black: '#000000',
+  background: '#F5F5F5',
   lightBlack: '#3C4043',
 
   borderColor: '#E8EAED',

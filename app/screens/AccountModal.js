@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {View, Modal, StyleSheet, ScrollView, Alert} from 'react-native';
+import {View, StyleSheet, ScrollView, Alert} from 'react-native';
 import TextView from '../components/TextView/TextView';
 import {colors, fontWeights} from '../styles';
 import SvgIcon from 'react-native-svg-icon/lib/components/SvgIcon';
 import svgs from '../assets/svg';
 import {scale, scaleVertical} from '../utils/scale';
-import {indent, borderRadius, halfindent} from '../styles/dimensions';
+import {indent, halfindent, WIN_HEIGHT} from '../styles/dimensions';
 import AppAvtar from '../components/Avtar/AppAvtar';
 import Touchable from '../components/Button/Touchable';
 import Seperator from '../components/Seperator/index';
@@ -17,130 +17,137 @@ class AccountModal extends Component {
   }
 
   render() {
-    const {isModalVisible, onRequestClose} = this.props;
     return (
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={isModalVisible}
-        onRequestClose={() => {
-          onRequestClose();
-        }}>
-        <View style={s.modalWrapper}>
-          <TextView style={s.closeModal} onPress={onRequestClose} />
-          <View style={s.modal}>
-            <View style={s.topViewWrapper}>
-              <View style={s.mainAccountWrapper}>
-                <View style={s.leftContent}>
-                  <View style={s.position}>
-                    <AppAvtar Imgsrc={''} Size={38} />
-                    <View style={s.badgeStyle}>
-                      <TextView
-                        type={'small'}
-                        text={'11'}
-                        style={s.badgeTextStyle}
-                      />
-                    </View>
-                  </View>
-                  <View>
-                    <TextView
-                      type={'title'}
-                      text={'Nayan Gnk'}
-                      style={s.accountName}
-                    />
-                    <TextView
-                      type={'span'}
-                      text={'nayan.gnk06@gmail.com'}
-                      style={s.accountID}
-                    />
-                  </View>
+      <View style={s.modalWrapper}>
+        <View style={s.topViewWrapper}>
+          <View style={s.mainAccountWrapper}>
+            <View style={s.leftContent}>
+              <View style={s.position}>
+                <AppAvtar Imgsrc={''} Size={38} />
+                <View style={s.badgeStyle}>
+                  <TextView
+                    type={'small'}
+                    text={'11'}
+                    style={s.badgeTextStyle}
+                  />
                 </View>
-                <SvgIcon
-                  svgs={svgs}
-                  name={'google-icon'}
-                  fill={'none'}
-                  width={scale(29)}
-                  height={scale(29)}
-                />
               </View>
-              <Touchable style={s.manageAccount}>
+              <View>
                 <TextView
                   type={'title'}
-                  text={'Manage your Google Account'}
-                  style={s.manageAccountText}
+                  text={'Nayan Gnk'}
+                  style={s.accountName}
                 />
-              </Touchable>
-            </View>
-            <Seperator />
-            <ScrollView showsVerticalScrollIndicator={false}>
-              <View style={s.accountContainer}>
-                <ModalItem
-                  avtarImg=""
-                  badge={8}
-                  accountName={'Nayan Devo'}
-                  accountID={'devonayan@gmail.com'}
+                <TextView
+                  type={'span'}
+                  text={'nayan.gnk06@gmail.com'}
+                  style={s.accountID}
                 />
-                <ModalItem
-                  avtarImg=""
-                  badge={18}
-                  accountName={'Gabani Nayan'}
-                  accountID={'gabani.nayan@gmail.com'}
-                />
-                <ModalItem avtarImg="" accountName={'nayan@pixer.io'} />
-                <Touchable style={s.accountInfo}>
-                  <SvgIcon
-                    svgs={svgs}
-                    name={'add-account'}
-                    fill={'none'}
-                    width={20}
-                    height={14}
-                    style={s.iconStyle}
-                  />
-                  <TextView
-                    type={'title'}
-                    text={'Add another account'}
-                    style={s.subInfoText}
-                  />
-                </Touchable>
-                <Touchable style={s.accountInfo}>
-                  <SvgIcon
-                    svgs={svgs}
-                    name={'manage-account'}
-                    fill={'none'}
-                    width={18}
-                    height={16}
-                    style={s.settingIconStyle}
-                  />
-                  <TextView
-                    type={'title'}
-                    text={'Manage accounts on this device'}
-                    style={s.subInfoText}
-                  />
-                </Touchable>
               </View>
-            </ScrollView>
-            <Seperator />
-            <View style={s.bottomView}>
-              <Touchable style={s.privacyText}>
-                <TextView
-                  type={'caption'}
-                  text={'Privacy Policy'}
-                  color={colors.secondary}
-                />
-              </Touchable>
-              <View style={s.ellipse}></View>
-              <Touchable style={s.privacyText}>
-                <TextView
-                  type={'caption'}
-                  text={'Terms of service'}
-                  color={colors.secondary}
-                />
-              </Touchable>
             </View>
+            <SvgIcon
+              svgs={svgs}
+              name={'google-icon'}
+              fill={'none'}
+              width={scale(29)}
+              height={scale(29)}
+            />
           </View>
-          <TextView style={s.closeModal} onPress={onRequestClose} />
+          <View style={s.tochableWrapper}>
+            <Touchable style={s.manageAccount}>
+              <TextView
+                type={'title'}
+                text={'Manage your Google Account'}
+                style={s.manageAccountText}
+              />
+            </Touchable>
+          </View>
         </View>
-      </Modal>
+        <Seperator />
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={s.accountContainer}>
+            <ModalItem
+              avtarImg=""
+              badge={8}
+              accountName={'Nayan Devo'}
+              accountID={'devonayan@gmail.com'}
+            />
+            <ModalItem
+              avtarImg=""
+              badge={18}
+              accountName={'Gabani Nayan'}
+              accountID={'gabani.nayan@gmail.com'}
+            />
+            <ModalItem
+              avtarImg=""
+              badge={18}
+              accountName={'Gabani Nayan'}
+              accountID={'gabani.nayan@gmail.com'}
+            />
+            <ModalItem
+              avtarImg=""
+              badge={18}
+              accountName={'Gabani Nayan'}
+              accountID={'gabani.nayan@gmail.com'}
+            />
+            <ModalItem
+              avtarImg=""
+              badge={18}
+              accountName={'Gabani Nayan'}
+              accountID={'gabani.nayan@gmail.com'}
+            />
+            <ModalItem avtarImg="" accountName={'nayan@pixer.io'} />
+            <Touchable style={s.accountInfo}>
+              <SvgIcon
+                svgs={svgs}
+                name={'add-account'}
+                fill={'none'}
+                width={20}
+                height={14}
+                style={s.iconStyle}
+              />
+              <TextView
+                type={'title'}
+                text={'Add another account'}
+                style={s.subInfoText}
+              />
+            </Touchable>
+            <Touchable style={s.accountInfo}>
+              <SvgIcon
+                svgs={svgs}
+                name={'manage-account'}
+                fill={'none'}
+                width={18}
+                height={16}
+                style={s.settingIconStyle}
+              />
+              <TextView
+                type={'title'}
+                text={'Manage accounts on this device'}
+                style={s.subInfoText}
+              />
+            </Touchable>
+          </View>
+        </ScrollView>
+        <Seperator />
+        <View style={s.bottomView}>
+          <Touchable style={s.privacyText}>
+            <TextView
+              type={'caption'}
+              text={'Privacy Policy'}
+              color={colors.secondary}
+            />
+          </Touchable>
+          <View style={s.ellipse}></View>
+          <Touchable style={s.privacyText}>
+            <TextView
+              type={'caption'}
+              text={'Terms of service'}
+              color={colors.secondary}
+            />
+          </Touchable>
+        </View>
+      </View>
     );
   }
 }
@@ -170,18 +177,10 @@ const ModalItem = ({avtarImg, badge, accountName, accountID}) => (
 
 const s = StyleSheet.create({
   modalWrapper: {
-    flex: 1,
-    backgroundColor: 'rgba(32, 33, 36, 0.7)',
-  },
-  closeModal: {
-    flex: 1,
-  },
-  modal: {
-    marginHorizontal: scaleVertical(indent),
-    marginVertical: 'auto',
     backgroundColor: colors.white,
+    maxHeight: WIN_HEIGHT - scale(150),
+    marginHorizontal: indent,
     borderRadius: 8,
-    maxHeight: scale(410),
   },
   topViewWrapper: {
     paddingHorizontal: scale(indent),
@@ -236,17 +235,20 @@ const s = StyleSheet.create({
   accountID: {
     color: colors.alumiGray,
   },
-  manageAccount: {
+  tochableWrapper: {
     marginTop: scaleVertical(23),
-    paddingHorizontal: scale(indent - 1),
-    paddingTop: scaleVertical(halfindent),
-    paddingBottom: scaleVertical(6),
     alignItems: 'center',
     borderWidth: 1,
     borderColor: colors.zirconGray,
     borderRadius: 15,
     marginLeft: 'auto',
     marginRight: 'auto',
+    overflow: 'hidden',
+  },
+  manageAccount: {
+    paddingHorizontal: scale(indent - 1),
+    paddingTop: scaleVertical(halfindent),
+    paddingBottom: scaleVertical(6),
   },
   manageAccountText: {
     color: colors.lightBlack,
