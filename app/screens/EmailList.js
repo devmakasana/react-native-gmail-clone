@@ -13,7 +13,7 @@ import Input from '../components/Input';
 import AppAvtar from '../components/Avtar/AppAvtar';
 import {scale, scaleVertical} from '../utils/scale';
 import colors from '../styles/colors';
-import {indent, halfindent, lessIndent} from '../styles/dimensions';
+import {indent, halfindent, lessIndent, WIN_HEIGHT} from '../styles/dimensions';
 import Typography from '../styles/Typography';
 import fontWeights from '../styles/fontWeights';
 import {emailData} from '../assets/data/emails';
@@ -21,6 +21,7 @@ import TextView from '../components/TextView/TextView';
 import MailItem from '../components/MailItem';
 import AccountModal from './AccountModal';
 import screens from '../constants/screens';
+import Modal from 'react-native-modalbox';
 
 class emailList extends Component {
   constructor(props) {
@@ -57,6 +58,19 @@ class emailList extends Component {
     const list = emailData;
     return (
       <SafeAreaView style={[AppStyles.root]}>
+        <Modal
+          style={s.modal}
+          entry={'bottom'}
+          position={'center'}
+          swipeToClose={true}
+          isOpen={this.state.isModalVisible}
+          coverScreen={true}
+          onClosed={() => {
+            this.setAccountModal(false);
+          }}>
+          <AccountModal />
+        </Modal>
+
         {/* Email-Listing */}
         <View style={s.mlContainer}>
           <FlatList
@@ -84,12 +98,6 @@ class emailList extends Component {
                     }}>
                     <AppAvtar Imgsrc={''} Size={28} />
                   </TouchableOpacity>
-                  <AccountModal
-                    isModalVisible={this.state.isModalVisible}
-                    onRequestClose={() => {
-                      this.setAccountModal(false);
-                    }}
-                  />
                 </View>
                 <TextView style={s.tabTitle} text={'Primary'} />
               </View>
@@ -114,6 +122,12 @@ class emailList extends Component {
 }
 
 const s = StyleSheet.create({
+  modal: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    backgroundColor: colors.transparent,
+    maxHeight: WIN_HEIGHT - scale(150),
+  },
   mlContainer: {
     flex: 1,
   },

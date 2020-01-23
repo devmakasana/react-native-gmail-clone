@@ -30,6 +30,8 @@ const TextView = ({
     textStyle.push(s.label);
   } else if (type === 'heading') {
     textStyle.push(s.heading);
+  } else if (type === 'headerOne') {
+    textStyle.push(s.headerOne);
   } else if (type === 'buttonText') {
     textStyle.push(s.buttonText);
   }
@@ -91,6 +93,9 @@ const s = StyleSheet.create({
   },
   heading: {
     ...Typography.heading,
+  },
+  headerOne: {
+    ...Typography.headerOne,
   },
   buttonText: {
     ...Typography.title,
