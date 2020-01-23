@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
-import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
+import {Text, View, ScrollView, StyleSheet, SafeAreaView} from 'react-native';
 import NavigationOptions from '../components/NavigationOptions';
-import {colors, fontWeights, fontSizes} from '../styles';
-import {lessIndent, indent, halfindent} from '../styles/dimensions';
+import {colors} from '../styles';
+import {lessIndent, halfindent} from '../styles/dimensions';
 import {scale, scaleVertical} from '../utils/scale';
 import Typography from '../styles/Typography';
-import SvgIcon from 'react-native-svg-icon/lib/components/SvgIcon';
-import svgs from '../assets/svg';
 import TextView from '../components/TextView/TextView';
 import Picker from '../components/Picker';
 import Input from '../components/Input';
 import {IconButton} from '../components/Button';
+import AppStyles from '../styles/AppStyles';
 // import {Icon} from 'react-native-vector-icons/Icon';
 
 export class ComposeEmail extends Component {
@@ -42,57 +41,45 @@ export class ComposeEmail extends Component {
   static navigationOptions = ({navigation}) => {
     return NavigationOptions({
       title: 'Compose',
-      headerTitleStyle: {
-        color: colors.primary,
-        ...Typography.header,
-        fontWeight: fontWeights.normal,
-        fontStyle: 'normal',
-      },
-      headerStyle: {
-        backgroundColor: colors.white,
-        elevation: 0,
-      },
+      headerStyle: AppStyles.headerStyle,
+      headerTitleStyle: AppStyles.headerTitleStyle,
       headerRight: (
         <View style={s.icon}>
           <View>
             <IconButton
-              style={s.headerIcon}
               onPress={navigation.getParam('attach')}
               icon={'attachment'}
-              size={40}
+              size={32}
               iconSize={24}
               iconColor={colors.secondary}
               iconType={'materialicons'}
-              style={s.buttonattach}
+              style={{marginRight: 20}}
             />
           </View>
           <View>
             <IconButton
-              style={s.headerIcon}
               onPress={navigation.getParam('Send')}
               icon={'send'}
-              size={40}
-              iconSize={24}
+              size={32}
+              iconSize={20}
               iconColor={colors.secondary}
               iconType={'materialicons'}
-              style={s.buttonsend}
+              style={{marginRight: halfindent}}
             />
           </View>
           <View>
             <IconButton
-              style={s.headerIcon}
               onPress={navigation.getParam('More')}
               icon={'more-vert'}
-              size={40}
+              size={32}
               iconSize={24}
               iconColor={colors.secondary}
               iconType={'materialicons'}
-              style={s.buttonmore}
             />
           </View>
         </View>
       ),
-      headerTintColor: colors.black,
+      headerTintColor: colors.secondary,
       navigation: navigation,
     });
   };
@@ -113,58 +100,60 @@ export class ComposeEmail extends Component {
     ];
 
     return (
-      <View>
-        <View style={s.container}>
-          <TextView type={'label'} text={'From'} style={s.From} />
-          <Picker
-            selectedValue={'nayan.gnk06@gmail.com'}
-            label={'select'}
-            data={FromEmail}
-            itemKeyField={'value'}
-            itemValueField={'text'}
-            containerStyle={s.borderBottomIos}
-            selectedValue={this.state.language}
-            onValueChange={lang => this.setState({language: lang})}
-          />
-        </View>
-        <View style={s.SearchMail}>
-          <TextView type={'label'} text={'To'} style={s.To} />
-
-          <Input
-            value={'input'}
-            multiline
-            containerStyle={s.inputWrap}
-            style={s.InputValue}></Input>
-          <IconButton
-            style={s.headerIcon}
-            onPress={this.onPress}
-            icon={'keyboard-arrow-down'}
-            size={40}
-            iconSize={24}
-            iconColor={colors.secondary}
-            iconType={'materialicons'}
-            style={s.dropdown}
-          />
-        </View>
-        <View style={s.SubjectMail}>
-          <Input
-            value={'input'}
-            placeholderTextColor={colors.darkGray}
-            placeholder={'Subject'}
-            multiline
-            containerStyle={s.Subject}
-            style={s.InputValue}></Input>
-        </View>
-        <View style={s.ComposeEmail}>
-          <Input
-            value={'input'}
-            placeholderTextColor={colors.darkGray}
-            placeholder={'Compose email'}
-            multiline
-            containerStyle={s.Subject}
-            style={s.ValueInput}></Input>
-        </View>
-      </View>
+      <SafeAreaView style={AppStyles.root}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View>
+            <View style={s.container}>
+              <TextView type={'label'} text={'From'} style={s.from} />
+              <Picker
+                selectedValue={'nayan.gnk06@gmail.com'}
+                label={'Select'}
+                data={FromEmail}
+                itemKeyField={'value'}
+                itemValueField={'text'}
+                containerStyle={s.borderBottomIos}
+                selectedValue={this.state.language}
+                onValueChange={lang => this.setState({language: lang})}
+              />
+            </View>
+            <View style={s.SearchMail}>
+              <TextView type={'label'} text={'To'} style={s.subText} />
+              <Input
+                value={'input'}
+                multiline={true}
+                containerStyle={s.inputWrap}
+                style={s.inputValue}></Input>
+              <IconButton
+                style={{marginTop: halfindent}}
+                onPress={this.onPress}
+                icon={'keyboard-arrow-down'}
+                size={38}
+                iconSize={24}
+                iconColor={colors.secondary}
+                iconType={'materialicons'}
+              />
+            </View>
+            <View style={s.inputWrapper}>
+              <Input
+                value={'input'}
+                placeholderTextColor={colors.darkGray}
+                placeholder={'Subject'}
+                multiline={true}
+                containerStyle={s.inputWrapStyle}
+                style={s.inputValue}></Input>
+            </View>
+            <View style={s.inputWrapper}>
+              <Input
+                value={'input'}
+                placeholderTextColor={colors.darkGray}
+                placeholder={'Compose email'}
+                multiline={true}
+                containerStyle={s.inputWrapStyle}
+                style={s.inputValue}></Input>
+            </View>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 }
@@ -172,89 +161,67 @@ const s = StyleSheet.create({
   // header
   icon: {
     flexDirection: 'row',
-    flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    marginRight: scale(5),
   },
-  buttonattach: {
-    marginRight: scale(8),
-  },
-
   //Compose.
   container: {
-    paddingHorizontal: scale(11),
+    paddingLeft: scale(lessIndent - 1),
     flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
-    marginTop: scaleVertical(3),
+    marginTop: scaleVertical(5),
   },
-  From: {
+  from: {
     color: colors.secondary,
-    ...Typography.label,
-    textAlignVertical: 'center',
+    letterSpacing: 0.2,
   },
-  To: {
+  subText: {
     color: colors.secondary,
-    ...Typography.label,
-    textAlignVertical: 'center',
-    marginBottom: scaleVertical(12),
+    letterSpacing: 0.2,
+    marginTop: 18,
   },
   dropdown: {
     marginBottom: scaleVertical(12),
   },
   SearchMail: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    paddingRight: scale(indent - 2),
-    paddingLeft: scale(indent - 4),
+    alignItems: 'flex-start',
+    paddingLeft: scale(lessIndent - 1),
+    paddingRight: scale(4),
     borderTopWidth: 1,
     borderTopColor: colors.borderColor,
-    marginBottom: scaleVertical(-12),
   },
-  SubjectMail: {
+  inputWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    paddingRight: scale(indent - 2),
-    paddingLeft: scale(indent - 8),
+    paddingHorizontal: scale(lessIndent - 2),
+    paddingVertical: 2,
     borderTopWidth: 1,
     borderTopColor: colors.borderColor,
-    minHeight: scale(59),
   },
-  InputValue: {
+  inputWrapStyle: {
+    flex: 1,
+  },
+  inputValue: {
+    ...Typography.label,
+    letterSpacing: 0.4,
+  },
+  valueInput: {
     flex: 1,
     textAlignVertical: 'center',
     ...Typography.label,
-    marginBottom: scaleVertical(13),
-  },
-  ValueInput: {
-    flex: 1,
-    textAlignVertical: 'center',
-    ...Typography.label,
-    marginBottom: scaleVertical(20),
   },
   inputWrap: {
     flex: 1,
-    marginLeft: scale(indent),
-    marginRight: scale(indent),
-    minHeight: scale(59),
-    textAlignVertical: 'center',
+    paddingVertical: 2,
+    marginLeft: scale(32),
   },
-  Subject: {
-    marginRight: scale(indent),
-    minHeight: scale(59),
-    textAlignVertical: 'center',
-  },
-  ComposeEmail: {
+  composeEmail: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    paddingRight: scale(indent - 2),
-    paddingLeft: scale(indent - 8),
+    paddingHorizontal: scale(lessIndent - 1),
     borderTopWidth: 1,
     borderTopColor: colors.borderColor,
-    marginTop: scaleVertical(-11),
   },
 });
 export default ComposeEmail;

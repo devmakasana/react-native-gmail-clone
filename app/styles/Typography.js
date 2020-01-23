@@ -37,9 +37,9 @@ export default {
     lineHeight: 22,
   },
   header: {
-    fontFamily: 'Google Sans',
+    fontFamily: 'ProductSans-Regular',
     fontSize: fontSizes.header,
-    lineHeight: 27,
+    lineHeight: 25,
   },
   headerOne: {
     fontFamily: 'ProductSans-Regular',
