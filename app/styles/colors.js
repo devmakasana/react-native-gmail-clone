@@ -28,4 +28,6 @@ export default {
   secondaryBoxShadow: ' rgba(0, 0, 0, 0.16)',
   lightBlue: '#E8F0FE',
   darkBlue: '#1A73E8',
+  stripBorder: '#F8F8F8',
+  stripShadow: 'rgba(0, 0, 0, 0.08)',
 };
