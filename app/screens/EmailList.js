@@ -39,6 +39,9 @@ class emailList extends Component {
   ComposeEmail = () => {
     this.props.navigation.navigate('ComposeEmail');
   };
+  MenuList = () => {
+    this.props.navigation.dispatch(DrawerActions.openDrawer());
+  };
 
   _keyExtractor = item => item.id;
   _renderItem = ({item, index}) => {
