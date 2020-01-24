@@ -22,6 +22,7 @@ import MailItem from '../components/MailItem';
 import AccountModal from './AccountModal';
 import screens from '../constants/screens';
 import Modal from 'react-native-modalbox';
+import Swipeable from 'react-native-swipeable';
 
 class emailList extends Component {
   constructor(props) {
@@ -43,14 +44,12 @@ class emailList extends Component {
   _keyExtractor = item => item.id;
   _renderItem = ({item, index}) => {
     return (
-      <View style={{marginBottom: scaleVertical(4)}}>
-        <MailItem
-          onPressItem={() => {
-            this.onPressItem();
-          }}
-          item={item}
-        />
-      </View>
+      <MailItem
+        onPressItem={() => {
+          this.onPressItem();
+        }}
+        item={item}
+      />
     );
   };
 

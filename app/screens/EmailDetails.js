@@ -161,15 +161,17 @@ const RenderItem = ({avtarImg, emailTitle, sendDate, accountID}) => (
 );
 
 const RenderActionButton = ({style, iconName, btnText}) => (
-  <Touchable style={[s.btnWrapper, style]}>
-    <Icon
-      name={iconName}
-      size={20}
-      color={colors.secondary}
-      type={'materialcommunityicons'}
-    />
-    <TextView type={'caption'} text={btnText} style={s.ReplyText} />
-  </Touchable>
+  <View style={[s.touchableWrapper, style]}>
+    <Touchable style={s.btnWrapper}>
+      <Icon
+        name={iconName}
+        size={20}
+        color={colors.secondary}
+        type={'materialcommunityicons'}
+      />
+      <TextView type={'caption'} text={btnText} style={s.ReplyText} />
+    </Touchable>
+  </View>
 );
 
 const s = StyleSheet.create({
@@ -256,14 +258,17 @@ const s = StyleSheet.create({
   btnStyle: {
     flex: 0.32,
   },
+  touchableWrapper: {
+    borderWidth: 1,
+    borderColor: colors.zirconGray,
+    borderRadius: 5,
+    overflow: 'hidden',
+  },
   btnWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: lessIndent - 1,
-    borderWidth: 1,
-    borderColor: colors.zirconGray,
-    borderRadius: 5,
   },
   ReplyText: {
     color: colors.secondary,
