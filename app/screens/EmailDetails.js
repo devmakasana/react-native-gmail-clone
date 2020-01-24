@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
 import NavigationOptions from '../components/NavigationOptions';
-import {colors, fontWeights} from '../styles';
-import Icon from '../components/Icon';
-import SvgIcon from 'react-native-svg-icon/lib/components/SvgIcon';
-import svgs from '../assets/svg';
-import {scale, scaleVertical} from '../utils/scale';
-import Typography from '../styles/Typography';
+import {colors} from '../styles';
+import {scale} from '../utils/scale';
 import TextView from '../components/TextView/TextView';
 import {IconButton, Touchable} from '../components/Button';
-import {TouchableOpacity, ScrollView} from 'react-native-gesture-handler';
+import {ScrollView} from 'react-native-gesture-handler';
 import AppAvtar from '../components/Avtar/AppAvtar';
+import {lessIndent, halfindent, indent} from '../styles/dimensions';
+import AppStyles from '../styles/AppStyles';
+import Icon from '../components/Icon';
 
 class EmailDetails extends Component {
   constructor(props) {
@@ -30,37 +29,33 @@ class EmailDetails extends Component {
       headerRight: () => (
         <View style={s.headerRight}>
           <IconButton
-            onPress={this.onPress}
             icon={'archive'}
-            size={40}
-            iconSize={scale(24)}
+            size={32}
+            iconSize={24}
             iconColor={colors.secondary}
             iconType={'MaterialIcons'}
-            style={{marginRight: 25}}
+            style={{marginRight: 20}}
           />
           <IconButton
-            onPress={this.onPress}
             icon={'trash-can-outline'}
-            size={40}
-            iconSize={scale(24)}
-            iconColor={colors.secondary}
-            iconType={'materialcommunityicons'}
-            style={{marginRight: 25}}
-          />
-          <IconButton
-            onPress={this.onPress}
-            icon={'email-outline'}
-            size={40}
-            iconSize={scale(24)}
+            size={32}
+            iconSize={24}
             iconColor={colors.secondary}
             iconType={'materialcommunityicons'}
             style={{marginRight: 20}}
           />
           <IconButton
-            onPress={this.onPress}
+            icon={'email-outline'}
+            size={32}
+            iconSize={24}
+            iconColor={colors.secondary}
+            iconType={'materialcommunityicons'}
+            style={{marginRight: 15}}
+          />
+          <IconButton
             icon={'dots-vertical'}
-            size={40}
-            iconSize={scale(24)}
+            size={32}
+            iconSize={24}
             iconColor={colors.secondary}
             iconType={'materialcommunityicons'}
           />
@@ -71,202 +66,215 @@ class EmailDetails extends Component {
 
   render() {
     return (
-      <ScrollView>
-        <View style={s.container}>
+      <SafeAreaView style={AppStyles.root}>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <View style={s.Headingstyle}>
             <TextView
+              type={'headerOne'}
               text={'Sonakshi is back...swagat nahi karoge?'}
               style={s.Heading}
             />
             <IconButton
               onPress={this.onPress}
               icon={'star-outline'}
-              size={40}
-              iconSize={scale(24)}
+              size={32}
+              iconSize={24}
               iconColor={colors.darkGray}
               iconType={'materialcommunityicons'}
-              style={s.Star}
             />
           </View>
-          <View style={s.MeanBox}>
-            <View style={s.box}>
-              <AppAvtar Imgsrc={''} Size={42} />
-              <TextView type={'Text'} text={'BookMyShow'} style={s.TextOne} />
-              <TextView type={'Text'} text={'19 Dec'} style={s.TextTwo} />
-              <TextView type={'Text'} text={'to me'} style={s.TextThree} />
-              <IconButton
-                style={s.headerIcon}
-                onPress={this.onPress}
-                icon={'keyboard-arrow-down'}
-                size={40}
-                iconSize={24}
-                iconColor={colors.secondary}
-                iconType={'materialicons'}
-                style={s.dropdown}
+          <RenderItem
+            avtarImg={''}
+            emailTitle={'BookMyShow'}
+            sendDate={'19 Dec'}
+          />
+          <View style={s.container}>
+            <View style={s.Content}>
+              <TextView
+                type={'subTitle'}
+                text={'Gmail content'}
+                style={s.gmailContent}
               />
             </View>
-            <View style={s.IconButton}>
-              <IconButton
-                onPress={this.onPress}
-                icon={'reply'}
-                size={40}
-                iconSize={scale(24)}
-                iconColor={colors.secondary}
-                iconType={'materialcommunityicons'}
-                style={s.ReplyIcon}
+            <View style={s.bottomBtnWrapper}>
+              <RenderActionButton
+                style={s.btnStyle}
+                iconName={'reply'}
+                btnText={'Reply'}
               />
-              <IconButton
-                onPress={this.onPress}
-                icon={'dots-vertical'}
-                size={40}
-                iconSize={scale(24)}
-                iconColor={colors.secondary}
-                iconType={'materialcommunityicons'}
+              <RenderActionButton
+                style={s.btnStyle}
+                iconName={'reply-all'}
+                btnText={'Reply all'}
+              />
+              <RenderActionButton
+                style={s.btnStyle}
+                iconName={'arrow-right'}
+                btnText={'Forward'}
               />
             </View>
           </View>
-          <View style={s.Content}>
-            <TextView text={'Gmail content'} style={s.GmailContent} />
-          </View>
-
-          <View style={s.Button}>
-            <View>
-              <Touchable style={s.manageAccount}>
-                <IconButton
-                  icon={'reply'}
-                  iconSize={scale(24)}
-                  iconColor={colors.secondary}
-                  iconType={'materialcommunityicons'}
-                />
-                <TextView type={'title'} text={'Reply'} style={s.ReplyText} />
-              </Touchable>
-            </View>
-            <View style={s.Two}>
-              <Touchable style={s.manageAccount}>
-                <IconButton
-                  icon={'reply-all'}
-                  iconSize={scale(24)}
-                  iconColor={colors.secondary}
-                  iconType={'materialcommunityicons'}
-                />
-                <TextView
-                  type={'title'}
-                  text={'Reply all'}
-                  style={s.ReplyText}
-                />
-              </Touchable>
-            </View>
-            <View style={s.Three}>
-              <Touchable style={s.manageAccount}>
-                <IconButton
-                  icon={'arrow-forward'}
-                  iconSize={scale(24)}
-                  iconColor={colors.secondary}
-                  iconType={'MaterialIcons'}
-                />
-                <TextView type={'title'} text={'Forward'} style={s.ReplyText} />
-              </Touchable>
-            </View>
-          </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 }
+const RenderItem = ({avtarImg, emailTitle, sendDate, accountID}) => (
+  <View style={s.titleItem}>
+    <View style={s.leftContainerStyle}>
+      <AppAvtar Imgsrc={avtarImg} size={40} />
+      <View style={s.leftContent}>
+        <View style={s.topTitleStyle}>
+          <TextView type={'label'} text={emailTitle} style={s.titleText} />
+          <TextView type={'span'} text={sendDate} style={s.sendDate} />
+        </View>
+        <View style={s.bottomstyle}>
+          <TextView type={'caption'} text={'to me'} style={s.subText} />
+          <IconButton
+            style={{marginTop: 2}}
+            icon={'keyboard-arrow-down'}
+            size={28}
+            iconSize={22}
+            iconColor={colors.secondary}
+            iconType={'materialicons'}
+          />
+        </View>
+      </View>
+    </View>
+    <View style={s.rightContainerStyle}>
+      <IconButton
+        icon={'reply'}
+        size={32}
+        iconSize={24}
+        iconColor={colors.secondary}
+        iconType={'materialcommunityicons'}
+      />
+      <IconButton
+        icon={'dots-vertical'}
+        size={32}
+        iconSize={24}
+        iconColor={colors.secondary}
+        iconType={'materialcommunityicons'}
+      />
+    </View>
+  </View>
+);
+
+const RenderActionButton = ({style, iconName, btnText}) => (
+  <View style={[s.touchableWrapper, style]}>
+    <Touchable style={s.btnWrapper}>
+      <Icon
+        name={iconName}
+        size={20}
+        color={colors.secondary}
+        type={'materialcommunityicons'}
+      />
+      <TextView type={'caption'} text={btnText} style={s.ReplyText} />
+    </Touchable>
+  </View>
+);
+
 const s = StyleSheet.create({
   headerRight: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginRight: scale(5),
   },
   container: {
-    padding: 16,
+    paddingHorizontal: scale(indent),
   },
   Headingstyle: {
     flexDirection: 'row',
-    marginTop: scaleVertical(-8),
-    marginRight: scaleVertical(27),
-    marginBottom: scaleVertical(26),
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginRight: scale(5),
+    marginLeft: scale(20),
+    marginBottom: 20,
   },
   Heading: {
     color: colors.primary,
-    ...Typography.headerOne,
+    flex: 0.9,
+    flexWrap: 'wrap',
+    marginRight: 'auto',
   },
-  Star: {
-    marginTop: scaleVertical(17),
-  },
-  box: {
+  titleItem: {
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginLeft: scale(indent),
+    marginRight: scale(5),
+    marginBottom: 35,
   },
-  TextOne: {
-    marginLeft: scaleVertical(16),
+  leftContainerStyle: {
+    flex: 0.95,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  leftContent: {
+    marginLeft: scale(indent),
+  },
+  topTitleStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  titleText: {
     color: colors.primary,
-    ...Typography.headingTwo,
-    fontStyle: 'normal',
-    fontWeight: 'normal',
+    letterSpacing: 0.2,
   },
-  TextTwo: {
-    marginLeft: scaleVertical(6),
+  sendDate: {
+    marginLeft: scale(6),
+    letterSpacing: 0.2,
     color: colors.secondary,
-    ...Typography.span,
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    marginTop: scaleVertical(5),
+    fontFamily: 'Roboto-Regular',
   },
-  TextThree: {
-    marginTop: scaleVertical(20),
-    marginLeft: scaleVertical(-148),
-    ...Typography.captionOne,
-    color: colors.secondary,
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-  },
-  dropdown: {
-    marginTop: scaleVertical(10),
-    marginLeft: scaleVertical(-8),
-  },
-  IconButton: {
+  bottomstyle: {
     flexDirection: 'row',
-    marginTop: scaleVertical(-50),
+    alignItems: 'center',
   },
-  ReplyIcon: {
-    marginLeft: scaleVertical(302),
+  subText: {
+    color: colors.secondary,
+    fontFamily: 'Roboto-Regular',
   },
-  MeanBox: {
-    marginBottom: scaleVertical(40),
+  rightContainerStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   Content: {
-    backgroundColor: '#F5F5F5',
-    height: scale(600),
+    backgroundColor: colors.background,
+    paddingVertical: 30,
+    paddingHorizontal: 5,
   },
-  GmailContent: {
-    textAlign: 'center',
-    fontSize: 20,
+  gmailContent: {
+    color: colors.primary,
+    letterSpacing: -0.1,
+    fontFamily: 'Roboto-Regular',
   },
-  Button: {
+  bottomBtnWrapper: {
     flexDirection: 'row',
-    marginTop: scaleVertical(34),
+    justifyContent: 'space-between',
+    marginTop: 35,
+    marginBottom: indent,
   },
-  manageAccount: {
-    borderRadius: 5,
-    borderColor: colors.zirconGray,
+  btnStyle: {
+    flex: 0.32,
+  },
+  touchableWrapper: {
     borderWidth: 1,
+    borderColor: colors.zirconGray,
+    borderRadius: 5,
+    overflow: 'hidden',
+  },
+  btnWrapper: {
     flexDirection: 'row',
-    paddingLeft: scaleVertical(10),
-    paddingRight: scaleVertical(20),
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: lessIndent - 1,
   },
   ReplyText: {
-    color: colors.lightBlack,
-    marginTop: scaleVertical(12),
-    fontWeight: fontWeights.medium,
-    ...Typography.footerButton,
-    fontStyle: 'normal',
-    fontWeight: '500',
-  },
-  Two: {
-    marginLeft: scaleVertical(10),
-  },
-  Three: {
-    marginLeft: scaleVertical(10),
+    color: colors.secondary,
+    marginLeft: halfindent,
+    letterSpacing: 0.4,
+    fontFamily: 'ProductSans-Medium',
   },
 });
 export default EmailDetails;

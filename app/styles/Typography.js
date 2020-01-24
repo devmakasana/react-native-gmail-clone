@@ -37,28 +37,13 @@ export default {
     lineHeight: 22,
   },
   header: {
-    fontFamily: 'Google Sans',
+    fontFamily: 'ProductSans-Regular',
     fontSize: fontSizes.header,
-    lineHeight: 27,
+    lineHeight: 25,
   },
   headerOne: {
-    fontFamily: 'Google Sans',
+    fontFamily: 'ProductSans-Regular',
     fontSize: fontSizes.headerOne,
     lineHeight: 34,
-  },
-  headingTwo: {
-    fontFamily: 'Google Sans',
-    fontSize: fontSizes.headingTwo,
-    lineHeight: 22,
-  },
-  captionOne: {
-    fontFamily: 'Roboto',
-    fontSize: fontSizes.captionOne,
-    lineHeight: 16,
-  },
-  footerButton: {
-    fontFamily: 'Google Sans',
-    fontSize: fontSizes.footerButton,
-    lineHeight: 18,
   },
 };
