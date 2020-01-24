@@ -24,7 +24,7 @@ const EmailNavigator = createStackNavigator(
     },
   },
   {
-    initialRouteName: 'EmailLilst',
+    initialRouteName: screens.EmailLilst,
   },
 );
 
