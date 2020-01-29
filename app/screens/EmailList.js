@@ -24,6 +24,8 @@ import screens from '../constants/screens';
 import {DrawerActions} from 'react-navigation-drawer';
 import Modal from 'react-native-modalbox';
 import Swipeable from 'react-native-swipeable';
+import NavigationOptions from '../components/NavigationOptions';
+import {IconButton} from '../components/Button';
 
 class emailList extends Component {
   constructor(props) {
@@ -32,6 +34,7 @@ class emailList extends Component {
       isModalVisible: false,
     };
   }
+
   setAccountModal = visible => {
     this.setState({isModalVisible: visible});
   };
@@ -56,7 +59,65 @@ class emailList extends Component {
       />
     );
   };
+  static navigationOptions = ({navigation}) => {
+    return NavigationOptions({
+      navigation: navigation,
+      headerStyle: {
+        backgroundColor: colors.white,
+        elevation: 0,
+        shadowOpacity: 0,
+      },
+      headerLeft: () => (
+        <View style={s.headerLeft}>
+          <IconButton
+            icon={'arrow-back'}
+            size={32}
+            iconSize={24}
+            iconColor={colors.darkBlue}
+            iconType={'MaterialIcons'}
+            style={{marginLeft: 12}}
+          />
 
+          <TextView type={'header'} text={'3'} style={s.headerText} />
+        </View>
+      ),
+      headerRight: () => (
+        <View style={s.headerRight}>
+          <IconButton
+            icon={'archive'}
+            size={32}
+            iconSize={24}
+            iconColor={colors.darkBlue}
+            iconType={'MaterialIcons'}
+            style={{marginRight: 20}}
+          />
+          <IconButton
+            icon={'trash-can-outline'}
+            size={32}
+            iconSize={24}
+            iconColor={colors.darkBlue}
+            iconType={'materialcommunityicons'}
+            style={{marginRight: 20}}
+          />
+          <IconButton
+            icon={'email-outline'}
+            size={32}
+            iconSize={24}
+            iconColor={colors.darkBlue}
+            iconType={'materialcommunityicons'}
+            style={{marginRight: 15}}
+          />
+          <IconButton
+            icon={'dots-vertical'}
+            size={32}
+            iconSize={24}
+            iconColor={colors.darkBlue}
+            iconType={'materialcommunityicons'}
+          />
+        </View>
+      ),
+    });
+  };
   render() {
     const list = emailData;
     return (
@@ -127,6 +188,21 @@ class emailList extends Component {
 }
 
 const s = StyleSheet.create({
+  headerLeft: {
+    flexDirection: 'row',
+  },
+  headerText: {
+    color: colors.darkBlue,
+    textAlign: 'center',
+    alignItems: 'center',
+    marginLeft: scale(30),
+    marginTop: scaleVertical(3),
+  },
+  headerRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: scale(5),
+  },
   modal: {
     flex: 1,
     justifyContent: 'flex-end',

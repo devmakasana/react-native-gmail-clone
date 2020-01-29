@@ -10,7 +10,6 @@ const EmailNavigator = createStackNavigator(
       screen: EmailLilst,
       navigationOptions: () => ({
         title: '',
-        header: () => null,
       }),
     },
     [screens.EmailDetails]: {

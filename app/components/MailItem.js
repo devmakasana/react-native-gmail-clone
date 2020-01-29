@@ -2,7 +2,12 @@ import React, {Component} from 'react';
 import {View, StyleSheet, SwipeActionView} from 'react-native';
 import {scale, scaleVertical} from '../utils/scale';
 import colors from '../styles/colors';
-import {indent, lessIndent, halfindent} from '../styles/dimensions';
+import {
+  indent,
+  lessIndent,
+  halfindent,
+  borderRadius,
+} from '../styles/dimensions';
 import Typography from '../styles/Typography';
 import fontWeights from '../styles/fontWeights';
 import SvgIcon from 'react-native-svg-icon/lib/components/SvgIcon';
@@ -102,7 +107,12 @@ class MailItem extends Component {
             ]}
             onPress={onPressItem}
             onLongPress={this._onLongPressButton}>
-            <View style={[s.mailItem, item.unread && s.unreadItem]}>
+            <View
+              style={[
+                s.mailItem,
+                item.unread && s.unreadItem,
+                leftActionActivated && s.selectedItem,
+              ]}>
               <View style={s.mailItemWrap}>
                 {/* Icon */}
                 <View style={[s.profileIcon, s.selectPrfIcon]}>
@@ -112,13 +122,13 @@ class MailItem extends Component {
                       s.selectUserWrap,
                       item.unread && s.activeSelectUser,
                     ]}>
-                    {/* <SvgIcon
-                    svgs={svgs}
-                    name={'select-author'}
-                    width={22}
-                    height={22}
-                    style={s.selectProfile}
-                  /> */}
+                    <SvgIcon
+                      svgs={svgs}
+                      name={'select-author'}
+                      width={22}
+                      height={22}
+                      style={s.selectProfile}
+                    />
                   </View>
                 </View>
                 {/* Text */}
@@ -182,7 +192,8 @@ const s = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   unreadItem: {
-    // backgroundColor: colors.lightBlue,
+    backgroundColor: colors.lightBlue,
+    borderRadius: borderRadius,
   },
   profileIcon: {
     marginRight: scale(11),
@@ -247,17 +258,17 @@ const s = StyleSheet.create({
     fontWeight: fontWeights.extraBold,
   },
   selectUserWrap: {
-    // position: 'absolute',
-    // top: 0,
-    // flex: 1,
-    // zIndex: 10,
-    // backgroundColor: colors.darkBlue,
-    // borderRadius: 50,
-    // width: scale(40),
-    // height: scale(40),
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // opacity: 0,
+    position: 'absolute',
+    top: 0,
+    flex: 1,
+    zIndex: 10,
+    backgroundColor: colors.darkBlue,
+    borderRadius: 50,
+    width: scale(40),
+    height: scale(40),
+    alignItems: 'center',
+    justifyContent: 'center',
+    opacity: 0,
   },
   activeSelectUser: {
     opacity: 1,
@@ -278,6 +289,9 @@ const s = StyleSheet.create({
   },
   activeArchiveStripeWrapper: {
     backgroundColor: colors.green,
+  },
+  selectedItem: {
+    marginLeft: 0,
   },
 });
 

@@ -34,6 +34,8 @@ const TextView = ({
     textStyle.push(s.headerOne);
   } else if (type === 'buttonText') {
     textStyle.push(s.buttonText);
+  } else if (type === 'header') {
+    textStyle.push(s.header);
   }
 
   onUrlClick = url => {
@@ -99,6 +101,9 @@ const s = StyleSheet.create({
   },
   buttonText: {
     ...Typography.title,
+  },
+  header: {
+    ...Typography.header,
   },
 });
 export default TextView;
