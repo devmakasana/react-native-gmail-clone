@@ -192,9 +192,10 @@ export default {
   'allinboxes-icon': {
     svg: (
       <G width={25} height={25} viewBox="0 0 25 25" fill="none">
-        <Path d="M3 8v13.5a1 1 0 001 1h14" stroke="#3C4043" strokeWidth={2} />
         <Path
-          d="M22 2H7.99c-1.11 0-1.98.89-1.98 2L6 18c0 1.1.88 2 1.99 2H22c1.1 0 2-.9 2-2V4a2 2 0 00-2-2zm0 12h-4c0 1.66-1.35 3-3 3s-3-1.34-3-3H7.99V4H22v10z"
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M7.99 2H22a2 2 0 012 2v14c0 1.1-.9 2-2 2H7.99C6.88 20 6 19.1 6 18l.01-14c0-1.11.87-2 1.98-2zM18 14h4V4H7.99v10H12c0 1.66 1.35 3 3 3s3-1.34 3-3zM2 8v13.5a2 2 0 002 2h14v-2H4V8H2z"
           fill="#3C4043"
         />
       </G>
@@ -206,7 +207,7 @@ export default {
       <G width={24} height={24} viewBox="0 0 24 24" fill="none">
         <Path
           d="M19 3H4.99c-1.11 0-1.98.89-1.98 2L3 19c0 1.1.88 2 1.99 2H19c1.1 0 2-.9 2-2V5a2 2 0 00-2-2zm0 12h-4c0 1.66-1.35 3-3 3s-3-1.34-3-3H4.99V5H19v10z"
-          fill="#D93025"
+          // fill="#3C4043"
         />
       </G>
     ),
@@ -227,18 +228,11 @@ export default {
     svg: (
       <G width={24} height={24} viewBox="0 0 24 24" fill="none">
         <Path
-          d="M20.59 13.41l-7.17 7.17a1.998 1.998 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82v0z"
-          stroke="#3C4043"
-          strokeWidth={2}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <Path
-          d="M7 7h.01"
-          stroke="#3C4043"
-          strokeWidth={4}
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M2 1a1 1 0 00-1 1v10a1 1 0 00.293.707l8.59 8.58a2.999 2.999 0 004.244 0l7.17-7.17-.707-.707.71.705a3 3 0 000-4.23l-.003-.002-8.59-8.59A1 1 0 0012 1H2zm17.882 11.704l-.001.001-7.168 7.168a1 1 0 01-1.415 0h-.001L3 11.584V3h8.586l8.295 8.295a1 1 0 010 1.41zM7 5a2 2 0 100 4h.01a2 2 0 100-4H7z"
+          fill="#202124"
+          fillOpacity={0.85}
         />
       </G>
     ),
@@ -275,7 +269,7 @@ export default {
       <G width={24} height={24} viewBox="0 0 24 24" fill="none">
         <Path
           d="M5.408 17.992l3.754-5.423.394-.569-.394-.57-3.754-5.422L14.5 6s0 0 0 0c.338 0 .636.166.813.417l.001.002L19.274 12l-3.96 5.581-.001.002a.994.994 0 01-.812.417H14.5l-9.092-.008z"
-          fill="#fff"
+          fill="none"
           stroke="#3C4043"
           strokeWidth={2}
         />
@@ -296,27 +290,22 @@ export default {
   },
   'scheduled-icon': {
     svg: (
-      <G width={25} height={25} viewBox="0 0 25 25" fill="none">
+      <G width={24} height={24} viewBox="0 0 24 24" fill="none">
         <Path
-          d="M4.01 6.03L17.5 12H15L4.01 9.5V6.03zM17.5 12L4 17.97l.01-3.47L15 12h2.5zM2.01 3L2 10l.01 2L2 14l.01 7L23 12 2.01 3z"
-          fill="#3C4043"
-        />
-        <Rect x="10.583" y="9.583" width="14" height="14" rx="7" fill="#fff" />
-        <Path
-          d="M17.076 9.75c-4.048 0-7.326 3.286-7.326 7.333 0 4.048 3.278 7.334 7.326 7.334a7.337 7.337 0 007.34-7.334 7.337 7.337 0 00-7.34-7.333zm.007 12.75a5.415 5.415 0 01-5.416-5.417 5.415 5.415 0 015.416-5.416 5.415 5.415 0 015.417 5.416 5.415 5.415 0 01-5.417 5.417z"
-          fill="#3C4043"
-          stroke="#3C4043"
-          strokeWidth={0.5}
+          d="M3.01 5.03l9.246 4.092-.756.378-.637.786L3.01 8.5V5.03zm7.853 5.256l-.656.923s-.488.765-.707 1.291c-.31.745-.454 1.796-.454 1.796L3 16.97l.01-3.47 6.709-1.526s.144-.258.488-.765c.223-.33.656-.923.656-.923zM1.01 2L1 9l.01 2L1 13l.01 7 8.12-3.482s-.143-2.301.196-3.518c.338-1.217 1.537-2.714 1.537-2.714L11.5 9.5l.756-.378s.738-.424 1.244-.622c.778-.304 1.643-.44 1.643-.44L1.01 2zM16.988 11.54H15v4.252L18.55 18l1-1.5-2.5-1.5-.063-3.46z"
+          fill="#202124"
+          fillOpacity={0.85}
         />
         <Path
-          d="M17.688 13.541v-.25h-1.563v4.642l.121.073 3.72 2.231.212.128.13-.212.53-.871.132-.216-.217-.13-3.066-1.818v-3.576z"
-          fill="#3C4043"
-          stroke="#3C4043"
-          strokeWidth={0.5}
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M16.085 22.17a7.085 7.085 0 100-14.17 7.085 7.085 0 000 14.17zm0-2.362a4.723 4.723 0 100-9.446 4.723 4.723 0 000 9.446z"
+          fill="#202124"
+          fillOpacity={0.85}
         />
       </G>
     ),
-    viewBox: '0 0 25 25',
+    viewBox: '0 0 24 24',
   },
   'outbox-icon': {
     svg: (
@@ -327,7 +316,7 @@ export default {
           width="17"
           height="16"
           rx="1"
-          fill="#fff"
+          fill="none"
           stroke="#3C4043"
           strokeWidth="2"
         />
@@ -342,11 +331,12 @@ export default {
   'drafts-icon': {
     svg: (
       <G width={24} height={24} viewBox="0 0 24 24" fill="none">
-        <Path d="M19.8 8.5L14.3 3v5.5h5.5z" fill="#3C4043" stroke="#3C4043" />
         <Path
-          d="M14 3H6a1 1 0 00-1 1v17a1 1 0 001 1h13a1 1 0 001-1V9"
-          stroke="#3C4043"
-          strokeWidth={2}
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M5 2a2 2 0 00-2 2v17a2 2 0 002 2h13a2 2 0 002-2V10l-8-8H5zm7 2H5v17h13V10h-6V4z"
+          fill="#202124"
+          fillOpacity={0.85}
         />
       </G>
     ),
@@ -354,33 +344,27 @@ export default {
   },
   'allmail-icon': {
     svg: (
-      <G width={26} height={25} viewBox="0 0 26 25" fill="none">
-        <Path d="M2 6v14.5a1 1 0 001 1h14.5" stroke="#3C4043" strokeWidth={2} />
+      <G width={24} height={24} viewBox="0 0 24 24" fill="none">
         <Path
-          d="M21.5 4H6.833A1.83 1.83 0 005.01 5.833l-.009 11c0 1.009.825 1.834 1.833 1.834H21.5a1.839 1.839 0 001.833-1.834v-11A1.839 1.839 0 0021.5 4zm0 12.833H6.833V7.667l7.334 4.583L21.5 7.667v9.166zm-7.333-6.416L6.833 5.833H21.5l-7.333 4.584z"
-          fill="#3C4043"
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M6.833 3H21.5c1.008 0 1.833.825 1.833 1.833v11a1.839 1.839 0 01-1.833 1.834H6.833A1.839 1.839 0 015 15.833l.01-11A1.83 1.83 0 016.832 3zm7.334 8.25L6.833 6.667v9.166H21.5V6.667l-7.333 4.583zM6.833 4.833l7.334 4.584L21.5 4.833H6.833zM1 5v14.5a2 2 0 002 2h14.5v-2H3V5H1z"
+          fill="#202124"
+          fillOpacity={0.85}
         />
       </G>
     ),
-    viewBox: '0 0 26 25',
+    viewBox: '0 0 24 24',
   },
   'spam-icon': {
     svg: (
       <G width={24} height={24} viewBox="0 0 24 24" fill="none">
         <Path
-          d="M8.883 4h6.9l4.884 4.883v6.9l-4.884 4.884h-6.9L4 15.783v-6.9L8.883 4z"
-          stroke="#3C4043"
-          strokeWidth={2}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <Path d="M12.333 7.333v7" stroke="#3C4043" strokeWidth={2} />
-        <Path
-          d="M12.333 16.333h.01"
-          stroke="#3C4043"
-          strokeWidth={2}
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M8.176 3.293A1 1 0 018.883 3h6.9a1 1 0 01.707.293l4.884 4.883a1 1 0 01.293.707v6.9a1 1 0 01-.293.707l-4.884 4.884a1 1 0 01-.707.293h-6.9a1 1 0 01-.707-.293L3.293 16.49A1 1 0 013 15.783v-6.9a1 1 0 01.293-.707l4.883-4.883zM9.298 5L5 9.298v6.071l4.298 4.298h6.071l4.298-4.298V9.298L15.369 5H9.298zm2.035 9.333v-7h2v7h-2zm1 1a1 1 0 100 2h.01a1 1 0 000-2h-.01z"
+          fill="#202124"
+          fillOpacity={0.85}
         />
       </G>
     ),
@@ -390,12 +374,12 @@ export default {
     svg: (
       <G width={24} height={24} viewBox="0 0 24 24" fill="none">
         <Path
-          d="M6 4v15.5a1 1 0 001 1h11a1 1 0 001-1V4M4 5h16.5"
-          stroke="#3C4043"
-          strokeWidth={2}
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M9.5 3v1H4v2h1v13.5a2 2 0 002 2h11a2 2 0 002-2V6h.5V4h-5V3h-6zM7 6h11v13.5H7V6zm2.5 11.5V8h2v9.5h-2zm4-9.5v9.5h2V8h-2z"
+          fill="#202124"
+          fillOpacity={0.85}
         />
-        <Path d="M9.5 3.5h6" stroke="#3C4043" />
-        <Path d="M10.5 8v9.5M14.5 8v9.5" stroke="#3C4043" strokeWidth={2} />
       </G>
     ),
     viewBox: '0 0 24 24',
@@ -414,12 +398,12 @@ export default {
   'contacts-icon': {
     svg: (
       <G width={24} height={24} viewBox="0 0 24 24" fill="none">
-        <Circle cx={12.5} cy={11.5} r={9.5} stroke="#3C4043" strokeWidth={2} />
-        <Circle cx={12.5} cy={8.5} r={2.5} stroke="#3C4043" strokeWidth={2} />
         <Path
-          d="M6 18l.359-.359A9.018 9.018 0 0112.735 15v0c2.11 0 4.152.74 5.773 2.09l.492.41"
-          stroke="#3C4043"
-          strokeWidth={2}
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M23 11.5C23 17.299 18.299 22 12.5 22S2 17.299 2 11.5 6.701 1 12.5 1 23 5.701 23 11.5zm-3.63 5.006a8.5 8.5 0 10-13.544.258 10.018 10.018 0 0113.322-.442l.222.184zm-1.363 1.469l-.14-.117a8.018 8.018 0 00-10.626.32A8.464 8.464 0 0012.5 20a8.467 8.467 0 005.508-2.025zM16 8.5a3.5 3.5 0 11-7 0 3.5 3.5 0 017 0zM12.5 10a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+          fill="#202124"
+          fillOpacity={0.85}
         />
       </G>
     ),

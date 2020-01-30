@@ -145,7 +145,7 @@ class emailList extends Component {
             ListHeaderComponent={
               <View>
                 <View style={s.headerSearch}>
-                  <TouchableOpacity activeOpacity={0.7} onPress={this.MenuList}>
+                  <TouchableOpacity activeOpacity={0.8} onPress={this.MenuList}>
                     <SvgIcon
                       svgs={svgs}
                       name={'short-menu'}
@@ -171,15 +171,10 @@ class emailList extends Component {
             ListFooterComponent={<View style={[{marginBottom: indent}]} />}
           />
           <TouchableOpacity
-            activeOpacity={0.7}
+            activeOpacity={0.8}
             style={s.composeIconBox}
             onPress={this.ComposeEmail}>
-            <SvgIcon
-              svgs={svgs}
-              name={'compose-icon'}
-              width={scale(24)}
-              height={24}
-            />
+            <SvgIcon svgs={svgs} name={'compose-icon'} width={24} height={24} />
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -214,7 +209,7 @@ const s = StyleSheet.create({
   },
   headerSearch: {
     borderRadius: 7,
-    marginTop: scaleVertical(halfindent),
+    marginTop: lessIndent - 1,
     shadowColor: colors.secondaryBoxShadow,
     shadowOffset: {width: 0, height: 2},
     shadowRadius: 7,
@@ -225,9 +220,9 @@ const s = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    paddingVertical: scaleVertical(2),
-    paddingRight: scale(lessIndent - 1),
-    paddingLeft: scale(indent),
+    paddingVertical: 2,
+    paddingRight: lessIndent - 1,
+    paddingLeft: indent,
   },
   inputWrap: {
     flex: 1,
@@ -247,22 +242,20 @@ const s = StyleSheet.create({
     fontWeight: fontWeights.medium,
   },
   composeIconBox: {
-    width: scale(58),
-    height: scale(58),
+    width: 58,
+    height: 58,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: scale(indent),
-    paddingVertical: scale(indent),
     position: 'absolute',
-    bottom: indent + 1,
-    right: indent - 1,
+    bottom: indent,
+    right: indent,
     shadowColor: colors.boxShadowColor,
     shadowOffset: {width: 0, height: 2},
     shadowRadius: 6,
     shadowOpacity: 1,
-    elevation: 10,
-    borderRadius: 50,
+    elevation: 6,
+    borderRadius: 29,
     backgroundColor: colors.white,
   },
 });

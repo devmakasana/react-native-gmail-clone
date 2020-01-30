@@ -1,304 +1,310 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, SafeAreaView, ScrollView} from 'react-native';
 import SvgIcon from 'react-native-svg-icon/lib/components/SvgIcon';
 import svgs from '../../assets/svg';
-import {scale, scaleVertical} from '../../utils/scale';
-import {indent} from '../../styles/dimensions';
-import {colors} from '../../styles';
+import {scale} from '../../utils/scale';
+import {indent, lessIndent} from '../../styles/dimensions';
+import {colors, fontWeights} from '../../styles';
 import TextView from '../TextView/TextView';
-import {Touchable, IconButton} from '../Button';
-import {ScrollView} from 'react-native-gesture-handler';
+import {Touchable} from '../Button';
+import DrawerLabelItem from './DrawerLabelItem';
+import {DrawerItems} from 'react-navigation-drawer';
 export class DrawerDesign extends Component {
   render() {
     return (
-      <ScrollView>
-        <View>
-          <View style={s.GmailIcon}>
+      <SafeAreaView>
+        <ScrollView
+          contentContainerStyle={{
+            paddingBottom: indent,
+          }}>
+          {/* <View style={s.gmailIcon}>
             <SvgIcon
               svgs={svgs}
               name={'Gmail-icon'}
               fill={'none'}
-              width={scale(54)}
-              height={scale(17)}
+              width={54}
+              height={17}
             />
           </View>
+          <DrawerItems
+            {...this.props}
+            itemsContainerStyle={{
+              paddingRight: 10,
+              overflow: 'hidden',
+            }}
+            itemStyle={{
+              overflow: 'hidden',
+              paddingVertical: lessIndent,
+              borderTopRightRadius: 35,
+              borderBottomRightRadius: 35,
+            }}
+            labelStyle={{
+              margin: 0,
+              color: colors.lightBlack,
+              letterSpacing: -0.202759,
+              fontWeight: fontWeights.medium,
+              fontFamily: 'ProductSans-Medium',
+            }}
+            iconContainerStyle={{opacity: 1}}
+            render={this.renderItem}
+          /> */}
           <View>
-            <Touchable style={s.MenuList}>
+            <View style={s.gmailIcon}>
               <SvgIcon
                 svgs={svgs}
-                name={'allinboxes-icon'}
-                width={25}
-                height={25}
+                name={'Gmail-icon'}
+                fill={'none'}
+                width={54}
+                height={17}
               />
-              <TextView
-                type={'caption'}
-                text={'All inboxes'}
-                style={s.Inboxe}
+            </View>
+            <View>
+              <Touchable style={s.menuList}>
+                <SvgIcon
+                  svgs={svgs}
+                  name={'allinboxes-icon'}
+                  width={25}
+                  height={25}
+                />
+                <TextView
+                  type={'caption'}
+                  text={'All inboxes'}
+                  style={s.listItemTextStyle}
+                />
+              </Touchable>
+            </View>
+            <View style={s.menu}>
+              <View style={[s.itemWrapper]}>
+                <Touchable style={s.menuListItem}>
+                  <View style={s.leftContentWrapper}>
+                    <SvgIcon
+                      svgs={svgs}
+                      name={'primary-icon'}
+                      width={24}
+                      height={24}
+                    />
+                    <TextView
+                      type={'caption'}
+                      text={'Primary'}
+                      style={s.listItemTextStyle}
+                    />
+                  </View>
+                  <TextView type={'span'} text={'99+'} style={s.numberStyle} />
+                  {/* <TextView
+                    type={'span'}
+                    text={'1 new'}
+                    style={s.badgeStyleWrapper}
+                  /> */}
+                </Touchable>
+              </View>
+              <View style={[s.itemWrapper]}>
+                <Touchable style={s.menuListItem}>
+                  <View style={s.leftContentWrapper}>
+                    <SvgIcon
+                      svgs={svgs}
+                      name={'social-icon'}
+                      width={24}
+                      height={24}
+                    />
+                    <TextView
+                      type={'caption'}
+                      text={'Social'}
+                      style={s.listItemTextStyle}
+                    />
+                  </View>
+                  <TextView type={'span'} text={'1'} style={s.numberStyle} />
+                  {/* <TextView
+                    type={'span'}
+                    text={'1 new'}
+                    style={s.badgeStyleWrapper}
+                  /> */}
+                </Touchable>
+              </View>
+              <View style={[s.itemWrapper]}>
+                <Touchable style={s.menuListItem}>
+                  <View style={s.leftContentWrapper}>
+                    <SvgIcon
+                      svgs={svgs}
+                      name={'promotions-icon'}
+                      width={24}
+                      height={24}
+                    />
+                    <TextView
+                      type={'caption'}
+                      text={'Promotions'}
+                      style={s.listItemTextStyle}
+                    />
+                  </View>
+                  {/* <TextView type={'span'} text={'11'} style={s.numberStyle} /> */}
+                  <TextView
+                    type={'span'}
+                    text={'1 new'}
+                    style={s.badgeStyleWrapper}
+                  />
+                </Touchable>
+              </View>
+            </View>
+            <TextView type={'span'} text={'All labels'} style={s.span} />
+            <View style={s.menu}>
+              <DrawerLabelItem
+                labelIcon={'starred-icon'}
+                labelName={'Starred'}
               />
-            </Touchable>
+              <DrawerLabelItem
+                labelIcon={'snoozed-icon'}
+                labelName={'Snoozed'}
+              />
+              <DrawerLabelItem
+                labelIcon={'important-icon'}
+                labelName={'Important'}
+                badge={5}
+              />
+              <DrawerLabelItem labelIcon={'sent-icon'} labelName={'Sent'} />
+              <DrawerLabelItem
+                labelIcon={'scheduled-icon'}
+                labelName={'Scheduled'}
+              />
+              <DrawerLabelItem labelIcon={'outbox-icon'} labelName={'Outbox'} />
+              <DrawerLabelItem
+                labelIcon={'drafts-icon'}
+                labelName={'Drafts'}
+                badge={1}
+              />
+              <DrawerLabelItem
+                labelIcon={'allmail-icon'}
+                labelName={'All mail'}
+                badge={12}
+              />
+              <DrawerLabelItem
+                labelIcon={'spam-icon'}
+                labelName={'Spam'}
+                badge={4}
+              />
+              <DrawerLabelItem
+                labelIcon={'bin-icon'}
+                labelName={'Bin'}
+                badge={69}
+              />
+            </View>
+            <TextView type={'span'} text={'Google Apps'} style={s.span} />
+            <DrawerLabelItem
+              style={s.borderRadiusNone}
+              labelIcon={'calendar-icon'}
+              labelName={'Calendar'}
+            />
+            <DrawerLabelItem
+              style={s.borderRadiusNone}
+              labelIcon={'contacts-icon'}
+              labelName={'Contacts'}
+            />
+
+            <View style={s.bottomBorderWrapper}>
+              <DrawerLabelItem
+                style={s.borderRadiusNone}
+                labelIcon={'settings-icon'}
+                labelName={'Settings'}
+              />
+              <DrawerLabelItem
+                style={s.borderRadiusNone}
+                labelIcon={'help-icon'}
+                labelName={'Help and feedback'}
+              />
+            </View>
           </View>
-          <View style={s.Menu}>
-            <Touchable style={s.MenuListOne}>
-              <SvgIcon
-                svgs={svgs}
-                name={'primary-icon'}
-                width={24}
-                height={24}
-              />
-              <TextView type={'caption'} text={'Primary'} style={s.InboxeOne} />
-            </Touchable>
-          </View>
-          <View>
-            <Touchable style={s.MenuListOne}>
-              <SvgIcon
-                svgs={svgs}
-                name={'social-icon'}
-                width={24}
-                height={24}
-              />
-              <TextView type={'caption'} text={'Social'} style={s.InboxeOne} />
-            </Touchable>
-          </View>
-          <View>
-            <Touchable style={s.MenuListOne}>
-              <SvgIcon
-                svgs={svgs}
-                name={'promotions-icon'}
-                width={24}
-                height={24}
-              />
-              <TextView
-                type={'caption'}
-                text={'Promotions'}
-                style={s.InboxeOne}
-              />
-            </Touchable>
-          </View>
-          <TextView type={'span'} text={'ALL LABELS'} style={s.span} />
-          <View>
-            <Touchable style={s.MenuListOne}>
-              <SvgIcon
-                svgs={svgs}
-                name={'starred-icon'}
-                width={24}
-                height={24}
-              />
-              <TextView type={'caption'} text={'Starred'} style={s.InboxeOne} />
-            </Touchable>
-          </View>
-          <View>
-            <Touchable style={s.MenuListOne}>
-              <SvgIcon
-                svgs={svgs}
-                name={'snoozed-icon'}
-                width={25}
-                height={25}
-              />
-              <TextView type={'caption'} text={'Snoozed'} style={s.InboxeOne} />
-            </Touchable>
-          </View>
-          <View>
-            <Touchable style={s.MenuListOne}>
-              <SvgIcon
-                svgs={svgs}
-                name={'important-icon'}
-                width={24}
-                height={24}
-              />
-              <TextView
-                type={'caption'}
-                text={'Important'}
-                style={s.InboxeOne}
-              />
-            </Touchable>
-          </View>
-          <View>
-            <Touchable style={s.MenuListOne}>
-              <SvgIcon svgs={svgs} name={'sent-icon'} width={24} height={24} />
-              <TextView type={'caption'} text={'Sent'} style={s.InboxeOne} />
-            </Touchable>
-          </View>
-          <View>
-            <Touchable style={s.MenuListOne}>
-              <SvgIcon
-                svgs={svgs}
-                name={'scheduled-icon'}
-                width={24}
-                height={24}
-              />
-              <TextView
-                type={'caption'}
-                text={'Scheduled'}
-                style={s.InboxeOne}
-              />
-            </Touchable>
-          </View>
-          <View>
-            <Touchable style={s.MenuListOne}>
-              <SvgIcon
-                svgs={svgs}
-                name={'outbox-icon'}
-                width={24}
-                height={24}
-              />
-              <TextView type={'caption'} text={'Outbox'} style={s.InboxeOne} />
-            </Touchable>
-          </View>
-          <View>
-            <Touchable style={s.MenuListOne}>
-              <SvgIcon
-                svgs={svgs}
-                name={'drafts-icon'}
-                width={24}
-                height={24}
-              />
-              <TextView type={'caption'} text={'Drafts'} style={s.InboxeOne} />
-            </Touchable>
-          </View>
-          <View>
-            <Touchable style={s.MenuListOne}>
-              <SvgIcon
-                svgs={svgs}
-                name={'allmail-icon'}
-                width={26}
-                height={25}
-              />
-              <TextView
-                type={'caption'}
-                text={'All mail'}
-                style={s.InboxeOne}
-              />
-            </Touchable>
-          </View>
-          <View>
-            <Touchable style={s.MenuListOne}>
-              <SvgIcon svgs={svgs} name={'spam-icon'} width={24} height={24} />
-              <TextView type={'caption'} text={'Spam'} style={s.InboxeOne} />
-            </Touchable>
-          </View>
-          <View>
-            <Touchable style={s.MenuListOne}>
-              <SvgIcon svgs={svgs} name={'bin-icon'} width={24} height={24} />
-              <TextView type={'caption'} text={'Bin'} style={s.InboxeOne} />
-            </Touchable>
-          </View>
-          <TextView type={'span'} text={'GOOGLE APPS'} style={s.span} />
-          <View>
-            <Touchable style={s.MenuListOne}>
-              <SvgIcon
-                svgs={svgs}
-                name={'calendar-icon'}
-                width={24}
-                height={24}
-              />
-              <TextView
-                type={'caption'}
-                text={'Calendar'}
-                style={s.InboxeOne}
-              />
-            </Touchable>
-          </View>
-          <View>
-            <Touchable style={s.MenuListTwo}>
-              <SvgIcon
-                svgs={svgs}
-                name={'contacts-icon'}
-                width={24}
-                height={24}
-              />
-              <TextView
-                type={'caption'}
-                text={'Contacts'}
-                style={s.InboxeOne}
-              />
-            </Touchable>
-          </View>
-          <View style={s.contacts}>
-            <Touchable style={s.MenuListTwo}>
-              <SvgIcon
-                svgs={svgs}
-                name={'settings-icon'}
-                width={24}
-                height={24}
-              />
-              <TextView
-                type={'caption'}
-                text={'Settings'}
-                style={s.InboxeOne}
-              />
-            </Touchable>
-          </View>
-          <View>
-            <Touchable style={s.MenuListTwo}>
-              <SvgIcon svgs={svgs} name={'help-icon'} width={24} height={24} />
-              <TextView
-                type={'caption'}
-                text={'Help and feedback'}
-                style={s.InboxeOne}
-              />
-            </Touchable>
-          </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 }
 const s = StyleSheet.create({
-  GmailIcon: {
-    paddingTop: scaleVertical(indent + 10),
-    paddingBottom: scaleVertical(indent + 6),
+  gmailIcon: {
+    paddingTop: 21,
+    paddingBottom: indent,
     borderBottomWidth: 1,
     borderBottomColor: colors.borderColor,
-    paddingLeft: scale(25),
+    paddingLeft: 25,
   },
-  Inboxe: {
-    paddingLeft: scale(25),
-    paddingVertical: scaleVertical(27),
-    fontWeight: '500',
-    fontFamily: 'Google Sans',
+  menu: {
+    marginTop: 8,
+    marginRight: 10,
   },
-  Menu: {
-    marginTop: scaleVertical(8),
+  listItemTextStyle: {
+    paddingLeft: 25,
+    color: colors.lightBlack,
+    letterSpacing: -0.202759,
+    fontFamily: 'ProductSans-Medium',
   },
-
-  Inbox: {
-    paddingLeft: scale(25),
-    paddingVertical: scaleVertical(12),
-    fontWeight: '500',
-    fontFamily: 'Google Sans',
+  numberStyle: {
+    color: colors.lightBlack,
+    fontFamily: 'Roboto-Medium',
   },
-  InboxeOne: {
-    paddingLeft: scale(25),
-    paddingVertical: scaleVertical(19),
-    fontWeight: '500',
-    fontFamily: 'Google Sans',
-  },
-
-  MenuListOne: {
+  badgeStyleWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: scale(24),
+    borderRadius: 14,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    backgroundColor: colors.green,
+    color: colors.white,
+    marginRight: -10,
+  },
+  itemWrapper: {
+    borderTopRightRadius: 35,
+    borderBottomRightRadius: 35,
+    overflow: 'hidden',
+  },
+  backgroundRed: {
+    backgroundColor: colors.redOpacity,
+  },
+  backgroundBlue: {
+    backgroundColor: colors.lightBlue,
+  },
+  backgroundGreen: {
+    backgroundColor: colors.redOpacity,
+  },
+  menuListItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: lessIndent,
+    paddingRight: indent,
+    paddingLeft: 25,
+  },
+  leftContentWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 'auto',
   },
   MenuListTwo: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingLeft: scale(24),
   },
-  MenuList: {
+  menuList: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: scale(24),
+    paddingLeft: 25,
+    paddingVertical: 21,
     borderBottomColor: colors.borderColor,
     borderBottomWidth: 1,
   },
   span: {
-    paddingLeft: scale(25),
-    paddingTop: scale(16),
-    paddingBottom: scale(6),
+    paddingLeft: 25,
+    paddingTop: 16,
+    paddingBottom: 6,
+    color: colors.lightBlack,
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+    fontFamily: 'Roboto-Medium',
   },
-  contacts: {
+  bottomBorderWrapper: {
     borderTopColor: colors.borderColor,
     borderTopWidth: 1,
+    paddingTop: 5,
+    marginTop: 5,
+  },
+  borderRadiusNone: {
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
   },
 });
 export default DrawerDesign;
