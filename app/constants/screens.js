@@ -1,5 +1,5 @@
 export default {
-  EmailLilst: 'EmailLilst',
+  EmailList: 'EmailList',
   AccountModal: 'AccountModal',
   EmailDetails: 'EmailDetails',
   ComposeEmail: 'ComposeEmail',
@@ -22,4 +22,5 @@ export default {
   ContactsRoot: 'ContactsRoot',
   SettingsRoot: 'SettingsRoot',
   HelpAndFeedbackRoot: 'HelpAndFeedbackRoot',
+  DrawerRoot: 'DrawerRoot',
 };

@@ -24,11 +24,11 @@ import Settings from '../../screens/Settings';
 import SvgIcon from 'react-native-svg-icon/lib/components/SvgIcon';
 import emailList from '../../screens/EmailList';
 const Routes = {
-  [screens.EmailLilst]: {
+  [screens.AllInboxesRoot]: {
     screen: emailList,
     // navigationOptions: () => ({
-    //   title: 'All inboxes',
-    //   drawerIcon: ({tintColor}) => (
+    //   drawerLabel: 'All inboxes',
+    //   drawerIcon: ({focused}) => (
     //     <SvgIcon svgs={svgs} name={'allinboxes-icon'} width={24} height={24} />
     //   ),
     // }),
@@ -36,16 +36,22 @@ const Routes = {
   [screens.PrimaryRoot]: {
     screen: emailList,
     // navigationOptions: () => ({
-    //   title: 'Primary',
-    //   drawerIcon: ({tintColor}) => (
-    //     <SvgIcon svgs={svgs} name={'primary-icon'} width={24} height={24} />
+    //   drawerLabel: 'Primary',
+    //   drawerIcon: ({focused}) => (
+    //     <SvgIcon
+    //       svgs={svgs}
+    //       name={'primary-icon'}
+    //       width={24}
+    //       height={24}
+    //       fill={focused ? '#D93025' : '#3C4043'}
+    //     />
     //   ),
     // }),
   },
   [screens.SocialRoot]: {
     screen: emailList,
     // navigationOptions: () => ({
-    //   title: 'Social',
+    //   drawerLabel: 'Social',
     //   drawerIcon: ({tintColor}) => (
     //     <SvgIcon svgs={svgs} name={'social-icon'} width={24} height={24} />
     //   ),
@@ -54,7 +60,7 @@ const Routes = {
   [screens.PromotionsRoot]: {
     screen: emailList,
     // navigationOptions: () => ({
-    //   title: 'Promotions',
+    //   drawerLabel: 'Promotions',
     //   drawerIcon: ({tintColor}) => (
     //     <SvgIcon svgs={svgs} name={'promotions-icon'} width={24} height={24} />
     //   ),

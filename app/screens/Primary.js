@@ -12,13 +12,8 @@ export class Primary extends Component {
     return (
       <View>
         <Text> Primary </Text>
-        <TouchableOpacity activeOpacity={0.7} onPress={this.ComposeEmail}>
-          <SvgIcon
-            svgs={svgs}
-            name={'compose-icon'}
-            width={scale(24)}
-            height={24}
-          />
+        <TouchableOpacity activeOpacity={0.8} onPress={this.ComposeEmail}>
+          <SvgIcon svgs={svgs} name={'compose-icon'} width={24} height={24} />
         </TouchableOpacity>
       </View>
     );
