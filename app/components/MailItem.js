@@ -17,6 +17,7 @@ import TextView from './TextView/TextView';
 import Touchable from './Button/Touchable';
 import Swipeable from 'react-native-swipeable';
 import Icon from './Icon';
+import {IconButton} from './Button';
 
 class MailItem extends Component {
   constructor(props) {
@@ -33,14 +34,14 @@ class MailItem extends Component {
   };
 
   render() {
-    const {style, item, onPressItem} = this.props;
+    const {style, item, onPressItem, thumbnailPath} = this.props;
     const {leftActionActivated, rightActionActivated} = this.state;
 
     return (
       <View
         style={[
           {
-            marginBottom: scaleVertical(4),
+            marginBottom: 4,
           },
           leftActionActivated && s.activeArchiveStripeWrapper,
           rightActionActivated && s.activeArchiveStripeWrapper,
@@ -49,14 +50,7 @@ class MailItem extends Component {
           leftActionActivationDistance={0}
           rightActionActivationDistance={0}
           leftContent={
-            <View
-              style={{
-                flex: 1,
-                alignItems: 'flex-end',
-                justifyContent: 'center',
-                backgroundColor: colors.green,
-                paddingRight: indent + lessIndent,
-              }}>
+            <View style={s.leftContent}>
               <SvgIcon
                 svgs={svgs}
                 name={'archive-icon'}
@@ -67,14 +61,7 @@ class MailItem extends Component {
             </View>
           }
           rightContent={
-            <View
-              style={{
-                flex: 1,
-                alignItems: 'flex-start',
-                justifyContent: 'center',
-                backgroundColor: colors.green,
-                paddingLeft: indent + lessIndent,
-              }}>
+            <View style={s.rightContent}>
               <SvgIcon
                 svgs={svgs}
                 name={'archive-icon'}
@@ -110,13 +97,14 @@ class MailItem extends Component {
             <View
               style={[
                 s.mailItem,
-                item.unread && s.unreadItem,
+                item.unread && s.longPressSelectedItem,
                 leftActionActivated && s.selectedItem,
               ]}>
               <View style={s.mailItemWrap}>
                 {/* Icon */}
-                <View style={[s.profileIcon, s.selectPrfIcon]}>
-                  <AppAvtar Size={40} style={s.senderIcon} />
+                <View style={item.unread && [s.profileIcon, s.selectPrfIcon]}>
+                  <AppAvtar Size={40} Imgsrc={thumbnailPath} />
+                  {/* onLongPress Checkmark View */}
                   <View
                     style={[
                       s.selectUserWrap,
@@ -158,11 +146,12 @@ class MailItem extends Component {
                       />
                     </View>
                     {/* Mail Star */}
-                    <Icon
-                      name={'star-outline'}
-                      color={colors.darkGray}
-                      type={'materialcommunityicons'}
-                      size={scale(20)}
+                    <IconButton
+                      icon={'star-outline'}
+                      iconColor={colors.darkGray}
+                      iconType={'materialcommunityicons'}
+                      size={30}
+                      iconSize={22}
                     />
                   </View>
                 </View>
@@ -176,6 +165,20 @@ class MailItem extends Component {
 }
 
 const s = StyleSheet.create({
+  leftContent: {
+    flex: 1,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    backgroundColor: colors.green,
+    paddingRight: indent + lessIndent,
+  },
+  rightContent: {
+    flex: 1,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    backgroundColor: colors.green,
+    paddingLeft: indent + lessIndent,
+  },
   mailItemCover: {
     backgroundColor: colors.white,
   },
@@ -191,12 +194,11 @@ const s = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
   },
-  unreadItem: {
+  longPressSelectedItem: {
     backgroundColor: colors.lightBlue,
     borderRadius: borderRadius,
   },
   profileIcon: {
-    marginRight: scale(11),
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
@@ -211,6 +213,7 @@ const s = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
+    marginLeft: lessIndent - 1,
   },
   mailSender: {
     ...Typography.label,
@@ -227,6 +230,7 @@ const s = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-end',
     justifyContent: 'flex-start',
+    marginLeft: lessIndent - 1,
   },
   mailInfoWrap: {
     flex: 1,

@@ -119,7 +119,7 @@ class EmailDetails extends Component {
     );
   }
 }
-const RenderItem = ({avtarImg, emailTitle, sendDate, accountID}) => (
+const RenderItem = ({avtarImg, emailTitle, sendDate}) => (
   <View style={s.titleItem}>
     <View style={s.leftContainerStyle}>
       <AppAvtar Imgsrc={avtarImg} size={40} />
@@ -220,6 +220,7 @@ const s = StyleSheet.create({
   titleText: {
     color: colors.primary,
     letterSpacing: 0.2,
+    fontFamily: 'ProductSans-Medium',
   },
   sendDate: {
     marginLeft: scale(6),

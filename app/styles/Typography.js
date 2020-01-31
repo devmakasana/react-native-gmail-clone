@@ -2,12 +2,12 @@ import fontSizes from './fontSizes';
 
 export default {
   small: {
-    fontFamily: 'Roboto',
+    fontFamily: 'Roboto-Regular',
     fontSize: fontSizes.small,
     lineHeight: 12,
   },
   span: {
-    fontFamily: 'Roboto',
+    fontFamily: 'Roboto-Regular',
     fontSize: fontSizes.span,
     lineHeight: 14,
   },
@@ -27,7 +27,7 @@ export default {
     lineHeight: 19,
   },
   label: {
-    fontFamily: 'Roboto',
+    fontFamily: 'Roboto-Regular',
     fontSize: fontSizes.label,
     lineHeight: 19,
   },

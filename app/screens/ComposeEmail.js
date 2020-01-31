@@ -122,7 +122,8 @@ export class ComposeEmail extends Component {
                 value={'input'}
                 multiline={true}
                 containerStyle={s.inputWrap}
-                style={s.inputValue}></Input>
+                style={s.inputValue}
+              />
               <IconButton
                 style={{marginTop: halfindent}}
                 onPress={this.onPress}
@@ -140,7 +141,8 @@ export class ComposeEmail extends Component {
                 placeholder={'Subject'}
                 multiline={true}
                 containerStyle={s.inputWrapStyle}
-                style={s.inputValue}></Input>
+                style={s.inputValue}
+              />
             </View>
             <View style={s.inputWrapper}>
               <Input
