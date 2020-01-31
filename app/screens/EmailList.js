@@ -23,7 +23,6 @@ import AccountModal from './AccountModal';
 import screens from '../constants/screens';
 import {DrawerActions} from 'react-navigation-drawer';
 import Modal from 'react-native-modalbox';
-import Swipeable from 'react-native-swipeable';
 import NavigationOptions from '../components/NavigationOptions';
 import {IconButton} from '../components/Button';
 
@@ -35,30 +34,6 @@ class emailList extends Component {
     };
   }
 
-  setAccountModal = visible => {
-    this.setState({isModalVisible: visible});
-  };
-  onPressItem = () => {
-    this.props.navigation.navigate(screens.EmailDetails);
-  };
-  ComposeEmail = () => {
-    this.props.navigation.navigate('ComposeEmail');
-  };
-  MenuList = () => {
-    this.props.navigation.dispatch(DrawerActions.openDrawer());
-  };
-
-  _keyExtractor = item => item.id;
-  _renderItem = ({item, index}) => {
-    return (
-      <MailItem
-        onPressItem={() => {
-          this.onPressItem();
-        }}
-        item={item}
-      />
-    );
-  };
   static navigationOptions = ({navigation}) => {
     return NavigationOptions({
       navigation: navigation,
@@ -77,7 +52,6 @@ class emailList extends Component {
             iconType={'MaterialIcons'}
             style={{marginLeft: 12}}
           />
-
           <TextView type={'header'} text={'3'} style={s.headerText} />
         </View>
       ),
@@ -118,6 +92,33 @@ class emailList extends Component {
       ),
     });
   };
+
+  setAccountModal = visible => {
+    this.setState({isModalVisible: visible});
+  };
+  onPressItem = () => {
+    this.props.navigation.navigate(screens.EmailDetails);
+  };
+  ComposeEmail = () => {
+    this.props.navigation.navigate('ComposeEmail');
+  };
+  MenuList = () => {
+    this.props.navigation.dispatch(DrawerActions.openDrawer());
+  };
+
+  _keyExtractor = item => item.id;
+  _renderItem = ({item, index}) => {
+    return (
+      <MailItem
+        thumbnailPath={''}
+        onPressItem={() => {
+          this.onPressItem();
+        }}
+        item={item}
+      />
+    );
+  };
+
   render() {
     const list = emailData;
     return (
@@ -185,18 +186,16 @@ class emailList extends Component {
 const s = StyleSheet.create({
   headerLeft: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   headerText: {
     color: colors.darkBlue,
-    textAlign: 'center',
-    alignItems: 'center',
-    marginLeft: scale(30),
-    marginTop: scaleVertical(3),
+    marginLeft: 30,
   },
   headerRight: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginRight: scale(5),
+    marginRight: 5,
   },
   modal: {
     flex: 1,

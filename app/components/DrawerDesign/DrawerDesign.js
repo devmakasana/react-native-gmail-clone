@@ -230,7 +230,7 @@ const s = StyleSheet.create({
   },
   listItemTextStyle: {
     paddingLeft: 25,
-    color: colors.lightBlack,
+    color: colors.darkBlack,
     letterSpacing: -0.202759,
     fontFamily: 'ProductSans-Medium',
   },

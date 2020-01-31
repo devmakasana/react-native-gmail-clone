@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, ScrollView, Alert} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import TextView from '../components/TextView/TextView';
 import {colors, fontWeights} from '../styles';
 import SvgIcon from 'react-native-svg-icon/lib/components/SvgIcon';
@@ -49,8 +49,8 @@ class AccountModal extends Component {
               svgs={svgs}
               name={'google-icon'}
               fill={'none'}
-              width={scale(29)}
-              height={scale(29)}
+              width={30}
+              height={30}
             />
           </View>
           <View style={s.tochableWrapper}>
@@ -102,7 +102,7 @@ class AccountModal extends Component {
                 svgs={svgs}
                 name={'add-account'}
                 fill={'none'}
-                width={20}
+                width={19}
                 height={14}
                 style={s.iconStyle}
               />
@@ -117,7 +117,7 @@ class AccountModal extends Component {
                 svgs={svgs}
                 name={'manage-account'}
                 fill={'none'}
-                width={18}
+                width={19}
                 height={16}
                 style={s.settingIconStyle}
               />
@@ -184,8 +184,8 @@ const s = StyleSheet.create({
   },
   topViewWrapper: {
     paddingHorizontal: scale(indent),
-    paddingTop: scaleVertical(indent),
-    paddingBottom: scaleVertical(26),
+    paddingTop: indent,
+    paddingBottom: 26,
   },
   mainAccountWrapper: {
     flexDirection: 'row',
@@ -198,7 +198,7 @@ const s = StyleSheet.create({
   },
   itemStyle: {
     paddingHorizontal: scale(20),
-    paddingVertical: scaleVertical(13),
+    paddingVertical: 13,
   },
   position: {
     position: 'relative',
@@ -211,7 +211,7 @@ const s = StyleSheet.create({
   badgeStyle: {
     backgroundColor: colors.white,
     borderRadius: 18,
-    paddingTop: scaleVertical(1),
+    paddingTop: 1,
     paddingHorizontal: scale(3),
     shadowColor: colors.boxShadowColor,
     shadowOffset: {width: 0, height: 3},
@@ -228,15 +228,15 @@ const s = StyleSheet.create({
     fontWeight: fontWeights.extraBold,
   },
   accountName: {
-    color: colors.lightBlack,
-    fontWeight: fontWeights.medium,
-    marginBottom: scaleVertical(4),
+    color: colors.darkBlack,
+    fontFamily: 'ProductSans-Medium',
+    marginBottom: 4,
   },
   accountID: {
-    color: colors.alumiGray,
+    color: colors.secondary,
   },
   tochableWrapper: {
-    marginTop: scaleVertical(23),
+    marginTop: 23,
     alignItems: 'center',
     borderWidth: 1,
     borderColor: colors.zirconGray,
@@ -247,23 +247,25 @@ const s = StyleSheet.create({
   },
   manageAccount: {
     paddingHorizontal: scale(indent - 1),
-    paddingTop: scaleVertical(halfindent),
-    paddingBottom: scaleVertical(6),
+    paddingTop: halfindent,
+    paddingBottom: 8,
   },
   manageAccountText: {
-    color: colors.lightBlack,
-    fontWeight: fontWeights.medium,
+    color: colors.darkBlack,
+    fontFamily: 'ProductSans-Medium',
   },
   accountContainer: {
-    paddingBottom: scaleVertical(4),
+    paddingBottom: 4,
   },
   secondaryAccountName: {
-    color: colors.lightBlack,
-    fontWeight: fontWeights.medium,
-    marginBottom: scaleVertical(2),
+    color: colors.darkBlack,
+    letterSpacing: -0.202759,
+    fontFamily: 'ProductSans-Medium',
+    marginBottom: 2,
   },
   secondaryAccountID: {
     color: colors.secondary,
+    letterSpacing: 0.4,
   },
   accountInfo: {
     flexDirection: 'row',
@@ -275,8 +277,9 @@ const s = StyleSheet.create({
     marginRight: scale(15),
   },
   subInfoText: {
-    color: colors.lightBlack,
-    fontWeight: fontWeights.medium,
+    color: colors.darkBlack,
+    letterSpacing: 0.15,
+    fontFamily: 'ProductSans-Medium',
   },
   settingIconStyle: {
     marginRight: scale(17),

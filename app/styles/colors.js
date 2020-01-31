@@ -17,6 +17,7 @@ export default {
   black: '#000000',
   background: '#F5F5F5',
   lightBlack: '#3C4043',
+  darkBlack: 'rgba(32, 33, 36, 0.85)',
 
   borderColor: '#E8EAED',
   borderOpacity: '#E4E6E8',
