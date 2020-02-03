@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
+import {View, StyleSheet, SafeAreaView} from 'react-native';
 import NavigationOptions from '../components/NavigationOptions';
 import {colors} from '../styles';
 import {scale} from '../utils/scale';
@@ -7,7 +7,7 @@ import TextView from '../components/TextView/TextView';
 import {IconButton, Touchable} from '../components/Button';
 import {ScrollView} from 'react-native-gesture-handler';
 import AppAvtar from '../components/Avtar/AppAvtar';
-import {lessIndent, halfindent, indent} from '../styles/dimensions';
+import {indent} from '../styles/dimensions';
 import AppStyles from '../styles/AppStyles';
 import Icon from '../components/Icon';
 
@@ -20,21 +20,17 @@ class EmailDetails extends Component {
   static navigationOptions = ({navigation}) => {
     return NavigationOptions({
       navigation: navigation,
-      headerStyle: {
-        backgroundColor: colors.white,
-        elevation: 0,
-        shadowOpacity: 0,
-      },
+      headerStyle: AppStyles.headerStyle,
       headerTintColor: colors.secondary,
       headerRight: () => (
-        <View style={s.headerRight}>
+        <View style={AppStyles.headerRight}>
           <IconButton
             icon={'archive'}
             size={32}
             iconSize={24}
             iconColor={colors.secondary}
             iconType={'MaterialIcons'}
-            style={{marginRight: 20}}
+            style={{marginRight: 18}}
           />
           <IconButton
             icon={'trash-can-outline'}
@@ -42,7 +38,7 @@ class EmailDetails extends Component {
             iconSize={24}
             iconColor={colors.secondary}
             iconType={'materialcommunityicons'}
-            style={{marginRight: 20}}
+            style={{marginRight: 18}}
           />
           <IconButton
             icon={'email-outline'}
@@ -50,7 +46,7 @@ class EmailDetails extends Component {
             iconSize={24}
             iconColor={colors.secondary}
             iconType={'materialcommunityicons'}
-            style={{marginRight: 15}}
+            style={{marginRight: 13}}
           />
           <IconButton
             icon={'dots-vertical'}
@@ -68,11 +64,11 @@ class EmailDetails extends Component {
     return (
       <SafeAreaView style={AppStyles.root}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <View style={s.Headingstyle}>
+          <View style={AppStyles.Headingstyle}>
             <TextView
               type={'headerOne'}
               text={'Sonakshi is back...swagat nahi karoge?'}
-              style={s.Heading}
+              style={AppStyles.Heading}
             />
             <IconButton
               onPress={this.onPress}
@@ -88,27 +84,27 @@ class EmailDetails extends Component {
             emailTitle={'BookMyShow'}
             sendDate={'19 Dec'}
           />
-          <View style={s.container}>
-            <View style={s.Content}>
+          <View style={AppStyles.contentContainer}>
+            <View style={AppStyles.content}>
               <TextView
                 type={'subTitle'}
                 text={'Gmail content'}
                 style={s.gmailContent}
               />
             </View>
-            <View style={s.bottomBtnWrapper}>
+            <View style={AppStyles.bottomBtnWrapper}>
               <RenderActionButton
-                style={s.btnStyle}
+                style={AppStyles.btnStyle}
                 iconName={'reply'}
                 btnText={'Reply'}
               />
               <RenderActionButton
-                style={s.btnStyle}
+                style={AppStyles.btnStyle}
                 iconName={'reply-all'}
                 btnText={'Reply all'}
               />
               <RenderActionButton
-                style={s.btnStyle}
+                style={AppStyles.btnStyle}
                 iconName={'arrow-right'}
                 btnText={'Forward'}
               />
@@ -124,11 +120,11 @@ const RenderItem = ({avtarImg, emailTitle, sendDate}) => (
     <View style={s.leftContainerStyle}>
       <AppAvtar Imgsrc={avtarImg} size={40} />
       <View style={s.leftContent}>
-        <View style={s.topTitleStyle}>
+        <View style={s.contentWrapper}>
           <TextView type={'label'} text={emailTitle} style={s.titleText} />
           <TextView type={'span'} text={sendDate} style={s.sendDate} />
         </View>
-        <View style={s.bottomstyle}>
+        <View style={s.contentWrapper}>
           <TextView type={'caption'} text={'to me'} style={s.subText} />
           <IconButton
             style={{marginTop: 2}}
@@ -141,8 +137,9 @@ const RenderItem = ({avtarImg, emailTitle, sendDate}) => (
         </View>
       </View>
     </View>
-    <View style={s.rightContainerStyle}>
+    <View style={s.contentWrapper}>
       <IconButton
+        style={{marginRight: 4}}
         icon={'reply'}
         size={32}
         iconSize={24}
@@ -161,42 +158,20 @@ const RenderItem = ({avtarImg, emailTitle, sendDate}) => (
 );
 
 const RenderActionButton = ({style, iconName, btnText}) => (
-  <View style={[s.touchableWrapper, style]}>
-    <Touchable style={s.btnWrapper}>
+  <View style={[AppStyles.touchableWrapper, style]}>
+    <Touchable style={AppStyles.btnWrapper}>
       <Icon
         name={iconName}
         size={20}
         color={colors.secondary}
         type={'materialcommunityicons'}
       />
-      <TextView type={'caption'} text={btnText} style={s.ReplyText} />
+      <TextView type={'caption'} text={btnText} style={AppStyles.ReplyText} />
     </Touchable>
   </View>
 );
 
 const s = StyleSheet.create({
-  headerRight: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: scale(5),
-  },
-  container: {
-    paddingHorizontal: scale(indent),
-  },
-  Headingstyle: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginRight: scale(5),
-    marginLeft: scale(20),
-    marginBottom: 20,
-  },
-  Heading: {
-    color: colors.primary,
-    flex: 0.9,
-    flexWrap: 'wrap',
-    marginRight: 'auto',
-  },
   titleItem: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -213,7 +188,7 @@ const s = StyleSheet.create({
   leftContent: {
     marginLeft: scale(indent),
   },
-  topTitleStyle: {
+  contentWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -224,58 +199,19 @@ const s = StyleSheet.create({
   },
   sendDate: {
     marginLeft: scale(6),
-    letterSpacing: 0.2,
+    letterSpacing: 0.4,
     color: colors.secondary,
     fontFamily: 'Roboto-Regular',
-  },
-  bottomstyle: {
-    flexDirection: 'row',
-    alignItems: 'center',
   },
   subText: {
     color: colors.secondary,
+    lineHeight: 16,
     fontFamily: 'Roboto-Regular',
-  },
-  rightContainerStyle: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  Content: {
-    backgroundColor: colors.background,
-    paddingVertical: 30,
-    paddingHorizontal: 5,
   },
   gmailContent: {
     color: colors.primary,
     letterSpacing: -0.1,
     fontFamily: 'Roboto-Regular',
-  },
-  bottomBtnWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 35,
-    marginBottom: indent,
-  },
-  btnStyle: {
-    flex: 0.32,
-  },
-  touchableWrapper: {
-    borderWidth: 1,
-    borderColor: colors.zirconGray,
-    borderRadius: 5,
-    overflow: 'hidden',
-  },
-  btnWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: lessIndent - 1,
-  },
-  ReplyText: {
-    color: colors.secondary,
-    marginLeft: halfindent,
-    letterSpacing: 0.4,
-    fontFamily: 'ProductSans-Medium',
   },
 });
 export default EmailDetails;

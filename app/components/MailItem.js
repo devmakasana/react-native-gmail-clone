@@ -1,23 +1,14 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, SwipeActionView} from 'react-native';
-import {scale, scaleVertical} from '../utils/scale';
+import {View} from 'react-native';
 import colors from '../styles/colors';
-import {
-  indent,
-  lessIndent,
-  halfindent,
-  borderRadius,
-} from '../styles/dimensions';
-import Typography from '../styles/Typography';
-import fontWeights from '../styles/fontWeights';
 import SvgIcon from 'react-native-svg-icon/lib/components/SvgIcon';
 import svgs from '../assets/svg';
 import AppAvtar from './Avtar/AppAvtar';
 import TextView from './TextView/TextView';
 import Touchable from './Button/Touchable';
 import Swipeable from 'react-native-swipeable';
-import Icon from './Icon';
 import {IconButton} from './Button';
+import AppStyles from '../styles/AppStyles';
 
 class MailItem extends Component {
   constructor(props) {
@@ -43,14 +34,14 @@ class MailItem extends Component {
           {
             marginBottom: 4,
           },
-          leftActionActivated && s.activeArchiveStripeWrapper,
-          rightActionActivated && s.activeArchiveStripeWrapper,
+          leftActionActivated && AppStyles.activeArchiveStripeWrapper,
+          rightActionActivated && AppStyles.activeArchiveStripeWrapper,
         ]}>
         <Swipeable
           leftActionActivationDistance={0}
           rightActionActivationDistance={0}
           leftContent={
-            <View style={s.leftContent}>
+            <View style={AppStyles.leftContent}>
               <SvgIcon
                 svgs={svgs}
                 name={'archive-icon'}
@@ -61,7 +52,7 @@ class MailItem extends Component {
             </View>
           }
           rightContent={
-            <View style={s.rightContent}>
+            <View style={AppStyles.rightContent}>
               <SvgIcon
                 svgs={svgs}
                 name={'archive-icon'}
@@ -87,60 +78,78 @@ class MailItem extends Component {
           onRightActionComplete={() => this.setState()}>
           <Touchable
             style={[
-              s.mailItemCover,
-              leftActionActivated && s.activeArchiveStripe,
-              rightActionActivated && s.activeArchiveStripe,
+              AppStyles.mailItemCover,
+              leftActionActivated && AppStyles.activeArchiveStripe,
+              rightActionActivated && AppStyles.activeArchiveStripe,
               style,
             ]}
             onPress={onPressItem}
             onLongPress={this._onLongPressButton}>
             <View
               style={[
-                s.mailItem,
-                item.unread && s.longPressSelectedItem,
-                leftActionActivated && s.selectedItem,
+                AppStyles.mailItem,
+                item.unread && AppStyles.longPressSelectedItem,
+                leftActionActivated && AppStyles.selectedItem,
               ]}>
-              <View style={s.mailItemWrap}>
+              <View style={AppStyles.mailItemWrap}>
                 {/* Icon */}
-                <View style={item.unread && [s.profileIcon, s.selectPrfIcon]}>
+                <View
+                  style={
+                    item.unread && [
+                      AppStyles.profileIcon,
+                      AppStyles.selectPrfIcon,
+                    ]
+                  }>
                   <AppAvtar Size={40} Imgsrc={thumbnailPath} />
                   {/* onLongPress Checkmark View */}
                   <View
                     style={[
-                      s.selectUserWrap,
-                      item.unread && s.activeSelectUser,
+                      AppStyles.selectUserWrap,
+                      item.unread && AppStyles.activeSelectUser,
                     ]}>
                     <SvgIcon
                       svgs={svgs}
                       name={'select-author'}
                       width={22}
                       height={22}
-                      style={s.selectProfile}
                     />
                   </View>
                 </View>
                 {/* Text */}
-                <View style={s.mailText}>
-                  <View style={s.mailInfoBold}>
+                <View style={AppStyles.mlContainer}>
+                  <View style={AppStyles.mailInfoBold}>
                     <TextView
-                      style={[s.mailSender, item.unread && s.unreadText]}
+                      type={'label'}
+                      style={[
+                        AppStyles.mailSender,
+                        item.unread && AppStyles.unreadText,
+                      ]}
                       text={item.sender.name}
                     />
                     <TextView
-                      style={[s.mailDate, item.unread && s.unreadTimeText]}
+                      type={'span'}
+                      style={[
+                        AppStyles.mailDate,
+                        item.unread && AppStyles.unreadTimeText,
+                      ]}
                       text={item.date}
                     />
                   </View>
-                  <View style={s.mailInfo}>
+                  <View style={AppStyles.mailInfo}>
                     {/* Mail Info */}
-                    <View style={s.mailInfoWrap}>
+                    <View style={AppStyles.mlContainer}>
                       <TextView
-                        style={[s.mailSub, item.unread && s.unreadText]}
+                        type={'caption'}
+                        style={[
+                          AppStyles.mailSub,
+                          item.unread && AppStyles.unreadText,
+                        ]}
                         numberOfLines={1}
                         text={item.subject}
                       />
                       <TextView
-                        style={s.mailDesc}
+                        type={'caption'}
+                        style={AppStyles.mailDesc}
                         numberOfLines={1}
                         text={item.description}
                       />
@@ -163,140 +172,4 @@ class MailItem extends Component {
     );
   }
 }
-
-const s = StyleSheet.create({
-  leftContent: {
-    flex: 1,
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    backgroundColor: colors.green,
-    paddingRight: indent + lessIndent,
-  },
-  rightContent: {
-    flex: 1,
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    backgroundColor: colors.green,
-    paddingLeft: indent + lessIndent,
-  },
-  mailItemCover: {
-    backgroundColor: colors.white,
-  },
-  mailItem: {
-    paddingTop: indent - 1,
-    paddingBottom: indent,
-    paddingLeft: lessIndent - 1,
-    paddingRight: lessIndent - 1,
-    marginLeft: 5,
-  },
-  mailItemWrap: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
-  longPressSelectedItem: {
-    backgroundColor: colors.lightBlue,
-    borderRadius: borderRadius,
-  },
-  profileIcon: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'relative',
-    overflow: 'hidden',
-    borderRadius: 50,
-    backgroundColor: colors.transparent,
-  },
-  mailText: {
-    flex: 1,
-  },
-  mailInfoBold: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    marginLeft: lessIndent - 1,
-  },
-  mailSender: {
-    ...Typography.label,
-    color: colors.secondary,
-    flex: 1,
-  },
-  mailDate: {
-    ...Typography.span,
-    fontWeight: fontWeights.medium,
-    color: colors.secondary,
-    marginRight: 'auto',
-  },
-  mailInfo: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'flex-start',
-    marginLeft: lessIndent - 1,
-  },
-  mailInfoWrap: {
-    flex: 1,
-  },
-  mailSub: {
-    marginVertical: scaleVertical(2),
-    ...Typography.caption,
-    color: colors.secondary,
-    fontFamily: 'Roboto',
-  },
-  mailDesc: {
-    ...Typography.caption,
-    color: colors.secondary,
-    fontFamily: 'Roboto',
-  },
-  starIcon: {
-    marginLeft: scaleVertical(4),
-  },
-  // Active Style
-  activeMailItem: {
-    backgroundColor: colors.lightBlue,
-  },
-  unreadText: {
-    color: colors.primary,
-    fontWeight: fontWeights.extraBold,
-  },
-  unreadTimeText: {
-    color: colors.black,
-    fontWeight: fontWeights.extraBold,
-  },
-  selectUserWrap: {
-    position: 'absolute',
-    top: 0,
-    flex: 1,
-    zIndex: 10,
-    backgroundColor: colors.darkBlue,
-    borderRadius: 50,
-    width: scale(40),
-    height: scale(40),
-    alignItems: 'center',
-    justifyContent: 'center',
-    opacity: 0,
-  },
-  activeSelectUser: {
-    opacity: 1,
-  },
-  activeStarIcon: {
-    backgroundColor: '#ff9500',
-  },
-  selectPrfIcon: {
-    backgroundColor: colors.darkBlue,
-  },
-  activeArchiveStripe: {
-    borderRadius: 10,
-    shadowColor: colors.stripShadow,
-    shadowOffset: {width: 0, height: 1},
-    shadowOpacity: 1,
-    shadowRadius: 10,
-    elevation: 2,
-  },
-  activeArchiveStripeWrapper: {
-    backgroundColor: colors.green,
-  },
-  selectedItem: {
-    marginLeft: 0,
-  },
-});
-
 export default MailItem;

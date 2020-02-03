@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, ScrollView, StyleSheet, SafeAreaView} from 'react-native';
+import {View, ScrollView, StyleSheet, SafeAreaView} from 'react-native';
 import NavigationOptions from '../components/NavigationOptions';
 import {colors} from '../styles';
 import {lessIndent, halfindent} from '../styles/dimensions';
@@ -10,7 +10,7 @@ import Picker from '../components/Picker';
 import Input from '../components/Input';
 import {IconButton} from '../components/Button';
 import AppStyles from '../styles/AppStyles';
-// import {Icon} from 'react-native-vector-icons/Icon';
+import {TextInput} from 'react-native-gesture-handler';
 
 export class ComposeEmail extends Component {
   constructor(props) {
@@ -43,8 +43,10 @@ export class ComposeEmail extends Component {
       title: 'Compose',
       headerStyle: AppStyles.headerStyle,
       headerTitleStyle: AppStyles.headerTitleStyle,
+      headerTintColor: colors.secondary,
+      navigation: navigation,
       headerRight: (
-        <View style={s.icon}>
+        <View style={AppStyles.headerRight}>
           <View>
             <IconButton
               onPress={navigation.getParam('attach')}
@@ -53,7 +55,7 @@ export class ComposeEmail extends Component {
               iconSize={24}
               iconColor={colors.secondary}
               iconType={'materialicons'}
-              style={{marginRight: 20}}
+              style={{marginRight: 18}}
             />
           </View>
           <View>
@@ -79,8 +81,6 @@ export class ComposeEmail extends Component {
           </View>
         </View>
       ),
-      headerTintColor: colors.secondary,
-      navigation: navigation,
     });
   };
   render() {
@@ -144,14 +144,15 @@ export class ComposeEmail extends Component {
                 style={s.inputValue}
               />
             </View>
-            <View style={s.inputWrapper}>
+            <View style={[s.inputWrapper]}>
               <Input
                 value={'input'}
                 placeholderTextColor={colors.darkGray}
                 placeholder={'Compose email'}
                 multiline={true}
                 containerStyle={s.inputWrapStyle}
-                style={s.inputValue}></Input>
+                style={s.inputValue}
+              />
             </View>
           </View>
         </ScrollView>
@@ -160,26 +161,19 @@ export class ComposeEmail extends Component {
   }
 }
 const s = StyleSheet.create({
-  // header
-  icon: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: scale(5),
-  },
-  //Compose.
   container: {
     paddingLeft: scale(lessIndent - 1),
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: scaleVertical(5),
+    marginTop: 5,
   },
   from: {
     color: colors.secondary,
-    letterSpacing: 0.2,
+    letterSpacing: 0.15,
   },
   subText: {
     color: colors.secondary,
-    letterSpacing: 0.2,
+    letterSpacing: 0.15,
     marginTop: 18,
   },
   dropdown: {
@@ -196,7 +190,6 @@ const s = StyleSheet.create({
   inputWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: scale(lessIndent - 2),
     paddingVertical: 2,
     borderTopWidth: 1,
     borderTopColor: colors.borderColor,
@@ -206,6 +199,7 @@ const s = StyleSheet.create({
   },
   inputValue: {
     ...Typography.label,
+    paddingHorizontal: scale(lessIndent),
     letterSpacing: 0.4,
   },
   valueInput: {
@@ -216,7 +210,7 @@ const s = StyleSheet.create({
   inputWrap: {
     flex: 1,
     paddingVertical: 2,
-    marginLeft: scale(32),
+    marginLeft: scale(22),
   },
   composeEmail: {
     flexDirection: 'row',

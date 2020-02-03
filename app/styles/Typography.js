@@ -12,7 +12,7 @@ export default {
     lineHeight: 14,
   },
   subTitle: {
-    fontFamily: 'Roboto',
+    fontFamily: 'Roboto-Regular',
     fontSize: fontSizes.subTitle,
     lineHeight: 15,
   },
@@ -44,6 +44,6 @@ export default {
   headerOne: {
     fontFamily: 'ProductSans-Regular',
     fontSize: fontSizes.headerOne,
-    lineHeight: 34,
+    lineHeight: 31,
   },
 };
