@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, ScrollView} from 'react-native';
 import TextView from '../components/TextView/TextView';
-import {colors, fontWeights} from '../styles';
+import {colors} from '../styles';
 import SvgIcon from 'react-native-svg-icon/lib/components/SvgIcon';
 import svgs from '../assets/svg';
-import {scale, scaleVertical} from '../utils/scale';
+import {scale} from '../utils/scale';
 import {indent, halfindent, WIN_HEIGHT} from '../styles/dimensions';
 import AppAvtar from '../components/Avtar/AppAvtar';
 import Touchable from '../components/Button/Touchable';
@@ -34,7 +34,7 @@ class AccountModal extends Component {
               </View>
               <View>
                 <TextView
-                  type={'title'}
+                  type={'caption'}
                   text={'Nayan Gnk'}
                   style={s.accountName}
                 />
@@ -56,7 +56,7 @@ class AccountModal extends Component {
           <View style={s.tochableWrapper}>
             <Touchable style={s.manageAccount}>
               <TextView
-                type={'title'}
+                type={'caption'}
                 text={'Manage your Google Account'}
                 style={s.manageAccountText}
               />
@@ -97,43 +97,21 @@ class AccountModal extends Component {
               accountID={'gabani.nayan@gmail.com'}
             />
             <ModalItem avtarImg="" accountName={'nayan@pixer.io'} />
-            <Touchable style={s.accountInfo}>
-              <SvgIcon
-                svgs={svgs}
-                name={'add-account'}
-                fill={'none'}
-                width={19}
-                height={14}
-                style={s.iconStyle}
-              />
-              <TextView
-                type={'title'}
-                text={'Add another account'}
-                style={s.subInfoText}
-              />
-            </Touchable>
-            <Touchable style={s.accountInfo}>
-              <SvgIcon
-                svgs={svgs}
-                name={'manage-account'}
-                fill={'none'}
-                width={19}
-                height={16}
-                style={s.settingIconStyle}
-              />
-              <TextView
-                type={'title'}
-                text={'Manage accounts on this device'}
-                style={s.subInfoText}
-              />
-            </Touchable>
+            <RenderAccountItem
+              iconName={'add-account'}
+              text={'Add another account'}
+            />
+            <RenderAccountItem
+              iconName={'manage-account'}
+              text={'Manage accounts on this device'}
+            />
           </View>
         </ScrollView>
         <Seperator />
         <View style={s.bottomView}>
           <Touchable style={s.privacyText}>
             <TextView
-              type={'caption'}
+              type={'subTitle'}
               text={'Privacy Policy'}
               color={colors.secondary}
             />
@@ -141,7 +119,7 @@ class AccountModal extends Component {
           <View style={s.ellipse}></View>
           <Touchable style={s.privacyText}>
             <TextView
-              type={'caption'}
+              type={'subTitle'}
               text={'Terms of service'}
               color={colors.secondary}
             />
@@ -164,14 +142,28 @@ const ModalItem = ({avtarImg, badge, accountName, accountID}) => (
     </View>
     <View>
       <TextView
-        type={'title'}
+        type={'caption'}
         text={accountName}
         style={s.secondaryAccountName}
       />
       {!!accountID && (
-        <TextView type={'span'} text={accountID} style={s.secondaryAccountID} />
+        <TextView type={'span'} text={accountID} style={s.accountID} />
       )}
     </View>
+  </Touchable>
+);
+
+const RenderAccountItem = ({iconName, text}) => (
+  <Touchable style={s.accountInfo}>
+    <SvgIcon
+      svgs={svgs}
+      name={iconName}
+      fill={'none'}
+      width={19}
+      height={14}
+      style={s.iconStyle}
+    />
+    <TextView type={'title'} text={text} style={s.subInfoText} />
   </Touchable>
 );
 
@@ -179,7 +171,7 @@ const s = StyleSheet.create({
   modalWrapper: {
     backgroundColor: colors.white,
     maxHeight: WIN_HEIGHT - scale(150),
-    marginHorizontal: indent,
+    marginHorizontal: 12,
     borderRadius: 8,
   },
   topViewWrapper: {
@@ -224,16 +216,17 @@ const s = StyleSheet.create({
   },
   badgeTextStyle: {
     color: colors.secondary,
-    letterSpacing: -0.202759,
-    fontWeight: fontWeights.extraBold,
+    letterSpacing: -0.2,
+    fontFamily: 'Roboto-Bold',
   },
   accountName: {
     color: colors.darkBlack,
     fontFamily: 'ProductSans-Medium',
-    marginBottom: 4,
+    marginBottom: 2,
   },
   accountID: {
     color: colors.secondary,
+    letterSpacing: 0.4,
   },
   tochableWrapper: {
     marginTop: 23,
@@ -259,19 +252,15 @@ const s = StyleSheet.create({
   },
   secondaryAccountName: {
     color: colors.darkBlack,
-    letterSpacing: -0.202759,
+    letterSpacing: -0.2,
     fontFamily: 'ProductSans-Medium',
     marginBottom: 2,
-  },
-  secondaryAccountID: {
-    color: colors.secondary,
-    letterSpacing: 0.4,
   },
   accountInfo: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: scale(25),
-    paddingVertical: scaleVertical(indent),
+    paddingVertical: indent,
   },
   iconStyle: {
     marginRight: scale(15),
@@ -288,11 +277,11 @@ const s = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: scaleVertical(9),
+    paddingVertical: 9,
   },
   privacyText: {
     paddingHorizontal: scale(indent),
-    paddingVertical: scaleVertical(9),
+    paddingVertical: 9,
   },
   ellipse: {
     width: scale(3),
