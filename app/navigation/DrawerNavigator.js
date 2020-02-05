@@ -1,8 +1,8 @@
 import screens from '../constants/screens';
-import {createDrawerNavigator} from 'react-navigation-drawer';
 import Routes from './routes/DrawerRoutes';
 import DrawerDesign from '../components/DrawerDesign/DrawerDesign';
 import {WIN_WIDTH} from '../styles/dimensions';
+import {createDrawerNavigator} from 'react-navigation-drawer';
 
 const config = {
   initialRouteName: screens.AllInboxesRoot,

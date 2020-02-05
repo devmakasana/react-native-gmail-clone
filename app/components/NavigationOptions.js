@@ -26,13 +26,13 @@ const NavigationOptions = ({
       ) : (
         headerLeft
       ),
-    headerTintColor: Platform.OS == 'android' ? colors.white : null,
+    headerTintColor: Platform.OS == 'android' ? colors.primary : null,
     headerStyle: {
-      backgroundColor: Platform.OS == 'android' ? colors.primary : null,
+      backgroundColor: Platform.OS == 'android' ? colors.white : null,
       ...headerStyle,
     },
     headerTitleStyle: {
-      color: Platform.OS == 'android' ? colors.white : null,
+      color: Platform.OS == 'android' ? colors.black : null,
     },
     headerRight: headerRight,
     ...props,

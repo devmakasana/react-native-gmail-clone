@@ -9,7 +9,16 @@ import TextView from '../TextView/TextView';
 import {Touchable} from '../Button';
 import DrawerLabelItem from './DrawerLabelItem';
 import {DrawerItems} from 'react-navigation-drawer';
+import screens from '../../constants/screens';
 export class DrawerDesign extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  onSettingsPress = () => {
+    this.props.navigation.navigate(screens.SettingsRoot);
+  };
+
   render() {
     return (
       <SafeAreaView>
@@ -159,6 +168,7 @@ export class DrawerDesign extends Component {
 
             <View style={s.bottomBorderWrapper}>
               <DrawerLabelItem
+                onPress={this.onSettingsPress}
                 style={s.borderRadiusNone}
                 labelIcon={'settings-icon'}
                 labelName={'Settings'}
