@@ -9,6 +9,7 @@ import Touchable from './Button/Touchable';
 import Swipeable from 'react-native-swipeable';
 import {IconButton} from './Button';
 import AppStyles from '../styles/AppStyles';
+import AttachedFileComponent from './AttachedFileComponent';
 
 class MailItem extends Component {
   constructor(props) {
@@ -163,6 +164,14 @@ class MailItem extends Component {
                       iconSize={22}
                     />
                   </View>
+                  {!!item.isFileAttached && (
+                    <View style={AppStyles.attachedFileWrapper}>
+                      <AttachedFileComponent
+                        attachedImage={'attached-image-icon'}
+                        itemName={'ANIL951689456'}
+                      />
+                    </View>
+                  )}
                 </View>
               </View>
             </View>

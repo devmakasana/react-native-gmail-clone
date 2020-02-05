@@ -206,7 +206,7 @@ export default connect(
 
 const s = StyleSheet.create({
   androidPicker: {
-    height: scale(45),
+    height: scale(50),
     width: '100%',
   },
   wrapper: {

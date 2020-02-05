@@ -5,6 +5,7 @@ export const emailData = [
     subject: 'Khiladi Kumar is here with Good Ne...',
     description: 'Book tickets now. BOOKMYSHOW Go...',
     date: '25 Dec',
+    isFileAttached: false,
     unread: true,
   },
   {
@@ -13,6 +14,7 @@ export const emailData = [
     subject: 'BookMyShoPrepare for the food binge...',
     description: 'Book for the Ahmedabad Food Fest...',
     date: '26 Dec',
+    isFileAttached: true,
     unread: false,
   },
   {
@@ -21,6 +23,7 @@ export const emailData = [
     subject: 'BookMyShoPrepare for the food binge ...',
     description: 'Book for the Ahmedabad Food Fest...',
     date: '24 Dec',
+    isFileAttached: true,
     unread: true,
   },
   {
@@ -29,6 +32,7 @@ export const emailData = [
     subject: 'This Week in Web Design and De...',
     description: 'View this newsletter on the w eb. Sho...',
     date: '20 Dec',
+    isFileAttached: false,
     unread: true,
   },
   {
@@ -37,6 +41,7 @@ export const emailData = [
     subject: 'BookMyShoPrepare for the food binge...',
     description: 'Book for the Ahmedabad Food Fest...',
     date: '18 Dec',
+    isFileAttached: false,
     unread: false,
   },
   {
@@ -45,6 +50,7 @@ export const emailData = [
     subject: 'BookMyShoPrepare for the food binge...',
     description: 'Book for the Ahmedabad Food Fest...',
     date: '24 Dec',
+    isFileAttached: false,
     unread: false,
   },
   {
@@ -53,6 +59,7 @@ export const emailData = [
     subject: 'This Week in Web Design and De...',
     description: 'View this newsletter on the w eb. Sho...',
     date: '20 Dec',
+    isFileAttached: true,
     unread: false,
   },
   {
@@ -61,6 +68,7 @@ export const emailData = [
     subject: 'BookMyShoPrepare for the food binge...',
     description: 'Book for the Ahmedabad Food Fest...',
     date: '18 Dec',
+    isFileAttached: false,
     unread: false,
   },
   {
@@ -69,6 +77,7 @@ export const emailData = [
     subject: 'BookMyShoPrepare for the food binge...',
     description: 'Book for the Ahmedabad Food Fest...',
     date: '24 Dec',
+    isFileAttached: true,
     unread: false,
   },
   {
@@ -77,6 +86,7 @@ export const emailData = [
     subject: 'This Week in Web Design and De...',
     description: 'View this newsletter on the w eb. Sho...',
     date: '20 Dec',
+    isFileAttached: false,
     unread: false,
   },
 ];

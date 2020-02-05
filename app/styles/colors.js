@@ -5,7 +5,6 @@ export default {
   gray: '#707070',
   silverGray: '#C4C4C4',
   darkGray: '#9AA0A6',
-  alumiGray: '#7D8184',
   zirconGray: '#DADCE0',
 
   white: '#FFFFFF',
@@ -20,7 +19,7 @@ export default {
   darkBlack: 'rgba(32, 33, 36, 0.85)',
 
   borderColor: '#E8EAED',
-  borderOpacity: '#E4E6E8',
+  primaryBorderColor: 'rgba(154, 160, 166, 0.28)',
 
   overlayColor: 'rgba(32, 33, 36, 0.7)',
   transparent: 'rgba(0, 0, 0, 0)',
@@ -29,6 +28,5 @@ export default {
   secondaryBoxShadow: ' rgba(0, 0, 0, 0.16)',
   lightBlue: '#E8F0FE',
   darkBlue: '#1A73E8',
-  stripBorder: '#F8F8F8',
   stripShadow: 'rgba(0, 0, 0, 0.08)',
 };
