@@ -178,12 +178,12 @@ const Routes = {
   },
   [screens.SettingsRoot]: {
     screen: SettingsNavigator,
-    navigationOptions: () => ({
-      title: 'Settings',
-      // drawerIcon: ({tintColor}) => (
-      //   <SvgIcon svgs={svgs} name={'settings-icon'} width={24} height={24} />
-      // ),
-    }),
+    // navigationOptions: () => ({
+    //   title: 'Settings',
+    //   // drawerIcon: ({tintColor}) => (
+    //   //   <SvgIcon svgs={svgs} name={'settings-icon'} width={24} height={24} />
+    //   // ),
+    // }),
   },
   [screens.HelpAndFeedbackRoot]: {
     screen: Help,

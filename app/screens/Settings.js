@@ -6,6 +6,7 @@ import {colors} from '../styles';
 import AppStyles from '../styles/AppStyles';
 import TextView from '../components/TextView/TextView';
 import {lessIndent, indent} from '../styles/dimensions';
+import {scale} from '../utils/scale';
 
 export class Settings extends Component {
   constructor(props) {
@@ -18,6 +19,19 @@ export class Settings extends Component {
       navigation: navigation,
       headerStyle: AppStyles.headerStyle,
       headerTintColor: colors.primary,
+      title: 'Settings',
+      headerLeft: () => (
+        <View style={AppStyles.headerLeft}>
+          <IconButton
+            icon={'arrow-back'}
+            size={32}
+            iconSize={24}
+            iconColor={colors.secondary}
+            iconType={'MaterialIcons'}
+            style={{marginLeft: scale(7)}}
+          />
+        </View>
+      ),
       headerRight: () => (
         <View style={AppStyles.headerRight}>
           <IconButton
