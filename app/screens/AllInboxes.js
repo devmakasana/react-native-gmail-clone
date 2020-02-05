@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, TouchableOpacity} from 'react-native';
-import SvgIcon from 'react-native-svg-icon/lib/components/SvgIcon';
-import svgs from '../assets/svg';
-import {scale} from '../utils/scale';
+import {Text, View} from 'react-native';
 
 export class AllInboxes extends Component {
   EmailDetails = () => {
@@ -13,14 +10,6 @@ export class AllInboxes extends Component {
     return (
       <View>
         <Text> AllInboxes </Text>
-        <TouchableOpacity activeOpacity={0.7} onPress={this.EmailDetails}>
-          <SvgIcon
-            svgs={svgs}
-            name={'compose-icon'}
-            width={scale(24)}
-            height={24}
-          />
-        </TouchableOpacity>
       </View>
     );
   }

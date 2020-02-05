@@ -17,37 +17,6 @@ export class DrawerDesign extends Component {
           contentContainerStyle={{
             paddingBottom: indent,
           }}>
-          {/* <View style={s.gmailIcon}>
-            <SvgIcon
-              svgs={svgs}
-              name={'Gmail-icon'}
-              fill={'none'}
-              width={54}
-              height={17}
-            />
-          </View>
-          <DrawerItems
-            {...this.props}
-            itemsContainerStyle={{
-              paddingRight: 10,
-              overflow: 'hidden',
-            }}
-            itemStyle={{
-              overflow: 'hidden',
-              paddingVertical: lessIndent,
-              borderTopRightRadius: 35,
-              borderBottomRightRadius: 35,
-            }}
-            labelStyle={{
-              margin: 0,
-              color: colors.lightBlack,
-              letterSpacing: -0.202759,
-              fontWeight: fontWeights.medium,
-              fontFamily: 'ProductSans-Medium',
-            }}
-            iconContainerStyle={{opacity: 1}}
-            render={this.renderItem}
-          /> */}
           <View>
             <View style={s.gmailIcon}>
               <SvgIcon
@@ -90,11 +59,6 @@ export class DrawerDesign extends Component {
                     />
                   </View>
                   <TextView type={'span'} text={'99+'} style={s.numberStyle} />
-                  {/* <TextView
-                    type={'span'}
-                    text={'1 new'}
-                    style={s.badgeStyleWrapper}
-                  /> */}
                 </Touchable>
               </View>
               <View style={[s.itemWrapper]}>
@@ -113,11 +77,6 @@ export class DrawerDesign extends Component {
                     />
                   </View>
                   <TextView type={'span'} text={'1'} style={s.numberStyle} />
-                  {/* <TextView
-                    type={'span'}
-                    text={'1 new'}
-                    style={s.badgeStyleWrapper}
-                  /> */}
                 </Touchable>
               </View>
               <View style={[s.itemWrapper]}>
@@ -135,7 +94,7 @@ export class DrawerDesign extends Component {
                       style={s.listItemTextStyle}
                     />
                   </View>
-                  {/* <TextView type={'span'} text={'11'} style={s.numberStyle} /> */}
+
                   <TextView
                     type={'span'}
                     text={'1 new'}
@@ -231,7 +190,7 @@ const s = StyleSheet.create({
   listItemTextStyle: {
     paddingLeft: 25,
     color: colors.darkBlack,
-    letterSpacing: -0.202759,
+    letterSpacing: -0.2,
     fontFamily: 'ProductSans-Medium',
   },
   numberStyle: {

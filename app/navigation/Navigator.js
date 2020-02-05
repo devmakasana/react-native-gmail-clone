@@ -15,7 +15,6 @@ const routes = {
 
 const config = {
   initialRouteParams: 'EmailLilst',
-  // headerMode: 'none',
 };
 
 const Navigator = createSwitchNavigator(routes, config);

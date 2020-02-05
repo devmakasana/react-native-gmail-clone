@@ -6,10 +6,6 @@ import {WIN_WIDTH} from '../styles/dimensions';
 
 const config = {
   initialRouteName: screens.AllInboxesRoot,
-  contentOptions: {
-    // activeTintColor: colors.lightBlack,
-    // inactiveTintColor: colors.lightBlack,
-  },
   contentComponent: DrawerDesign,
   drawerPosition: 'left',
   drawerOpenRoute: 'DrawerOpen',
