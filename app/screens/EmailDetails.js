@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, SafeAreaView} from 'react-native';
+import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
 import NavigationOptions from '../components/NavigationOptions';
 import {colors} from '../styles';
 import {scale} from '../utils/scale';
@@ -82,7 +82,7 @@ class EmailDetails extends Component {
           <RenderItem
             avtarImg={''}
             emailTitle={'BookMyShow'}
-            sendDate={'19 Dec'}
+            sendDate={' 19 Dec'}
           />
           <View style={AppStyles.contentContainer}>
             <View style={AppStyles.content}>
@@ -120,10 +120,10 @@ const RenderItem = ({avtarImg, emailTitle, sendDate}) => (
     <View style={s.leftContainerStyle}>
       <AppAvtar Imgsrc={avtarImg} size={40} />
       <View style={s.leftContent}>
-        <View style={s.contentWrapper}>
+        <Text style={s.contentWrapper}>
           <TextView type={'label'} text={emailTitle} style={s.titleText} />
           <TextView type={'span'} text={sendDate} style={s.sendDate} />
-        </View>
+        </Text>
         <View style={s.contentWrapper}>
           <TextView type={'caption'} text={'to me'} style={s.subText} />
           <IconButton
@@ -181,16 +181,19 @@ const s = StyleSheet.create({
     marginBottom: 35,
   },
   leftContainerStyle: {
-    flex: 0.95,
+    flex: 0.98,
     flexDirection: 'row',
     alignItems: 'center',
   },
   leftContent: {
-    marginLeft: scale(indent),
+    marginLeft: scale(12),
+    flex: 1,
   },
   contentWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
+    flexWrap: 'wrap',
+    marginBottom: -4,
   },
   titleText: {
     color: colors.primary,
@@ -198,7 +201,6 @@ const s = StyleSheet.create({
     fontFamily: 'ProductSans-Medium',
   },
   sendDate: {
-    marginLeft: scale(6),
     letterSpacing: 0.4,
     color: colors.secondary,
     fontFamily: 'Roboto-Regular',

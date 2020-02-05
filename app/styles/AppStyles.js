@@ -180,6 +180,10 @@ const AppStyles = StyleSheet.create({
     color: colors.secondary,
     fontFamily: 'Roboto-Regular',
   },
+  attachedFileWrapper: {
+    marginLeft: 12,
+    marginTop: 10,
+  },
   // Active Style
   activeMailItem: {
     backgroundColor: colors.lightBlue,
@@ -232,9 +236,10 @@ const AppStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginTop: indent,
     marginRight: scale(5),
     marginLeft: scale(20),
-    marginBottom: 20,
+    marginBottom: 30,
   },
   Heading: {
     color: colors.primary,
@@ -268,6 +273,39 @@ const AppStyles = StyleSheet.create({
   },
   btnStyle: {
     flex: 0.32,
+  },
+
+  // Attached Item
+  attacheItemWrapper: {
+    flex: 0.49,
+    backgroundColor: colors.white,
+    borderWidth: 1,
+    borderColor: colors.primaryBorderColor,
+    borderRadius: 16,
+    marginRight: 10,
+    overflow: 'hidden',
+  },
+  attacheItemContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 6,
+    paddingLeft: lessIndent - 1,
+    paddingRight: 26,
+  },
+  itemNameStyle: {
+    color: colors.secondary,
+    letterSpacing: 0.1,
+    marginLeft: 10,
+    fontFamily: 'Roboto-Regular',
+  },
+  bottomContentWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  remainingFileNumber: {
+    color: colors.secondary,
+    letterSpacing: 0.4,
+    fontFamily: 'Roboto-Medium',
   },
 });
 
