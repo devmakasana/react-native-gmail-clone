@@ -20,7 +20,6 @@ import Bin from '../../screens/Bin';
 import Calendar from '../../screens/Calendar';
 import Contacts from '../../screens/Contacts';
 import Help from '../../screens/Help';
-import Settings from '../../screens/Settings';
 import SvgIcon from 'react-native-svg-icon/lib/components/SvgIcon';
 import EmailList from '../../screens/EmailList';
 import SettingsNavigator from '../navigators/SettingsNavigator';
