@@ -56,8 +56,8 @@ class GeneralSettings extends Component {
   onArchiveChange = archiveChecked => {
     this.setState({archiveChecked: archiveChecked});
   };
-  onSendingChange = onSendingChange => {
-    this.setState({onSendingChange: onSendingChange});
+  onSendingChange = sendingChecked => {
+    this.setState({sendingChecked: sendingChecked});
   };
 
   render() {
