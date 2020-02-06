@@ -485,4 +485,39 @@ export default {
     ),
     viewBox: '0 0 12 14',
   },
+  'checked-icon': {
+    svg: (
+      <G width={20} height={20} viewBox="0 0 20 20" fill="none">
+        <Rect width={20} height={20} rx={3} fill="#1A73E8" />
+        <G clipPath="url(#prefix__clip0)">
+          <Path
+            d="M2 10.51L7.48 16 18 5.49 16.49 4l-9.01 9-3.99-3.99L2 10.51z"
+            fill="#fff"
+          />
+        </G>
+        <Defs>
+          <ClipPath id="prefix__clip0">
+            <Path fill="#fff" d="M2 2h16v16H2z" />
+          </ClipPath>
+        </Defs>
+      </G>
+    ),
+    viewBox: '0 0 20 20',
+  },
+  'unchecked-icon': {
+    svg: (
+      <G width={20} height={20} viewBox="0 0 20 20" fill="none">
+        <Rect
+          x={1}
+          y={1}
+          width={18}
+          height={18}
+          rx={2}
+          stroke="#5F6368"
+          strokeWidth={2}
+        />
+      </G>
+    ),
+    viewBox: '0 0 20 20',
+  },
 };

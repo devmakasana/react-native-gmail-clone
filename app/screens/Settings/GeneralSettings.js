@@ -6,7 +6,7 @@ import NavigationOptions from '../../components/NavigationOptions';
 import {IconButton, Touchable} from '../../components/Button';
 import TextView from '../../components/TextView/TextView';
 import {lessIndent, indent} from '../../styles/dimensions';
-import CheckBox from '@react-native-community/checkbox';
+import CheckBoxItem from './CheckBoxItem';
 
 class GeneralSettings extends Component {
   constructor(props) {
@@ -41,25 +41,6 @@ class GeneralSettings extends Component {
     });
   };
 
-  onConversationViewChange = conversationChecked => {
-    this.setState({conversationChecked: conversationChecked});
-  };
-  onAutoFitMessageChange = autofitMessChecked => {
-    this.setState({autofitMessChecked: autofitMessChecked});
-  };
-  onWebLinkInGmailChange = webLinkInGmailChecked => {
-    this.setState({webLinkInGmailChecked: webLinkInGmailChecked});
-  };
-  onDeleteChange = deleteChecked => {
-    this.setState({deleteChecked: deleteChecked});
-  };
-  onArchiveChange = archiveChecked => {
-    this.setState({archiveChecked: archiveChecked});
-  };
-  onSendingChange = sendingChecked => {
-    this.setState({sendingChecked: sendingChecked});
-  };
-
   render() {
     return (
       <SafeAreaView style={AppStyles.root}>
@@ -76,8 +57,7 @@ class GeneralSettings extends Component {
               'Group emails in the same conversation for IMAP, POP3 and Exchange accounts',
               true,
               true,
-              this.state.conversationChecked,
-              this.onConversationViewChange,
+              true,
             )}
             {this.renderSettingsItem(
               'Conversation list density',
@@ -99,8 +79,7 @@ class GeneralSettings extends Component {
               'Shrink messages to fit the screen',
               true,
               true,
-              this.state.autofitMessChecked,
-              this.onAutoFitMessageChange,
+              true,
             )}
             {this.renderSettingsItem(
               'Auto-advance',
@@ -112,32 +91,16 @@ class GeneralSettings extends Component {
               'Turn on for faster browsing',
               false,
               true,
-              this.state.webLinkInGmailChecked,
-              this.onWebLinkInGmailChange,
+              true,
             )}
             <TextView
               type={'caption'}
               text={'Action Confirmations'}
               style={s.subText}
             />
-            {this.renderActionItem(
-              'Confirm before deleting',
-              true,
-              this.state.deleteChecked,
-              this.onDeleteChange,
-            )}
-            {this.renderActionItem(
-              'Confirm before archiving',
-              true,
-              this.state.archiveChecked,
-              this.onArchiveChange,
-            )}
-            {this.renderActionItem(
-              'Confirm before sending',
-              false,
-              this.state.sendingChecked,
-              this.onSendingChange,
-            )}
+            {this.renderActionItem('Confirm before deleting', true, false)}
+            {this.renderActionItem('Confirm before archiving', true, false)}
+            {this.renderActionItem('Confirm before sending', false, false)}
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -148,8 +111,7 @@ class GeneralSettings extends Component {
     itemText,
     isBorder,
     isCheckBoxDisplayed = false,
-    value,
-    onValueChange,
+    isSelected,
   ) => {
     return (
       <Touchable style={[s.itemWrapper, isBorder ? s.bottomBorder : null]}>
@@ -163,34 +125,18 @@ class GeneralSettings extends Component {
             />
           )}
         </View>
-        {isCheckBoxDisplayed && (
-          <CheckBox
-            value={value}
-            onValueChange={onValueChange}
-            tintColors={{
-              true: colors.darkBlue,
-              false: {},
-            }}
-          />
-        )}
+        {isCheckBoxDisplayed && <CheckBoxItem isSelected={isSelected} />}
       </Touchable>
     );
   };
-  renderActionItem = (itemTitle, isBorder, value, onValueChange) => {
+  renderActionItem = (itemTitle, isBorder, isSelected) => {
     return (
       <Touchable
         style={[s.actionItemWrapper, isBorder ? s.bottomBorder : null]}>
         <View style={s.leftContent}>
           <TextView type={'label'} text={itemTitle} style={s.itemTitleStyle} />
         </View>
-        <CheckBox
-          value={value}
-          onValueChange={onValueChange}
-          tintColors={{
-            true: colors.darkBlue,
-            false: {},
-          }}
-        />
+        <CheckBoxItem isSelected={isSelected} />
       </Touchable>
     );
   };
@@ -201,7 +147,8 @@ const s = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingVertical: indent,
-    paddingHorizontal: lessIndent - 1,
+    paddingLeft: lessIndent - 1,
+    paddingRight: 22,
   },
   bottomBorder: {
     borderBottomWidth: 1,
@@ -231,8 +178,9 @@ const s = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: lessIndent - 1,
-    paddingHorizontal: lessIndent - 1,
+    paddingVertical: 18,
+    paddingLeft: lessIndent - 1,
+    paddingRight: 22,
   },
 });
 export default GeneralSettings;
