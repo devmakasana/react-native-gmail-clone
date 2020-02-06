@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {View, ScrollView, StyleSheet, SafeAreaView} from 'react-native';
 import NavigationOptions from '../components/NavigationOptions';
 import {colors} from '../styles';
-import {lessIndent, halfindent} from '../styles/dimensions';
-import {scale, scaleVertical} from '../utils/scale';
+import {lessIndent, halfindent, indent, WIN_HEIGHT} from '../styles/dimensions';
+import {scale} from '../utils/scale';
 import Typography from '../styles/Typography';
 import TextView from '../components/TextView/TextView';
 import Picker from '../components/Picker';
@@ -102,71 +102,191 @@ export class ComposeEmail extends Component {
     return (
       <SafeAreaView style={AppStyles.root}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <View>
-            <View style={s.container}>
-              <TextView type={'label'} text={'From'} style={s.from} />
+          <View style={s.container}>
+            <View style={s.contentWrapper}>
+              <TextView type={'label'} text={'From'} style={s.labelText} />
               <Picker
                 selectedValue={'nayan.gnk06@gmail.com'}
                 label={'Select'}
                 data={FromEmail}
                 itemKeyField={'value'}
                 itemValueField={'text'}
-                containerStyle={s.borderBottomIos}
                 selectedValue={this.state.language}
                 onValueChange={lang => this.setState({language: lang})}
               />
             </View>
-            <View style={s.SearchMail}>
-              <TextView type={'label'} text={'To'} style={s.subText} />
-              <Input
-                value={'input'}
+            <View style={s.selectInputWrapper}>
+              <TextView type={'label'} text={'To'} style={s.toLabelStyle} />
+              <TextInput
+                style={s.selectedInput}
+                type="text"
+                name={'select input'}
                 multiline={true}
-                containerStyle={s.inputWrap}
-                style={s.inputValue}
+                autoCompleteType="off"
+                // value={this.state.SearchText}
+                // onChangeText={text => this.Search(text)}
+                returnKeyType="next"
               />
               <IconButton
-                style={{marginTop: halfindent}}
+                style={{marginTop: 6}}
                 onPress={this.onPress}
                 icon={'keyboard-arrow-down'}
-                size={38}
+                size={34}
                 iconSize={24}
                 iconColor={colors.secondary}
                 iconType={'materialicons'}
               />
             </View>
-            <View style={s.inputWrapper}>
-              <Input
-                value={'input'}
-                placeholderTextColor={colors.darkGray}
-                placeholder={'Subject'}
+            <View style={s.composeWrapper}>
+              <TextInput
+                style={s.inputWrapper}
+                type="text"
+                name={'Subject'}
                 multiline={true}
-                containerStyle={s.inputWrapStyle}
-                style={s.inputValue}
+                autoCompleteType="off"
+                placeholder="Subject"
+                placeholderTextColor={colors.darkGray}
+                // value={this.state.SearchText}
+                // onChangeText={text => this.Search(text)}
+                returnKeyType="next"
               />
             </View>
-            <View style={[s.inputWrapper]}>
-              <Input
-                value={'input'}
-                placeholderTextColor={colors.darkGray}
-                placeholder={'Compose email'}
+            <View style={[s.composeWrapper]}>
+              <TextInput
+                style={[
+                  s.inputWrapper,
+                  {
+                    // minHeight: scale(400),
+                    alignItems: 'flex-start',
+                    // textAlignVertical: 'top',
+                  },
+                ]}
+                type="text"
+                name={'Compose email'}
                 multiline={true}
-                containerStyle={s.inputWrapStyle}
-                style={s.inputValue}
+                autoCompleteType="off"
+                placeholder="Compose email"
+                placeholderTextColor={colors.darkGray}
+                // value={this.state.SearchText}
+                // onChangeText={text => this.Search(text)}
+                returnKeyType="done"
               />
             </View>
           </View>
         </ScrollView>
       </SafeAreaView>
+      // <SafeAreaView style={AppStyles.root}>
+      //   <ScrollView showsVerticalScrollIndicator={false}>
+      //     <View>
+      //       <View style={s.container}>
+      //         <TextView type={'label'} text={'From'} style={s.from} />
+      //         <Picker
+      //           selectedValue={'nayan.gnk06@gmail.com'}
+      //           label={'Select'}
+      //           data={FromEmail}
+      //           itemKeyField={'value'}
+      //           itemValueField={'text'}
+      //           selectedValue={this.state.language}
+      //           onValueChange={lang => this.setState({language: lang})}
+      //         />
+      //       </View>
+      //       <View style={s.SearchMail}>
+      //         <TextView type={'label'} text={'To'} style={s.subText} />
+      //         <Input
+      //           value={'input'}
+      //           multiline={true}
+      //           containerStyle={s.inputWrap}
+      //           style={s.inputValue}
+      //         />
+      //         <IconButton
+      //           style={{marginTop: halfindent}}
+      //           onPress={this.onPress}
+      //           icon={'keyboard-arrow-down'}
+      //           size={38}
+      //           iconSize={24}
+      //           iconColor={colors.secondary}
+      //           iconType={'materialicons'}
+      //         />
+      //       </View>
+      //       <View style={s.inputWrapper}>
+      //         <Input
+      //           value={'input'}
+      //           placeholderTextColor={colors.darkGray}
+      //           placeholder={'Subject'}
+      //           multiline={true}
+      //           containerStyle={s.inputWrapStyle}
+      //           style={s.inputValue}
+      //         />
+      //       </View>
+      //       <View style={[s.inputWrapper]}>
+      //         <Input
+      //           value={'input'}
+      //           placeholderTextColor={colors.darkGray}
+      //           placeholder={'Compose email'}
+      //           multiline={true}
+      //           containerStyle={s.inputWrapStyle}
+      //           style={s.inputValue}
+      //         />
+      //       </View>
+      //     </View>
+      //   </ScrollView>
+      // </SafeAreaView>
     );
   }
 }
 const s = StyleSheet.create({
   container: {
-    paddingLeft: scale(lessIndent - 1),
+    flex: 1,
+    paddingTop: lessIndent,
+  },
+  contentWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 5,
+    paddingLeft: scale(lessIndent - 1),
+    borderBottomWidth: 1,
+    borderBottomColor: colors.primaryBorderColor,
   },
+  labelText: {
+    color: colors.secondary,
+    letterSpacing: 0.15,
+  },
+  toLabelStyle: {
+    color: colors.secondary,
+    letterSpacing: 0.15,
+    marginTop: 15,
+  },
+  selectInputWrapper: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    paddingVertical: 3,
+    paddingLeft: scale(lessIndent - 1),
+    paddingRight: scale(3),
+    borderBottomWidth: 1,
+    borderBottomColor: colors.primaryBorderColor,
+  },
+  selectedInput: {
+    flex: 1,
+    paddingLeft: 36,
+    color: colors.black,
+    ...Typography.label,
+  },
+  inputWrapper: {
+    minHeight: scale(50),
+    color: colors.black,
+    ...Typography.label,
+  },
+  composeWrapper: {
+    paddingLeft: scale(lessIndent - 1),
+    borderBottomWidth: 1,
+    borderBottomColor: colors.primaryBorderColor,
+  },
+
+  // container: {
+  //   paddingLeft: scale(lessIndent - 1),
+  //   flexDirection: 'row',
+  //   alignItems: 'center',
+  //   marginTop: 5,
+  // },
   from: {
     color: colors.secondary,
     letterSpacing: 0.15,
@@ -176,9 +296,6 @@ const s = StyleSheet.create({
     letterSpacing: 0.15,
     marginTop: 18,
   },
-  dropdown: {
-    marginBottom: scaleVertical(12),
-  },
   SearchMail: {
     flexDirection: 'row',
     alignItems: 'flex-start',
@@ -187,13 +304,13 @@ const s = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: colors.borderColor,
   },
-  inputWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 2,
-    borderTopWidth: 1,
-    borderTopColor: colors.borderColor,
-  },
+  // inputWrapper: {
+  //   flexDirection: 'row',
+  //   alignItems: 'center',
+  //   paddingVertical: 2,
+  //   borderTopWidth: 1,
+  //   borderTopColor: colors.borderColor,
+  // },
   inputWrapStyle: {
     flex: 1,
   },

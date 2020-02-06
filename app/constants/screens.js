@@ -23,4 +23,5 @@ export default {
   SettingsRoot: 'SettingsRoot',
   HelpAndFeedbackRoot: 'HelpAndFeedbackRoot',
   DrawerRoot: 'DrawerRoot',
+  GeneralSettings: 'GeneralSettings',
 };

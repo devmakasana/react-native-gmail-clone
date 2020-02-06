@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
-import NavigationOptions from '../components/NavigationOptions';
-import {IconButton, Touchable} from '../components/Button';
-import {colors} from '../styles';
-import AppStyles from '../styles/AppStyles';
-import TextView from '../components/TextView/TextView';
-import {lessIndent, indent} from '../styles/dimensions';
-import {scale} from '../utils/scale';
+import {View, StyleSheet} from 'react-native';
+import NavigationOptions from '../../components/NavigationOptions';
+import {IconButton, Touchable} from '../../components/Button';
+import {colors} from '../../styles';
+import AppStyles from '../../styles/AppStyles';
+import TextView from '../../components/TextView/TextView';
+import {lessIndent, indent} from '../../styles/dimensions';
+import {scale} from '../../utils/scale';
+import screens from '../../constants/screens';
 
 export class Settings extends Component {
   constructor(props) {
@@ -24,11 +25,12 @@ export class Settings extends Component {
         <View style={AppStyles.headerLeft}>
           <IconButton
             icon={'arrow-back'}
-            size={32}
+            size={38}
             iconSize={24}
             iconColor={colors.secondary}
             iconType={'MaterialIcons'}
-            style={{marginLeft: scale(7)}}
+            style={{marginLeft: scale(6)}}
+            onPress={navigation.getParam('onBackPress')}
           />
         </View>
       ),
@@ -45,10 +47,26 @@ export class Settings extends Component {
       ),
     });
   };
+
+  componentDidMount() {
+    const {navigation} = this.props;
+    navigation.setParams({
+      onBackPress: this.onBackPress,
+    });
+  }
+
+  onBackPress = () => {
+    this.props.navigation.navigate(screens.EmailList);
+  };
+
+  onGeneralSettingPress = () => {
+    this.props.navigation.navigate(screens.GeneralSettings);
+  };
+
   render() {
     return (
       <View>
-        <Touchable style={s.itemWrapper}>
+        <Touchable style={s.itemWrapper} onPress={this.onGeneralSettingPress}>
           <TextView
             type={'label'}
             text={'General Settings'}
