@@ -14,10 +14,10 @@ class DrawerLabelItem extends Component {
   }
 
   render() {
-    const {labelIcon, labelName, badge, newBadge, style} = this.props;
+    const {labelIcon, labelName, badge, newBadge, onPress, style} = this.props;
     return (
       <View style={[s.itemWrapper, style]}>
-        <Touchable style={s.menuListItem}>
+        <Touchable style={s.menuListItem} onPress={onPress}>
           <View style={s.leftContentWrapper}>
             <SvgIcon svgs={svgs} name={labelIcon} width={24} height={24} />
             <TextView

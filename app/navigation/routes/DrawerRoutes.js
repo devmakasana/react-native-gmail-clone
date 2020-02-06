@@ -22,10 +22,11 @@ import Contacts from '../../screens/Contacts';
 import Help from '../../screens/Help';
 import Settings from '../../screens/Settings';
 import SvgIcon from 'react-native-svg-icon/lib/components/SvgIcon';
-import emailList from '../../screens/EmailList';
+import EmailList from '../../screens/EmailList';
+import SettingsNavigator from '../navigators/SettingsNavigator';
 const Routes = {
   [screens.AllInboxesRoot]: {
-    screen: emailList,
+    screen: EmailList,
     // navigationOptions: () => ({
     //   drawerLabel: 'All inboxes',
     //   drawerIcon: ({focused}) => (
@@ -34,7 +35,7 @@ const Routes = {
     // }),
   },
   [screens.PrimaryRoot]: {
-    screen: emailList,
+    screen: EmailList,
     // navigationOptions: () => ({
     //   drawerLabel: 'Primary',
     //   drawerIcon: ({focused}) => (
@@ -49,7 +50,7 @@ const Routes = {
     // }),
   },
   [screens.SocialRoot]: {
-    screen: emailList,
+    screen: EmailList,
     // navigationOptions: () => ({
     //   drawerLabel: 'Social',
     //   drawerIcon: ({tintColor}) => (
@@ -58,7 +59,7 @@ const Routes = {
     // }),
   },
   [screens.PromotionsRoot]: {
-    screen: emailList,
+    screen: EmailList,
     // navigationOptions: () => ({
     //   drawerLabel: 'Promotions',
     //   drawerIcon: ({tintColor}) => (
@@ -67,7 +68,7 @@ const Routes = {
     // }),
   },
   [screens.StarredRoot]: {
-    screen: emailList,
+    screen: EmailList,
     // navigationOptions: () => ({
     //   title: 'Starred',
     //   drawerIcon: ({tintColor}) => (
@@ -76,7 +77,7 @@ const Routes = {
     // }),
   },
   [screens.SnoozedRoot]: {
-    screen: emailList,
+    screen: EmailList,
     // navigationOptions: () => ({
     //   title: 'Snoozed',
     //   drawerIcon: ({tintColor}) => (
@@ -85,7 +86,7 @@ const Routes = {
     // }),
   },
   [screens.ImportantRoot]: {
-    screen: emailList,
+    screen: EmailList,
     // navigationOptions: () => ({
     //   title: 'Important',
     //   drawerIcon: ({tintColor}) => (
@@ -94,7 +95,7 @@ const Routes = {
     // }),
   },
   [screens.SentRoot]: {
-    screen: emailList,
+    screen: EmailList,
     // navigationOptions: () => ({
     //   title: 'Sent',
     //   drawerIcon: ({tintColor}) => (
@@ -103,7 +104,7 @@ const Routes = {
     // }),
   },
   [screens.ScheduledRoot]: {
-    screen: emailList,
+    screen: EmailList,
     // navigationOptions: () => ({
     //   title: 'Scheduled',
     //   drawerIcon: ({tintColor}) => (
@@ -112,7 +113,7 @@ const Routes = {
     // }),
   },
   [screens.OutboxRoot]: {
-    screen: emailList,
+    screen: EmailList,
     // navigationOptions: () => ({
     //   title: 'Outbox',
     //   drawerIcon: ({tintColor}) => (
@@ -121,7 +122,7 @@ const Routes = {
     // }),
   },
   [screens.DraftsRoot]: {
-    screen: emailList,
+    screen: EmailList,
     // navigationOptions: () => ({
     //   title: 'Drafts',
     //   drawerIcon: ({tintColor}) => (
@@ -130,7 +131,7 @@ const Routes = {
     // }),
   },
   [screens.AllMailRoot]: {
-    screen: emailList,
+    screen: EmailList,
     // navigationOptions: () => ({
     //   title: 'All mail',
     //   drawerIcon: ({tintColor}) => (
@@ -139,7 +140,7 @@ const Routes = {
     // }),
   },
   [screens.SpamRoot]: {
-    screen: emailList,
+    screen: EmailList,
     // navigationOptions: () => ({
     //   title: 'Spam',
     //   drawerIcon: ({tintColor}) => (
@@ -148,7 +149,7 @@ const Routes = {
     // }),
   },
   [screens.BinRoot]: {
-    screen: emailList,
+    screen: EmailList,
     // navigationOptions: () => ({
     //   title: 'Bin',
     //   drawerIcon: ({tintColor}) => (
@@ -176,12 +177,12 @@ const Routes = {
     // }),
   },
   [screens.SettingsRoot]: {
-    screen: Settings,
+    screen: SettingsNavigator,
     // navigationOptions: () => ({
     //   title: 'Settings',
-    //   drawerIcon: ({tintColor}) => (
-    //     <SvgIcon svgs={svgs} name={'settings-icon'} width={24} height={24} />
-    //   ),
+    //   // drawerIcon: ({tintColor}) => (
+    //   //   <SvgIcon svgs={svgs} name={'settings-icon'} width={24} height={24} />
+    //   // ),
     // }),
   },
   [screens.HelpAndFeedbackRoot]: {

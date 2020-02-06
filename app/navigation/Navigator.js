@@ -3,6 +3,7 @@ import {createSwitchNavigator} from 'react-navigation';
 import screens from '../constants/screens';
 import {EmailNavigator} from './navigators';
 import CreateNavigator from './DrawerNavigator';
+import SettingsNavigator from './navigators/SettingsNavigator';
 
 const routes = {
   [screens.EmailLilst]: {
@@ -10,6 +11,9 @@ const routes = {
   },
   [screens.DrawerRoot]: {
     screen: CreateNavigator,
+  },
+  [screens.SettingsRoot]: {
+    screen: SettingsNavigator,
   },
 };
 

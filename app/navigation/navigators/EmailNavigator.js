@@ -1,13 +1,13 @@
 import screens from '../../constants/screens';
 import {createStackNavigator} from 'react-navigation-stack';
 import EmailDetails from '../../screens/EmailDetails';
-import EmailLilst from '../../screens/EmailList';
 import ComposeEmail from '../../screens/ComposeEmail';
+import EmailList from '../../screens/EmailList';
 
 const EmailNavigator = createStackNavigator(
   {
-    [screens.EmailLilst]: {
-      screen: EmailLilst,
+    [screens.EmailList]: {
+      screen: EmailList,
       navigationOptions: () => ({
         title: '',
       }),
@@ -23,7 +23,7 @@ const EmailNavigator = createStackNavigator(
     },
   },
   {
-    initialRouteName: screens.EmailLilst,
+    initialRouteName: screens.EmailList,
   },
 );
 

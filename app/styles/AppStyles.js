@@ -39,8 +39,9 @@ const AppStyles = StyleSheet.create({
   },
   headerText: {
     color: colors.darkBlue,
-    marginLeft: 30,
+    marginLeft: scale(30),
   },
+
   // EmailList Header
   mlContainer: {
     flex: 1,

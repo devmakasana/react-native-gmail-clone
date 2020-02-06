@@ -17,7 +17,7 @@ import Modal from 'react-native-modalbox';
 import NavigationOptions from '../components/NavigationOptions';
 import {IconButton} from '../components/Button';
 
-class emailList extends Component {
+class EmailList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -178,4 +178,4 @@ class emailList extends Component {
   }
 }
 
-export default emailList;
+export default EmailList;
