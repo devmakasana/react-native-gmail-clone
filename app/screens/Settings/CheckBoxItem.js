@@ -11,9 +11,9 @@ class CheckBoxItem extends Component {
   }
 
   render() {
-    const {isSelected} = this.props;
+    const {isSelected, onPress} = this.props;
     return (
-      <Touchable>
+      <Touchable onPress={onPress}>
         <SvgIcon
           svgs={svgs}
           name={!isSelected ? 'unchecked-icon' : 'checked-icon'}

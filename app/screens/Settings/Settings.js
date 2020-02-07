@@ -19,6 +19,7 @@ export class Settings extends Component {
     return NavigationOptions({
       navigation: navigation,
       headerStyle: AppStyles.headerStyle,
+      headerTitleStyle: AppStyles.headerTitleStyle,
       headerTintColor: colors.primary,
       title: 'Settings',
       headerLeft: () => (

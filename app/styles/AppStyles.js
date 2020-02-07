@@ -25,8 +25,8 @@ const AppStyles = StyleSheet.create({
   },
   headerTitleStyle: {
     ...Typography.header,
-    color: colors.secondary,
-    marginHorizontal: 0,
+    color: colors.primary,
+    letterSpacing: 0.15,
   },
   headerLeft: {
     flexDirection: 'row',
@@ -39,7 +39,7 @@ const AppStyles = StyleSheet.create({
   },
   headerText: {
     color: colors.darkBlue,
-    marginLeft: scale(30),
+    marginLeft: scale(22),
   },
 
   // EmailList Header

@@ -25,6 +25,7 @@ class GeneralSettings extends Component {
     return NavigationOptions({
       navigation: navigation,
       headerStyle: AppStyles.headerStyle,
+      headerTitleStyle: AppStyles.headerTitleStyle,
       headerTintColor: colors.secondary,
       title: 'General Settings',
       headerRight: () => (
@@ -41,6 +42,24 @@ class GeneralSettings extends Component {
     });
   };
 
+  onConversationViewChange = () => {
+    this.setState({conversationChecked: !this.state.conversationChecked});
+  };
+  onAutofitMessChange = () => {
+    this.setState({autofitMessChecked: !this.state.autofitMessChecked});
+  };
+  onWebLinkChange = () => {
+    this.setState({webLinkInGmailChecked: !this.state.webLinkInGmailChecked});
+  };
+  onDeletePress = () => {
+    this.setState({deleteChecked: !this.state.deleteChecked});
+  };
+  onArchivePress = () => {
+    this.setState({archiveChecked: !this.state.archiveChecked});
+  };
+  onSendPress = () => {
+    this.setState({sendingChecked: !this.state.sendingChecked});
+  };
   render() {
     return (
       <SafeAreaView style={AppStyles.root}>
@@ -50,6 +69,9 @@ class GeneralSettings extends Component {
               'Default notification action',
               'Archive',
               true,
+              false,
+              false,
+              this.onDefaultNotificationPress,
             )}
             {this.renderSettingsItem('Manage notifications', '', true)}
             {this.renderSettingsItem(
@@ -57,50 +79,80 @@ class GeneralSettings extends Component {
               'Group emails in the same conversation for IMAP, POP3 and Exchange accounts',
               true,
               true,
-              true,
+              this.state.conversationChecked,
+              this.onConversationViewChange,
             )}
             {this.renderSettingsItem(
               'Conversation list density',
               'Default',
               true,
+              false,
+              false,
+              this.onConversationListPress,
             )}
             {this.renderSettingsItem(
               'Swipe actions',
               'Configure swipe actions to quickly act on emails in the conversation list',
               true,
+              false,
+              false,
+              this.onSwipeActionPress,
             )}
             {this.renderSettingsItem(
               'Default reply action',
               'Choose your default reply action',
               true,
+              false,
+              false,
+              this.onDefaultReplyPress,
             )}
             {this.renderSettingsItem(
               'Auto-fit messages',
               'Shrink messages to fit the screen',
               true,
               true,
-              true,
+              this.state.autofitMessChecked,
+              this.onAutofitMessChange,
             )}
             {this.renderSettingsItem(
               'Auto-advance',
               'Show conversation list after you archive or delete',
               true,
+              false,
+              false,
+              this.onAutoAdvancePress,
             )}
             {this.renderSettingsItem(
               'Open web links in Gmail',
               'Turn on for faster browsing',
               false,
               true,
-              true,
+              this.state.webLinkInGmailChecked,
+              this.onWebLinkChange,
             )}
             <TextView
               type={'caption'}
               text={'Action Confirmations'}
               style={s.subText}
             />
-            {this.renderActionItem('Confirm before deleting', true, false)}
-            {this.renderActionItem('Confirm before archiving', true, false)}
-            {this.renderActionItem('Confirm before sending', false, false)}
+            {this.renderActionItem(
+              'Confirm before deleting',
+              true,
+              this.state.deleteChecked,
+              this.onDeletePress,
+            )}
+            {this.renderActionItem(
+              'Confirm before archiving',
+              true,
+              this.state.archiveChecked,
+              this.onArchivePress,
+            )}
+            {this.renderActionItem(
+              'Confirm before sending',
+              false,
+              this.state.sendingChecked,
+              this.onSendPress,
+            )}
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -110,11 +162,14 @@ class GeneralSettings extends Component {
     itemTitle,
     itemText,
     isBorder,
-    isCheckBoxDisplayed = false,
+    isCheckBoxDisplayed,
     isSelected,
+    onPress,
   ) => {
     return (
-      <Touchable style={[s.itemWrapper, isBorder ? s.bottomBorder : null]}>
+      <Touchable
+        style={[s.itemWrapper, isBorder ? s.bottomBorder : null]}
+        onPress={onPress}>
         <View style={s.leftContent}>
           <TextView type={'label'} text={itemTitle} style={s.itemTitleStyle} />
           {!!itemText && (
@@ -125,18 +180,21 @@ class GeneralSettings extends Component {
             />
           )}
         </View>
-        {isCheckBoxDisplayed && <CheckBoxItem isSelected={isSelected} />}
+        {isCheckBoxDisplayed && (
+          <CheckBoxItem isSelected={isSelected} onPress={onPress} />
+        )}
       </Touchable>
     );
   };
-  renderActionItem = (itemTitle, isBorder, isSelected) => {
+  renderActionItem = (itemTitle, isBorder, isSelected, onPress) => {
     return (
       <Touchable
-        style={[s.actionItemWrapper, isBorder ? s.bottomBorder : null]}>
+        style={[s.actionItemWrapper, isBorder ? s.bottomBorder : null]}
+        onPress={onPress}>
         <View style={s.leftContent}>
           <TextView type={'label'} text={itemTitle} style={s.itemTitleStyle} />
         </View>
-        <CheckBoxItem isSelected={isSelected} />
+        <CheckBoxItem isSelected={isSelected} onPress={onPress} />
       </Touchable>
     );
   };
