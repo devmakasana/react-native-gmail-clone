@@ -37,11 +37,11 @@ class EmailList extends Component {
         <View style={AppStyles.headerLeft}>
           <IconButton
             icon={'arrow-back'}
-            size={32}
+            size={38}
             iconSize={24}
             iconColor={colors.darkBlue}
             iconType={'MaterialIcons'}
-            style={{marginLeft: 12}}
+            style={{marginLeft: 10}}
           />
           <TextView type={'header'} text={'3'} style={AppStyles.headerText} />
         </View>
